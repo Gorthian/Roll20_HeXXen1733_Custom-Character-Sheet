@@ -54,21 +54,20 @@ h4 {
 	font-weight		:	bold;
 	text-align		:	center;
 	width			:	100%;
-	padding-top		:	5px;
 }
 
 h2 {
 	background-color	:	#42474f;
 	color				:	#0c993d;
-	font-size			:	22pt;
+	font-size			:	18pt;
 }
 
 h3 {
-	font-size		:	20pt;
+	font-size		:	16pt;
 }
 
 h4 {
-	font-size		:	15pt;
+	font-size		:	14pt;
 }
 
 /* Normale Texte */
@@ -112,6 +111,10 @@ span {
 	width				: 100%;
 }
 
+.sheet-tr-height-01 {
+	height				: 1% !important;
+}
+
 .sheet-td {
 	/* Rahmen nur zu Debug-Zwecken */
 	/* border				: 1px solid red; */
@@ -120,6 +123,13 @@ span {
 	width				: auto;
 	vertical-align		: top;
 	text-align			: left;
+}
+
+.sheet-width-01 {
+	/* Rahmen nur zu Debug-Zwecken */
+	/* border				: 1px solid yellow; */
+	
+	width				: 1% !important;
 }
 
 .sheet-width-10 {
