@@ -1,6 +1,6 @@
 /*
 	EDITED by 			Gorthian
-	Version				1.1
+	Version				1.2
 	Letzte Änderung		2020-12-01
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
@@ -338,4 +338,52 @@ input.sheet-dot[value="8"] ~ button.sheet-gt-8 > span.sheet-checked {
 input.sheet-dot[value="9"] ~ button.sheet-gt-9 > span.sheet-checked {
 	display: none;
 }
+
+/* Radio-Buttons für Rage und Segnungen */
+input.sheet-dot[value="-5"] ~ button.sheet-positive > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-4"] ~ button.sheet-positive > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-4"] ~ button.sheet-lt-4 > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-3"] ~ button.sheet-positive > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-3"] ~ button.sheet-lt-3 > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-2"] ~ button.sheet-positive > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-2"] ~ button.sheet-lt-2 > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-1"] ~ button.sheet-positive > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="-1"] ~ button.sheet-lt-1 > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="0"] ~ button.sheet-negative > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="1"] ~ button.sheet-negative > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="2"] ~ button.sheet-negative > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="3"] ~ button.sheet-negative > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="4"] ~ button.sheet-negative > span.sheet-checked {
+  display: none;
+}
+input.sheet-dot[value="5"] ~ button.sheet-negative > span.sheet-checked {
+  display: none;
+}
+
 /*********************************/

@@ -1,6 +1,6 @@
 <!--
 	EDITED by 			Gorthian
-	Version				1.1
+	Version				1.2
 	Letzte Änderung		2020-12-02
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
@@ -15,7 +15,11 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="1.1" />
+	<input type="hidden" name="attr_currentVersion" value="1.1.1" />
+	
+	<input type="hidden" placeholder="0" type="number" name="attr_BlessingRage" />
+	<input type="hidden" placeholder="0" type="number" name="attr_Blessing" />
+	<input type="hidden" placeholder="0" type="number" name="attr_Rage" />
 	<!-- Versteckte Attribute //-->
 	
 	
@@ -234,14 +238,33 @@
 										<div class="td">Max:&nbsp;<input class="" placeholder="0" value="0" type="number" name="attr_CoupsMod_max" Readonly /></div>
 									</div>
 									<div class="tr tr-alternate">
-										<div class="td width-33 is-title">Segnungen / Rage</div>
-										<div class="td"><input class="" placeholder="0" type="number" name="attr_BlessingRage"/></div>
-									</div>
-									<div class="tr tr-alternate">
 										<div class="td width-33 is-title">Ambitionen</div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_Ambition"/></div>
+									</div>									
+								</div>
+								<div class="table">
+									<div class="tr height-01"><div class="td width-20"></div><div class="td"></div><div class="td width-33"></div></div>
+									<div class="tr tr-alternate">
+										<div class="td is-title">Rage (<span name="attr_Rage"></span>)</div>
+										<div class="td">											
+											<div class="dots">
+												<input type="hidden" name="attr_BlessingRageLevel" class="dot" value="0" />
+												<button type="action" name="act_BlessingRageLevel_-5" class="dot negative lt-0 lt-1 lt-2 lt-3 lt-4"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-4" class="dot negative lt-0 lt-1 lt-2 lt-3"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-3" class="dot negative lt-0 lt-1 lt-2"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-2" class="dot negative lt-0 lt-1"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-1" class="dot negative lt-0"><span class="checked"></span></button>|
+												<button type="action" name="act_BlessingRageLevel_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_BlessingRageLevel_1" class="dot positive gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_2" class="dot positive gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_3" class="dot positive gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_4" class="dot positive gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>											
+										</div>
+										<div class="td is-title" style="text-align:right;">(<span name="attr_Blessing"></span>) Segnungen</div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
+									<div class="tr height-01"></div>
 								</div>
 								<h2>Allgemeine Fertigkeiten</h2>
 								<div class="table">
@@ -1255,6 +1278,28 @@
 		});
 	});
 	
+	/* Rage & Segnungen berechnen */
+	on("change:BlessingRage", function() {
+		getAttrs(["BlessingRage"], function (values) {
+			let BlessingRage = parseInt(values.BlessingRage)||0;
+			let Blessing = 0;
+			let Rage = 0;
+			if (BlessingRage < 0) {
+				Rage = BlessingRage * -1;
+				Blessing = 0;
+			}
+			if (BlessingRage > 0) {
+				Rage = 0;
+				Blessing = BlessingRage;
+			}			
+			setAttrs({
+				Blessing	: Blessing,
+				Rage		: Rage
+			});
+		});
+	});
+	
+	
 	/* Akrobatik berechnen */
 	on("change:Ath change:AcrobaticFW", function() {
 		getAttrs(["Ath","AcrobaticFW"], function (values) {
@@ -1469,6 +1514,17 @@
 				"influenceParalysisLevel"	: value
 			});
 		});
+	});
+
+	/* Rage <-> Segnungen */
+	const blessingRageValues = ["-5","-4","-3","-2","-1","0","1","2","3","4","5"];	
+	blessingRageValues.forEach(function(value) {
+		on(`clicked:BlessingRageLevel_${value}`, function() {
+			setAttrs({
+				"BlessingRageLevel"		: value,
+				"BlessingRage"			: value				
+			});			
+		});		
 	});	
 	
 	/* Minus-[LeP] */
