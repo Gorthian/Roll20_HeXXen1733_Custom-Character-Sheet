@@ -111,8 +111,8 @@ span {
 	width				: 100%;
 }
 
-.sheet-tr-height-01 {
-	height				: 1% !important;
+.sheet-tr-alternate:nth-of-type(odd) {
+	background-color	: #dbdbdb !important;
 }
 
 .sheet-td {
@@ -125,11 +125,17 @@ span {
 	text-align			: left;
 }
 
+.sheet-height-01 {
+	/* Rahmen nur zu Debug-Zwecken */
+	/* border				: 1px solid green !important; */
+	height				: 5px !important;	
+}
+
 .sheet-width-01 {
 	/* Rahmen nur zu Debug-Zwecken */
 	/* border				: 1px solid yellow; */
 	
-	width				: 1% !important;
+	width				: 5px !important;
 }
 
 .sheet-width-10 {
