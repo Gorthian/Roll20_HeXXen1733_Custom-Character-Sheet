@@ -159,6 +159,13 @@ span {
 	width				: 20% !important;
 }
 
+.sheet-width-25 {
+	/* Rahmen nur zu Debug-Zwecken */
+	/* border				: 1px solid yellow; */
+	
+	width				: 25% !important;
+}
+
 .sheet-width-33 {
 	/* Rahmen nur zu Debug-Zwecken */
 	/* border				: 1px solid yellow; */

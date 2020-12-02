@@ -236,14 +236,25 @@
 										<div class="td"><input class="" placeholder="0" value="0" type="number" name="attr_CoupsCalc" Readonly /></div>
 										<div class="td">+/-:&nbsp;<input class="" placeholder="0" value="0" type="number" name="attr_CoupsPlus"/></div>
 										<div class="td">Max:&nbsp;<input class="" placeholder="0" value="0" type="number" name="attr_CoupsMod_max" Readonly /></div>
-									</div>
-									<div class="tr tr-alternate">
-										<div class="td width-33 is-title">Ambitionen</div>
-										<div class="td"><input class="" placeholder="0" type="number" name="attr_Ambition"/></div>
-									</div>									
+									</div>																		
 								</div>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-20"></div><div class="td"></div><div class="td width-33"></div></div>
+									<div class="tr height-01"><div class="td width-25"></div><div class="td"></div><div class="td width-25"></div></div>
+									<div class="tr tr-alternate">
+										<div class="td width-33 is-title">Ambitionen (<span name="attr_Ambition"></span>)</div>
+										<div class="td">
+											<div class="dots">
+												<input type="hidden" name="attr_Ambition" class="dot" value="0" />
+												<button type="action" name="act_Ambition_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_Ambition_1" class="dot positive gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_2" class="dot positive gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_3" class="dot positive gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_4" class="dot positive gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>
+										</div>
+										<div class="td"></div>
+									</div>
 									<div class="tr tr-alternate">
 										<div class="td is-title">Rage (<span name="attr_Rage"></span>)</div>
 										<div class="td">											
@@ -1514,6 +1525,16 @@
 				"influenceParalysisLevel"	: value
 			});
 		});
+	});
+
+	/* Ambitionen */
+	const AmbitionValues = ["0","1","2","3","4","5"];	
+	AmbitionValues.forEach(function(value) {
+		on(`clicked:Ambition_${value}`, function() {
+			setAttrs({
+				"Ambition"	: value,
+			});			
+		});		
 	});
 
 	/* Rage <-> Segnungen */
