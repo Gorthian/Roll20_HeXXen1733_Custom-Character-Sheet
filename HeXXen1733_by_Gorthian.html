@@ -1499,4 +1499,25 @@
 			});
 		});
 	});
+	
+	/* Versionierungsskripte */
+	on("sheet:opened", function() {
+		getAttrs(["oldVersion","currentVersion"], function (values) {
+			let oldVersion = values.oldVersion||0;
+			let currentVersion = values.currentVersion||0;
+			
+			console.log ("Bisherige Version:" + oldVersion);
+			console.log ("Aktuelle Version:" + currentVersion);
+			if (oldVersion === currentVersion) {
+				console.log("Keine Anpassungen notwendig.");
+			} else {
+				console.log("Versionsupdate festgestellt. Folgende Änderungen werden durchgeführt.");
+				console.log("v1.1: Keine Anpassungen notwendig.");
+			}
+			
+			setAttrs({
+				oldVersion	: currentVersion
+			});
+		});
+	});
 </script>
