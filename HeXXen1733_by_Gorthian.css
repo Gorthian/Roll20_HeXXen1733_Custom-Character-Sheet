@@ -218,6 +218,19 @@ input {
 	width			: 98%;
 }
 
+/* Tooltips */
+div.sheet-tooltip {
+	z-index				: 10;
+	display				: none;
+	position			: absolute;
+	border				: 1px solid black;
+	background-color	: #FFFFFF;
+}
+
+.sheet-show-tooltip:hover ~ div.sheet-tooltip {
+	display	: inline;
+}
+
 /***************************************************/
 /*             CSS WIZARDRY                        */
 /***************************************************/
