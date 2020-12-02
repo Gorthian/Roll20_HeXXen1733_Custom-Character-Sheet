@@ -96,6 +96,16 @@ span {
 	table-layout		: fixed;
 }
 
+.sheet-table-menue {
+	/* Rahmen nur zu Debug-Zwecken */
+	/* border				: 1px solid green; */
+	
+	display				: table;
+	width				: 100% !important;
+	table-layout		: fixed;
+	background-color	: #FFFFFF !important;
+}
+
 .sheet-tr {
 	display				: table-row;
 	width				: 100%;
