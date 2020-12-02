@@ -26,18 +26,18 @@
 				<!-- Wird später umgesetzt. In Version 1 auskommentieren //--> <!-- NSC-Ansicht:<input type="checkbox" class="toggle-menue" name="attr_IsNSC" value="1"/> //--> <!-- Muss zwingend direkt vor den Buttons stehen //-->
 				<!-- SC-Ansicht //-->
 				<div class="sc-menue">
-					<button type="action" name="act_general">Allgemein</button>
-					<button type="action" name="act_status">Körperlicher und geistiger Zustand</button>
-					<button type="action" name="act_skills">Fertigkeiten</button>
-					<button type="action" name="act_battle">Kampf</button>
-					<button type="action" name="act_inventory">Besitz</button>			
+					<button type="action" name="act_general" class="button-menue">Allgemein</button>
+					<button type="action" name="act_status" class="button-menue">Körperlicher und geistiger Zustand</button>
+					<button type="action" name="act_skills" class="button-menue">Fertigkeiten</button>
+					<button type="action" name="act_battle" class="button-menue">Kampf</button>
+					<button type="action" name="act_inventory" class="button-menue">Besitz</button>			
 				</div>
 				<!-- NSC-Ansicht //-->
 				<div class="nsc-menue">
-					<button type="action" name="act_general-nsc">Allgemein</button>
+					<button type="action" name="act_general-nsc" class="button-menue">Allgemein</button>
 				</div>
 				<!-- Allgemeine Menüpunkte //-->
-				<button type="action" name="act_help">Hilfe & Einstellungen</button>
+				<button type="action" name="act_help" class="button-menue">Hilfe & Einstellungen</button>
 			</div>
 		</div>
 	</div>
@@ -48,11 +48,10 @@
 				<input type='hidden' class='tabstoggle' name='attr_sheetTab'  value='character'/> <!-- Muss zwingend direkt vor den Tabs stehen //-->
 				<!-- Allgemein (SC) //-->
 				<div class="general">
-					<h2>Allgemein</h2>
 					<div class="table">
 						<div class="tr">
 							<div class="td width-50">
-								<h3>Allgemein</h3>
+								<h2>Allgemeine Informationen</h2>
 								<div class="table">									
 									<div class="tr">
 										<div class="td is-title width-20">Name</div>
@@ -75,7 +74,7 @@
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_Corruption"/></div>
 									</div>
 								</div>
-								<h3>Rollen & Professionen</h3>
+								<h2>Rollen & Professionen</h2>
 								<div class="table">					
 									<div class="tr">
 										<div class="td is-title width-20">Rolle Nr1</div>
@@ -103,7 +102,7 @@
 									</div>									
 								</div>
 								<hr/>
-								<h3>Zusätzliche Charakterbeschreibung</h3>
+								<h2>Zusätzliche Charakterbeschreibung</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td is-title width-20">Alter</div>
@@ -130,7 +129,7 @@
 										<div class="td"><textarea class="textarea textarea-medium" placeholder="Zitat" name="attr_Quote"></textarea></div>
 									</div>
 								</div>
-								<h3>Herkunft und Familie</h3>
+								<h2>Herkunft und Familie</h2>
 								<div class="table">									
 									<div class="tr">
 										<div class="td is-title width-20">Heimatort</div>
@@ -155,11 +154,11 @@
 								</div>
 							</div>
 							<div class="td width-50">
-								<h3>Attribute</h3>
+								<h2>Attribute</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td">
-											<h4>Geistige Attribute</h4>
+											<h2>Geistige Attribute</h2>
 											<div class="table">
 												<div class="tr">						
 													<div class="td"><b>[Sin]</b><br/>Sinnesschärfe</div>
@@ -176,7 +175,7 @@
 											</div>											
 										</div>								
 										<div class="td">
-											<h4>Körperliche Attribute</h4>
+											<h2>Körperliche Attribute</h2>
 											<div class="table">
 												<div class="tr">						
 													<div class="td"><b>[Kkr]</b><br/>Körperkraft</div>
@@ -194,7 +193,7 @@
 										</div>
 									</div>
 								</div>
-								<h3>Ressourcen</h3>
+								<h2>Ressourcen</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td width-33 is-title">Basis [Lep]:&nbsp;<input class="" placeholder="0" type="number" name="attr_HealthCalc" value="" READONLY /></div>
@@ -225,7 +224,7 @@
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_Ambition"/></div>
 									</div>
 								</div>
-								<h3>Allgemeine Fertigkeiten</h3>
+								<h2>Allgemeine Fertigkeiten</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td is-title width-33">Name</div>
@@ -354,11 +353,10 @@
 
 				<!-- Körperlicher und geistiger Zustand //-->
 				<div class='status'>
-					<h2>Körperlicher und geistiger Zustand</h2>
 					<div class="table">
 						<div class="tr">
 							<div class="td">
-								<h3>Anhaltende Einflüsse</h3>
+								<h2>Anhaltende Einflüsse</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td is-title width-33">Art</div>
@@ -441,7 +439,7 @@
 										<div class="td centered"><input type="checkbox" name="attr_influenceParalysisIsPermanent" value="1" /></div>
 									</div>
 								</div>
-								<h3>Minus-[LeP]</h3>
+								<h2>Minus-[LeP]</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td width-20">
@@ -465,7 +463,7 @@
 										</div>										
 									</div>
 								</div>
-								<h3>Heilfaktor</h3>
+								<h2>Heilfaktor</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td is-title width-33">
@@ -498,7 +496,7 @@
 								</div>
 							</div>							
 							<div class="td">
-								<h3>Schutz und Gesundheit</h3>
+								<h2>Schutz und Gesundheit</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td width-20"></div>
@@ -543,7 +541,7 @@
 							</div>
 						</div>
 					</div>										
-					<h3>Zustände</h3>
+					<h2>Zustände</h2>
 					<div class="table">
 						<div class="tr">
 							<div class="td is-title">Zustand</div>
@@ -655,8 +653,6 @@
 
 				<!-- Fertigkeiten //-->
 				<div class='skills'>
-					<h2>Fertigkeiten</h2>
-					<p>&nbsp;</p>
 					<fieldset class="repeating_skills">
 					<div class="table">						
 						<div class="tr">
@@ -761,7 +757,6 @@
 
 				<!-- Kampf //-->
 				<div class='battle'>
-					<h2>Kampf</h2>
 					<div class="table">
 						<div class="tr">
 							<div class="td is-title">Waffe dabei?</div>
@@ -948,13 +943,12 @@
 
 				<!-- Besitz //-->
 				<div class='inventory'>
-					<h2>Besitz</h2>
 					<div class="table">
 						<div class="tr">
 							<div class="td">
-								<h3>Ausrüstung und Notizen</h3>
+								<h2>Ausrüstung und Notizen</h2>
 								<textarea class="textarea" placeholder="Ausrüstung und Notizen" name="attr_Inventory"></textarea>
-								<h3>Konstruktionspunkte</h3>
+								<h2>Konstruktionspunkte</h2>
 								<div class="table">									
 									<div class="tr">
 										<div class="td width-33 is-title">Konstruktionspunkte</div>
@@ -963,7 +957,7 @@
 								</div>
 							</div>
 							<div class="td">
-								<h3>Finanzen</h3>
+								<h2>Finanzen</h2>
 								<div class="table">
 									<div class="tr">
 										<div class="td width-20 is-title">Unterhalt</div>
@@ -978,7 +972,7 @@
 										<div class="td"><input type="text" placeholder="Beutegut" name="attr_Booty" /></div>
 									</div>
 								</div>
-								<h3>Kleidungssets</h3>
+								<h2>Kleidungssets</h2>
 								<div class="table">									
 									<div class="tr">
 										<div class="td width-20 is-title">Set №1</div>
@@ -1004,7 +998,6 @@
 
 				<!-- Allgemein NSC //-->
 				<div class='general-nsc'>
-					<h2>Allgemein</h2>
 					<span>Coming Soon</span>
 					
 					<!-- VARIABLEN FÜR NSC-Ansicht
@@ -1033,15 +1026,14 @@
 
 				<!-- Hilfe & Einstellungen //-->
 				<div class='help'>
-					<h2>Hilfe & Einstellungen</h2>
 					<div class="tr">
 						<div class="td">
-							<h3>Voraussetzungen</h3>
+							<h2>Voraussetzungen</h2>
 							<span>
 								Um die Würfelfunktionen des Charakterblatts zu nutzen benötigt man die würfelbaren Tabellen für HeXXen 1733.
 								<br/>Die Namen der Tabellen können weiter unten festgelegt werden.						
 							</span>
-							<h3>Hilfe</h3>
+							<h2>Hilfe</h2>
 							<span>
 								Token-Bars wie folgt verknüpfen
 								<div class="table">									
@@ -1061,7 +1053,7 @@
 								
 								<!-- Erst mit der NSC-Ansicht relevant<ul>Hex				: HEX</ul> //-->
 							</span>
-							<h3>Einstellungen</h3>
+							<h2>Einstellungen</h2>
 							<div class="table">									
 								<div class="tr">
 									<div class="td is-title width-33">Tabelle für HeXXenwürfel</div>
@@ -1078,7 +1070,7 @@
 								</div>
 								//-->
 							</div>
-							<h3>About</h3>
+							<h2>About</h2>
 							<span>
 								Autor: Gorthian
 								<br/>Version: <span name="attr_currentVersion"></span>

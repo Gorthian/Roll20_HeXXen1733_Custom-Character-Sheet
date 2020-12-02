@@ -58,8 +58,9 @@ h4 {
 }
 
 h2 {
-	font-size		:	25pt;
-	text-decoration :	underline;
+	background-color	:	#42474f;
+	color				:	#0c993d;
+	font-size			:	22pt;
 }
 
 h3 {
@@ -163,6 +164,14 @@ button {
 	font-size		: 10pt;
 	font-weight		: normal;
 	vertical-align	: center;
+}
+
+.sheet-button-menue {
+	/* Rahmen nur zu Debug-Zwecken */
+	/* border				: 1px solid red; */
+	
+	background-color	:	#42474f;
+	color				:	#0c993d;
 }
 
 /* Textareas */
