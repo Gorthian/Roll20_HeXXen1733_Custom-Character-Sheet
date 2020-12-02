@@ -680,50 +680,56 @@
 				<!-- Fertigkeiten //-->
 				<div class='skills'>
 					<h2>Allgemeine Fertigkeiten / Espritkräfte</h2>
-					<div class="table"><div class="tr height-01">&nbsp;</div></div>
-					<fieldset class="repeating_skills">
-					<div class="table">						
-						<div class="tr">
-							<div class="td width-10">
-								Fertigkeit: 
-							</div>
+					<div class="table">
+						<div class="tr height-01">&nbsp;</div>						
+						<fieldset class="repeating_skills">
+						<div class="tr tr-alternate">
 							<div class="td">
-								<input class="" placeholder="Fertigkeit" type="text" name="attr_SkillSet_Skill">
-							</div>
-							<div class="td width-10">
-								Aus Rolle: 
-							</div>
-							<div class="td">
-								<input type="text" name="attr_SkillSet_Role">
+								<div class="table">						
+									<div class="tr">
+										<div class="td width-10">
+											Fertigkeit: 
+										</div>
+										<div class="td">
+											<input class="" placeholder="Fertigkeit" type="text" name="attr_SkillSet_Skill">
+										</div>
+										<div class="td width-10">
+											Aus Rolle: 
+										</div>
+										<div class="td">
+											<input type="text" name="attr_SkillSet_Role">
+										</div>
+									</div>
+								</div>
+								<div class="table">						
+									<div class="tr">
+										<div class="td width-10">
+											Allgemein: 
+										</div>
+										<div class="td width-10">
+											<input type="checkbox" name="attr_SkillSet_General">
+										</div>
+										<div class="td width-10">
+											Esprit: 
+										</div>
+										<div class="td width-10">
+											<input type="checkbox" name="attr_SkillSet_Esprit">
+										</div>
+										<div class="td">&nbsp;</div>
+									</div>
+								</div>
+								<div class="table">	
+									<div class="tr">
+										<div class="td is-title">
+											Beschreibung
+											<textarea class="textarea textarea-medium" placeholder="Beschreibung" name="attr_SkillSet_Description"></textarea>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
+						</fieldset>
 					</div>
-					<div class="table">						
-						<div class="tr">
-							<div class="td width-10">
-								Allgemein: 
-							</div>
-							<div class="td width-10">
-								<input type="checkbox" name="attr_SkillSet_General">
-							</div>
-							<div class="td width-10">
-								Esprit: 
-							</div>
-							<div class="td width-10">
-								<input type="checkbox" name="attr_SkillSet_Esprit">
-							</div>
-							<div class="td">&nbsp;</div>
-						</div>
-					</div>
-					<div class="table">	
-						<div class="tr">
-							<div class="td is-title">
-								Beschreibung
-								<textarea class="textarea textarea-medium" placeholder="Beschreibung" name="attr_SkillSet_Description"></textarea>
-							</div>
-						</div>
-					</div>
-					</fieldset>
 					<h2>Ausbaukräfte</h2>
 					<div class="table"><div class="tr height-01">&nbsp;</div></div>
 					<fieldset class="repeating_expansionskills">
@@ -787,7 +793,8 @@
 					<div class="table">
 						<div class="tr height-01">&nbsp;</div>
 						<div class="tr">
-							<div class="td is-title">Waffe dabei?</div>
+							<div class="td is-title">Waffenart</div>
+							<div class="td is-title">Im Besitz</div>
 							<div class="td is-title width-10">Sch</div>
 							<div class="td is-title width-10">AP</div>
 							<div class="td is-title width-10">FW</div>
@@ -796,8 +803,9 @@
 							<div class="td is-title">Anmerkung</div>
 							<div class="td is-title width-10">Angriff</div>							
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Fausthieb</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasFist" CHECKED DISABLED /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleFistBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleFistAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleFistFW"/></div>
@@ -806,8 +814,9 @@
 							<div class="td">Parade -3, außer Fausthiebe</div>
 							<div class="td"><button type="roll" value="/me greift mit einem Fausthieb an\n/r (@{BattleFistMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Fist"></button></div>							
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Dolche & Messer</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasKnive" /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleKniveBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleKniveAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleKniveFW"/></div>
@@ -816,8 +825,9 @@
 							<div class="td">Giftverwendung / Parade -2, außer  Fausthiebe und Dolche & Messer</div>
 							<div class="td"><button type="roll" value="/me greift mit einem Dolch an\n/r (@{BattleKniveMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Knive"></button></div>							
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Fechtwaffen</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasFencing" /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleFencingBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleFencingAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleFencingFW"/></div>
@@ -826,8 +836,9 @@
 							<div class="td">Parade -1 pro gebundenem Gegner  über dem Ersten</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Fechtwaffe an\n/r (@{BattleFencingMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Fencing"></button></div>							
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Schwerter</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSword" /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleSwordBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSwordAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleSwordFW"/></div>
@@ -836,8 +847,9 @@
 							<div class="td">Voll parierfähig</div>
 							<div class="td"><button type="roll" value="/me greift mit einem Schwert an\n/r (@{BattleSwordMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Sword"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Säbel</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSabre" /></div>
 							<div class="td"><input type="number" value="4" name="attr_BattleSabreBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSabreAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleSabreFW"/></div>
@@ -846,8 +858,9 @@
 							<div class="td">Parade -1</div>
 							<div class="td"><button type="roll" value="/me greift mit einem Säbel an\n/r (@{BattleSabreMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Sabre"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">...beritten</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSabreMounted" /></div>
 							<div class="td"><input type="number" value="5" name="attr_BattleSabreMountedBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSabreMountedAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleSabreMountedFW"/></div>
@@ -856,8 +869,9 @@
 							<div class="td">Parade -1</div>
 							<div class="td"><button type="roll" value="/me greift mit einem Säbel an\n/r (@{BattleSabreMountedMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_SabreMounted"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Schlagwaffen</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasBlunt" /></div>
 							<div class="td"><input type="number" value="5" name="attr_BattleBluntBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleBluntAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleBluntFW"/></div>
@@ -866,8 +880,9 @@
 							<div class="td">Parade -2</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Schlagwaffe an\n/r (@{BattleBluntMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Blunt"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Stangenwaffen</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasPolearm" /></div>
 							<div class="td"><input type="number" value="6" name="attr_BattlePolearmBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattlePolearmAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattlePolearmFW"/></div>
@@ -876,8 +891,9 @@
 							<div class="td">Parade kostet 2 AP</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Stangenwaffe an\n/r (@{BattlePolearmMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Polearm"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">...gegen Reiter</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasPolearmMount" /></div>
 							<div class="td"><input type="number" value="8" name="attr_BattlePolearmMountBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattlePolearmMountAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattlePolearmMountFW"/></div>
@@ -886,8 +902,9 @@
 							<div class="td">Parade kostet 2 AP</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Stangenwaffe an\n/r (@{BattlePolearmMountMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_PolearmMount"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Lanzen</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasLance" /></div>
 							<div class="td"><input type="number" value="6" name="attr_BattleLanceBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleLanceAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleLanceFW"/></div>
@@ -896,8 +913,9 @@
 							<div class="td">Parade kostet 2 AP</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Lanze an\n/r (@{BattleLanceMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Lance"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">...beritten</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasLanceMounted" /></div>
 							<div class="td"><input type="number" value="7" name="attr_BattleLanceMountedBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleLanceMountedAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleLanceMountedFW"/></div>
@@ -906,8 +924,9 @@
 							<div class="td">Parade kostet 2 AP</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Lanze an\n/r (@{BattleLanceMountedMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_LanceMounted"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Schleuder</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSlingshot" /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleSlingshotBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSlingshotAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleSlingshotFW"/></div>
@@ -916,8 +935,9 @@
 							<div class="td">Geschossgeeignet, Werfer muss freistehen</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Schleuder an\n/r (@{BattleSlingshotMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Slingshot"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Pistole</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasPistol" /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattlePistolBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattlePistolAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattlePistolFW"/></div>
@@ -926,8 +946,9 @@
 							<div class="td">Immer freie Schussmöglichkeit</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Pistole an\n/r (@{BattlePistolMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Pistol"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Armbrust</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasCrossbow" /></div>
 							<div class="td"><input type="number" value="5" name="attr_BattleCrossbowBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleCrossbowAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleCrossbowFW"/></div>
@@ -936,8 +957,9 @@
 							<div class="td">Schütze muss freistehen</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Armbrust an\n/r (@{BattleCrossbowMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Crossbow"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Muskete</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasMusket" /></div>
 							<div class="td"><input type="number" value="8" name="attr_BattleMusketBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleMusketAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleMusketFW"/></div>
@@ -946,8 +968,9 @@
 							<div class="td">Schütze und Ziel müssen freistehen</div>
 							<div class="td"><button type="roll" value="/me greift mit einer Muskete an\n/r (@{BattleMusketMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Musket"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Ausweichen</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasDodge" CHECKED DISABLED /></div>
 							<div class="td">-</div>
 							<div class="td"><input type="number" value="1" name="attr_BattleDodgeAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleDodgeFW"/></div>
@@ -956,8 +979,9 @@
 							<div class="td">Pro geb. Gegner -1, Distanzangriffe -1</div>
 							<div class="td"><button type="roll" value="/me weicht aus.\n/r (@{BattleDodgeMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|0})t[@{tblJanus}]" name="Roll_Dodge"></button></div>
 						</div>
-						<div class="tr">
+						<div class="tr tr-alternate">
 							<div class="td is-title">Schildbenutzung</div>
+							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasShield" /></div>
 							<div class="td">-</div>
 							<div class="td"><input type="number" value="1" name="attr_BattleShieldAP" READONLY /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleShieldW"/></div>
