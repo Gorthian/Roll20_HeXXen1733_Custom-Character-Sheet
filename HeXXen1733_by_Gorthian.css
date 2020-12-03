@@ -235,35 +235,6 @@ div.sheet-tooltip {
 /*             CSS WIZARDRY                        */
 /***************************************************/
 
-/* Roll-Buttons */
-
-div.sheet-dice-hex{
-  background-image: url(https://raw.githubusercontent.com/Gorthian/HeXXen1733_Custom_Character_Sheet/main/Ressources/dice_hexx.png); 
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-}
-
-button[type="roll"].sheet-dice-hex:before{
-  content: ' ';
-}
-
-button[type="roll"].sheet-dice-hex:hover{
-  background-position: 0;
-}
-
-button[type="roll"].sheet-dice-hex{
-  background-image: url(https://raw.githubusercontent.com/Gorthian/HeXXen1733_Custom_Character_Sheet/main/Ressources/dice_hexx.png); 
-  background-size: 26px 26px;
-  background-repeat: no-repeat;
-  width: 26px;
-  height: 26px;
-  border-style: none;
-  background-color: transparent;
-  margin-left: 5px;
-}
-
 /* Tabs */
 .sheet-general,
 .sheet-status,
