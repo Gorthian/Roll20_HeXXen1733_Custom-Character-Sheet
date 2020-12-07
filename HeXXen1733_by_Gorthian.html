@@ -1262,9 +1262,9 @@
 			if (tblHexxenmeister === "") tblHexxenmeister = "HeXXenmeister";
 			
 			setAttrs({
-				tblHexxen: tblHexxen,
-				tblJanus: tblJanus,
-				tblHexxenmeister: tblHexxenmeister
+				"tblHexxen": tblHexxen,
+				"tblJanus": tblJanus,
+				"tblHexxenmeister": tblHexxenmeister
 			});
 		});
 	});
@@ -1277,8 +1277,8 @@
 			let ToughnessFW = parseInt(values.ToughnessFW)||0;
 			let HealthPlus = parseInt(values.HealthPlus)||0;
 			setAttrs({
-				HealthCalc		: Kkr + Wil + ToughnessFW + 7,
-				HealthMod_max	: Kkr + Wil + ToughnessFW + 7 + HealthPlus
+				"HealthCalc"	: Kkr + Wil + ToughnessFW + 7,
+				"HealthMod_max"	: Kkr + Wil + ToughnessFW + 7 + HealthPlus
 			});
 		});
 	});	
@@ -1291,8 +1291,8 @@
 			let ReflexesFW = parseInt(values.ReflexesFW)||0;
 			let InitiativePlus = parseInt(values.InitiativePlus)||0;
 			setAttrs({
-				InitiativeCalc	: Sin + Ges + ReflexesFW,
-				InitiativeMod_max	: Sin + Ges + ReflexesFW + InitiativePlus
+				"InitiativeCalc"	: Sin + Ges + ReflexesFW,
+				"InitiativeMod_max"	: Sin + Ges + ReflexesFW + InitiativePlus
 			});
 		});
 	});
@@ -1303,8 +1303,8 @@
 			let Wis = parseInt(values.Wis)||0;
 			let IdeasPlus = parseInt(values.IdeasPlus)||0;
 			setAttrs({
-				IdeasCalc		: Wis,
-				IdeasMod_max	: Wis + IdeasPlus
+				"IdeasCalc"		: Wis,
+				"IdeasMod_max"	: Wis + IdeasPlus
 			});
 		});
 	});
@@ -1315,8 +1315,8 @@
 			let Ath = parseInt(values.Ath)||0;
 			let CoupsPlus = parseInt(values.CoupsPlus)||0;
 			setAttrs({
-				CoupsCalc		: Ath,
-				CoupsMod_max	: Ath + CoupsPlus
+				"CoupsCalc"		: Ath,
+				"CoupsMod_max"	: Ath + CoupsPlus
 			});
 		});
 	});
@@ -1336,8 +1336,8 @@
 				Blessing = BlessingRage;
 			}			
 			setAttrs({
-				Blessing	: Blessing,
-				Rage		: Rage
+				"Blessing"	: Blessing,
+				"Rage"		: Rage
 			});
 		});
 	});
@@ -1353,8 +1353,8 @@
 				BlessingRage = 0
 			}
 			setAttrs({
-				BlessingRageLevel	: BlessingRage,
-				Rage				: Rage
+				"BlessingRageLevel"	: BlessingRage,
+				"Rage"				: Rage
 			});
 		});
 	});
@@ -1370,8 +1370,8 @@
 				BlessingRage = 0
 			}
 			setAttrs({
-				BlessingRageLevel	: BlessingRage,
-				Blessing			: Blessing
+				"BlessingRageLevel"	: BlessingRage,
+				"Blessing"			: Blessing
 			});
 		});
 	});	
@@ -1383,7 +1383,7 @@
 			let Base = parseInt(values.Ath)||0;
 			let FW = parseInt(values.AcrobaticFW)||0;
 			setAttrs({
-				AcrobaticMod	: Base + FW
+				"AcrobaticMod"	: Base + FW
 			});
 		});
 	});
@@ -1394,7 +1394,7 @@
 			let Base = parseInt(values.Sin)||0;
 			let FW = parseInt(values.AttentionFW)||0;
 			setAttrs({
-				AttentionMod	: Base + FW
+				"AttentionMod"	: Base + FW
 			});
 		});
 	});
@@ -1405,7 +1405,7 @@
 			let Base = parseInt(values.Sin)||0;
 			let FW = parseInt(values.PerceptionFW)||0;
 			setAttrs({
-				PerceptionMod	: Base + FW
+				"PerceptionMod"	: Base + FW
 			});
 		});
 	});
@@ -1416,7 +1416,7 @@
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.FirstAidFW)||0;
 			setAttrs({
-				FirstAidMod	: Base + FW
+				"FirstAidMod"	: Base + FW
 			});
 		});
 	});
@@ -1427,7 +1427,7 @@
 			let Base = parseInt(values.Ges)||0;
 			let FW = parseInt(values.DexterityFW)||0;
 			setAttrs({
-				DexterityMod	: Base + FW
+				"DexterityMod"	: Base + FW
 			});
 		});
 	});
@@ -1438,7 +1438,7 @@
 			let Base = parseInt(values.Wil)||0;
 			let FW = parseInt(values.MentalPowerFW)||0;
 			setAttrs({
-				MentalPowerMod	: Base + FW
+				"MentalPowerMod"	: Base + FW
 			});
 		});
 	});
@@ -1449,7 +1449,7 @@
 			let Base = parseInt(values.Ges)||0;
 			let FW = parseInt(values.CraftingFW)||0;
 			setAttrs({
-				CraftingMod	: Base + FW
+				"CraftingMod"	: Base + FW
 			});
 		});
 	});
@@ -1460,7 +1460,7 @@
 			let Base = parseInt(values.Ath)||0;
 			let FW = parseInt(values.StealthFW)||0;
 			setAttrs({
-				StealthMod	: Base + FW
+				"StealthMod"	: Base + FW
 			});
 		});
 	});
@@ -1471,7 +1471,7 @@
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.CountryPeopleFW)||0;
 			setAttrs({
-				CountryPeopleMod	: Base + FW
+				"CountryPeopleMod"	: Base + FW
 			});
 		});
 	});
@@ -1482,7 +1482,7 @@
 			let Base = parseInt(values.Wil)||0;
 			let FW = parseInt(values.RhetoricFW)||0;
 			setAttrs({
-				RhetoricMod	: Base + FW
+				"RhetoricMod"	: Base + FW
 			});
 		});
 	});
@@ -1493,7 +1493,7 @@
 			let Base = parseInt(values.Kkr)||0;
 			let FW = parseInt(values.StruggleFW)||0;
 			setAttrs({
-				StruggleMod	: Base + FW
+				"StruggleMod"	: Base + FW
 			});
 		});
 	});
@@ -1504,7 +1504,7 @@
 			let Base = parseInt(values.Sin)||0;
 			let FW = parseInt(values.ReflexesFW)||0;
 			setAttrs({
-				ReflexesMod	: Base + FW
+				"ReflexesMod"	: Base + FW
 			});
 		});
 	});
@@ -1515,7 +1515,7 @@
 			let Base = parseInt(values.Ath)||0;
 			let FW = parseInt(values.RidingFW)||0;
 			setAttrs({
-				RidingMod	: Base + FW
+				"RidingMod"	: Base + FW
 			});
 		});
 	});
@@ -1526,7 +1526,7 @@
 			let Base = parseInt(values.Kkr)||0;
 			let FW = parseInt(values.ToughnessFW)||0;
 			setAttrs({
-				ToughnessMod	: Base + FW
+				"ToughnessMod"	: Base + FW
 			});
 		});
 	});	
@@ -1537,7 +1537,7 @@
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.KnowledgeFW)||0;
 			setAttrs({
-				KnowledgeMod	: Base + FW
+				"KnowledgeMod"	: Base + FW
 			});
 		});
 	});	
@@ -1548,7 +1548,7 @@
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.WitchcraftFW)||0;
 			setAttrs({
-				WitchcraftMod	: Base + FW
+				"WitchcraftMod"	: Base + FW
 			});
 		});
 	});
@@ -1559,7 +1559,7 @@
 			let ArmorLevel = parseInt(values.ArmorLevel)||0;
 			let influenceParalysisLevel = parseInt(values.influenceParalysisLevel)||0;
 			setAttrs({
-				ActionPointsMod_max	: 6 - ArmorLevel - influenceParalysisLevel
+				"ActionPointsMod_max"	: 6 - ArmorLevel - influenceParalysisLevel
 			});
 		});
 	});
@@ -1701,23 +1701,23 @@
 			let BattleShieldFW = parseInt(values.BattleShieldFW)||0;
 
 			setAttrs({
-				BattleFistMod			: Ath + BattleFistFW,
-				BattleKniveMod			: Ges + BattleKniveFW,
-				BattleFencingMod		: Ath + BattleFencingFW,
-				BattleSwordMod			: Kkr + BattleSwordFW,
-				BattleSabreMod			: Kkr + BattleSabreFW,
-				BattleSabreMountedMod	: Kkr + BattleSabreMountedFW,
-				BattleBluntMod			: Kkr + BattleBluntFW,
-				BattlePolearmMod		: Kkr + BattlePolearmFW,
-				BattlePolearmMountMod	: Kkr + BattlePolearmMountFW,					
-				BattleLanceMod			: Kkr + BattleLanceFW,			
-				BattleLanceMountedMod	: Kkr + BattleLanceMountedFW,			
-				BattleSlingshotMod		: Ges + BattleSlingshotFW,
-				BattlePistolMod			: Sin + BattlePistolFW,
-				BattleCrossbowMod		: Sin + BattleCrossbowFW,
-				BattleMusketMod			: Sin + BattleMusketFW,
-				BattleDodgeMod			: Ath + BattleDodgeFW,
-				BattleShieldMod			: Ath + BattleShieldFW					
+				"BattleFistMod"			: Ath + BattleFistFW,
+				"BattleKniveMod"		: Ges + BattleKniveFW,
+				"BattleFencingMod"		: Ath + BattleFencingFW,
+				"BattleSwordMod"		: Kkr + BattleSwordFW,
+				"BattleSabreMod"		: Kkr + BattleSabreFW,
+				"BattleSabreMountedMod"	: Kkr + BattleSabreMountedFW,
+				"BattleBluntMod"		: Kkr + BattleBluntFW,
+				"BattlePolearmMod"		: Kkr + BattlePolearmFW,
+				"BattlePolearmMountMod"	: Kkr + BattlePolearmMountFW,					
+				"BattleLanceMod"		: Kkr + BattleLanceFW,			
+				"BattleLanceMountedMod"	: Kkr + BattleLanceMountedFW,			
+				"BattleSlingshotMod"	: Ges + BattleSlingshotFW,
+				"BattlePistolMod"		: Sin + BattlePistolFW,
+				"BattleCrossbowMod"		: Sin + BattleCrossbowFW,
+				"BattleMusketMod"		: Sin + BattleMusketFW,
+				"BattleDodgeMod"		: Ath + BattleDodgeFW,
+				"BattleShieldMod"		: Ath + BattleShieldFW					
 			});
 		});
 	});
@@ -1739,7 +1739,7 @@
 			}
 			
 			setAttrs({
-				oldVersion	: currentVersion
+				"oldVersion"	: currentVersion
 			});
 		});
 	});
