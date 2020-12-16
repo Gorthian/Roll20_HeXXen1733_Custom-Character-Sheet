@@ -1,7 +1,7 @@
 /*
 	EDITED by 			Gorthian
-	Version				1.2.1
-	Letzte Änderung		2020-12-05
+	Version				1.2.2
+	Letzte Änderung		2020-12-16
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -76,6 +76,19 @@ span {
 	font-family			:	"Texturina";
 	font-weight			: 	normal;
 	font-size			:	10pt;
+}
+
+.sheet-info, .sheet-info-border {
+	display				:	inline-block;
+	margin-top			:	4px;
+
+	font-weight			: 	bold;
+	text-align			:	center;
+}
+
+.sheet-info-border {
+	border				:	1px solid grey ;
+	min-width			:	25px;
 }
 
 .sheet-is-title {
