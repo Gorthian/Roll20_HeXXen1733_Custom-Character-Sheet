@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="1.2.1" />
+	<input type="hidden" name="attr_currentVersion" value="1.2.2" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -699,6 +699,45 @@
 										<div class="td">Max <span class="info-border" name="attr_IdeasMod_max"></span></div>
 									</div>
 								</div>
+								<div class="table">
+									<div class="tr height-01"><div class="td width-25"></div><div class="td"></div><div class="td width-25"></div></div>
+									<div class="tr alternate">
+										<div class="td width-33 is-title">Ambitionen (<span class="info" name="attr_Ambition"></span>)</div>
+										<div class="td">
+											<div class="dots">
+												<input type="hidden" name="attr_Ambition" class="dot" value="0" />
+												<button type="action" name="act_Ambition_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_Ambition_1" class="dot positive gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_2" class="dot positive gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_3" class="dot positive gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_4" class="dot positive gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_Ambition_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>
+										</div>
+										<div class="td"></div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title">Rage (<span class="info" name="attr_Rage"></span>)</div>
+										<div class="td">											
+											<div class="dots">
+												<input type="hidden" name="attr_BlessingRageLevel" class="dot" value="0" />
+												<button type="action" name="act_BlessingRageLevel_-5" class="dot negative lt-0 lt-1 lt-2 lt-3 lt-4"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-4" class="dot negative lt-0 lt-1 lt-2 lt-3"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-3" class="dot negative lt-0 lt-1 lt-2"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-2" class="dot negative lt-0 lt-1"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_-1" class="dot negative lt-0"><span class="checked"></span></button>|
+												<button type="action" name="act_BlessingRageLevel_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_BlessingRageLevel_1" class="dot positive gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_2" class="dot positive gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_3" class="dot positive gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_4" class="dot positive gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_BlessingRageLevel_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>											
+										</div>
+										<div class="td is-title" style="text-align:right;">(<span class="info" name="attr_Blessing"></span>) Segnungen</div>
+									</div>
+									<div class="tr height-01"></div>
+								</div>
 							</div>
 						</div>
 						<div class="tr height-01">&nbsp;</div>
@@ -1341,10 +1380,11 @@
 	
 	/* Standardwerte für Würfeltabellen setzen */
 	on("sheet:opened", function() {
-		getAttrs(["tblHexxen","tblJanus","tblHexxenmeister"], function (values) {
+		getAttrs(["tblHexxen","tblJanus","tblHexxenmeister","sheetTab"], function (values) {
 			let tblHexxen = values.tblHexxen;
 			let tblJanus = values.tblJanus;
 			let tblHexxenmeister = values.tblHexxenmeister;
+			let sheetTab = values.sheetTab||"general";
 			
 			if (tblHexxen === "") tblHexxen = "HeXXen";
 			if (tblJanus === "") tblJanus = "Janus";
@@ -1353,7 +1393,8 @@
 			setAttrs({
 				"tblHexxen": tblHexxen,
 				"tblJanus": tblJanus,
-				"tblHexxenmeister": tblHexxenmeister
+				"tblHexxenmeister": tblHexxenmeister,
+				"sheetTab": sheetTab
 			});
 		});
 	});
@@ -1851,9 +1892,7 @@
 				console.log("Keine Anpassungen notwendig.");
 			} else {
 				console.log("Versionsupdate festgestellt. Folgende Änderungen werden durchgeführt.");
-				console.log("v1.1: Keine Anpassungen notwendig.");
-				console.log("v1.2: Keine Anpassungen notwendig.");
-				console.log("v1.2.1: Keine Anpassungen notwendig.");
+				console.log("v1.1 bis v1.2.2: Keine Anpassungen notwendig.");				
 			}
 			
 			setAttrs({
