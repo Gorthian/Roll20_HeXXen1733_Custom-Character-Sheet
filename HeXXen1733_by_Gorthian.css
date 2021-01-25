@@ -1,7 +1,7 @@
 /*
 	EDITED by 			Gorthian
-	Version				1.2.3
-	Letzte Änderung		2020-12-16
+	Version				1.2.4
+	Letzte Änderung		2021-01-25
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -222,6 +222,101 @@ button {
 	
 	background-color	:	#42474f;
 	color				:	#0c993d;
+}
+
+button[type="roll"].sheet-dBlood:before{
+  content: ' ';
+}
+
+button[type="roll"].sheet-dBlood:hover{
+  background-position: 0;
+}
+
+button[type="roll"].sheet-dBlood{
+  background-image: url(https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Blood.png?raw=true);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border-style: none;
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+button[type="roll"].sheet-dBless:before{
+  content: ' ';
+}
+
+button[type="roll"].sheet-dBless:hover{
+  background-position: 0;
+}
+
+button[type="roll"].sheet-dBless{	
+  background-image: url(https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Bless.png?raw=true);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border-style: none;
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+button[type="roll"].sheet-dElix:before{
+  content: ' ';
+}
+
+button[type="roll"].sheet-dElix:hover{
+  background-position: 0;
+}
+
+button[type="roll"].sheet-dElix{
+  background-image: url(https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Elix.png?raw=true);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border-style: none;
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+button[type="roll"].sheet-dHexx:before{
+  content: ' ';
+}
+
+button[type="roll"].sheet-dHexx:hover{
+  background-position: 0;
+}
+
+button[type="roll"].sheet-dHexx{
+  background-image: url(https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Hexx.png?raw=true);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border-style: none;
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+button[type="roll"].sheet-dJanus:before{
+  content: ' ';
+}
+
+button[type="roll"].sheet-dJanus:hover{
+  background-position: 0;
+}
+
+button[type="roll"].sheet-dJanus{
+  background-image: url(https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Janus.png?raw=true);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border-style: none;
+  background-color: transparent;
+  margin-left: 5px;
 }
 
 /* Textareas */

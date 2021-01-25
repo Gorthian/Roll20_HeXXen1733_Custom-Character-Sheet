@@ -1325,12 +1325,18 @@
 										<div class="td is-title width-33">Tabelle für Januswürfel</div>
 										<div class="td"><input class="" placeholder="" type="text" name="attr_tblJanus"/></div>
 									</div>
-									<!-- Wird noch nicht benötigt
 									<div class="tr">
-										<div class="td is-title width-33">Tabelle für HeXXenmeisterwürfel</div>
-										<div class="td"><input class="" placeholder="" type="text" name="attr_tblHexxenmeister"/></div>
+										<div class="td is-title width-33">Tabelle für Blutwürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblBlood"/></div>
 									</div>
-									//-->
+									<div class="tr">
+										<div class="td is-title width-33">Tabelle für Segnungswürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblBless"/></div>
+									</div>
+									<div class="tr">
+										<div class="td is-title width-33">Tabelle für Elixierwürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblElix"/></div>
+									</div>									
 								</div>
 							</div>
 						</div>
@@ -1340,7 +1346,7 @@
 								<h2>About</h2>
 								<span>
 									Autor: Gorthian
-									<br/>Version: <span class="info-border" name="attr_currentVersion"></span>
+									<br/>Version: <span class="info" name="attr_currentVersion"></span>
 									<br/>GitHub: https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 									<br/>Wiki: https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
 									<br/>Bugs & Issues: https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/issues
@@ -1372,6 +1378,12 @@
 				<input class="" placeholder="0" value="0" type="number" name="attr_InitiativeMod" />
 				<h4>AP</h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_ActionPointsMod" />
+				<h4>Würfeln</h4>
+				<button name="roll_hexx" type="roll" value="/me würfel Hexxenwürfel.\n/r (?{Anzahl?|1})t[@{tblHexxen}]" class="dHexx"></button>
+				<br/><button name="roll_janus" type="roll" value="/me würfel Januswürfel.\n/r (?{Anzahl?|1})t[@{tblJanus}]" class="dJanus"></button>
+				<br/><button name="roll_blood" type="roll" value="/me würfel Blutwürfel.\n/r (?{Anzahl?|1})t[@{tblBlood}]" class="dBlood"></button>
+				<br/><button name="roll_blood" type="roll" value="/me würfel Segnungswürfel.\n/r (?{Anzahl?|1})t[@{tblBless}]" class="dBless"></button>
+				<br/><button name="roll_blood" type="roll" value="/me würfel Elixierwürfel.\n/r (?{Anzahl?|1})t[@{tblElix}]" class="dElix"></button>
 			</div>
 		</div>
 	</div>
