@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
-	Version				1.2.2
-	Letzte Änderung		2020-12-16
+	Version				1.2.4
+	Letzte Änderung		2021-01-25
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="1.2.2" />
+	<input type="hidden" name="attr_currentVersion" value="1.2.4" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -443,7 +443,7 @@
 									</div>
 									<div class="tr alternate">
 										<div class="td is-title">Land und Leute</div>
-										<div class="td">[Wis] <span class="info-border" name="attr_Wis"></span></div>
+										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_CountryPeopleFW"/></div>
 										<div class="td"><span class="info-border" name="attr_CountryPeopleMod"></span></div>				
 										<div class="td"><button type="roll" value="/me würfelt auf Land und Leute\n/r (@{CountryPeopleMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_CountryPeople"></button></div>
@@ -490,6 +490,17 @@
 										<div class="td"><span class="info-border" name="attr_KnowledgeMod"></span></div>				
 										<div class="td"><button type="roll" value="/me würfelt auf Wissensgebiete\n/r (@{KnowledgeMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Knowledge"></button></div>
 									</div>
+								</div>
+								<h2>Besondere Fertigkeiten</h2>
+								<div class="table">
+									<div class="tr height-01"><div class="td width-33">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
+									<div class="tr">
+										<div class="td is-title">Name</div>
+										<div class="td is-title">Basis</div>
+										<div class="td is-title">FW</div>
+										<div class="td is-title">Summe</div>				
+										<div class="td is-title">Probe</div>														
+									</div>									
 									<div class="tr alternate">
 										<div class="td is-title">Hexerei</div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
@@ -1314,12 +1325,18 @@
 										<div class="td is-title width-33">Tabelle für Januswürfel</div>
 										<div class="td"><input class="" placeholder="" type="text" name="attr_tblJanus"/></div>
 									</div>
-									<!-- Wird noch nicht benötigt
 									<div class="tr">
-										<div class="td is-title width-33">Tabelle für HeXXenmeisterwürfel</div>
-										<div class="td"><input class="" placeholder="" type="text" name="attr_tblHexxenmeister"/></div>
+										<div class="td is-title width-33">Tabelle für Blutwürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblBlood"/></div>
 									</div>
-									//-->
+									<div class="tr">
+										<div class="td is-title width-33">Tabelle für Segnungswürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblBless"/></div>
+									</div>
+									<div class="tr">
+										<div class="td is-title width-33">Tabelle für Elixierwürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblElix"/></div>
+									</div>									
 								</div>
 							</div>
 						</div>
@@ -1329,10 +1346,10 @@
 								<h2>About</h2>
 								<span>
 									Autor: Gorthian
-									<br/>Version: <span class="info-border" name="attr_currentVersion"></span>
-									<br/>GitHub: https://github.com/Gorthian/roll20-character-sheets
-									<br/>Wiki: https://github.com/Gorthian/roll20-character-sheets/wiki
-									<br/>Bugs & Issues: https://github.com/Gorthian/roll20-character-sheets/issues
+									<br/>Version: <span class="info" name="attr_currentVersion"></span>
+									<br/>GitHub: https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
+									<br/>Wiki: https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
+									<br/>Bugs & Issues: https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/issues
 								</span>
 							</div>
 						</div>
@@ -1361,6 +1378,12 @@
 				<input class="" placeholder="0" value="0" type="number" name="attr_InitiativeMod" />
 				<h4>AP</h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_ActionPointsMod" />
+				<h4>Würfeln</h4>
+				<button name="roll_hexx" type="roll" value="/me würfel Hexxenwürfel.\n/r (?{Anzahl?|1})t[@{tblHexxen}]" class="dHexx"></button>
+				<br/><button name="roll_janus" type="roll" value="/me würfel Januswürfel.\n/r (?{Anzahl?|1})t[@{tblJanus}]" class="dJanus"></button>
+				<br/><button name="roll_blood" type="roll" value="/me würfel Blutwürfel.\n/r (?{Anzahl?|1})t[@{tblBlood}]" class="dBlood"></button>
+				<br/><button name="roll_blood" type="roll" value="/me würfel Segnungswürfel.\n/r (?{Anzahl?|1})t[@{tblBless}]" class="dBless"></button>
+				<br/><button name="roll_blood" type="roll" value="/me würfel Elixierwürfel.\n/r (?{Anzahl?|1})t[@{tblElix}]" class="dElix"></button>
 			</div>
 		</div>
 	</div>
@@ -1400,7 +1423,7 @@
 	});
 	
 	/* Januspool berechnen */
-	on("change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
+	on("sheet:opened change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
 		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod"], function (values) {
 			let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
 			let MalusMod = parseInt(values.MalusMod)||0;
@@ -1428,7 +1451,7 @@
 	});
 	
 	/* Lebensenergie berechnen */
-	on("change:Kkr change:Wil change:ToughnessFW change:HealthPlus", function() {
+	on("sheet:opened change:Kkr change:Wil change:ToughnessFW change:HealthPlus", function() {
 		getAttrs(["Kkr","Wil","ToughnessFW","HealthPlus"], function (values) {
 			let Kkr = parseInt(values.Kkr)||0;
 			let Wil = parseInt(values.Wil)||0;
@@ -1442,7 +1465,7 @@
 	});	
 	
 	/* Initiative berechnen */
-	on("change:Sin change:Ges change:ReflexesFW change:InitiativePlus", function() {
+	on("sheet:opened change:Sin change:Ges change:ReflexesFW change:InitiativePlus", function() {
 		getAttrs(["Sin","Ges","ReflexesFW","InitiativePlus"], function (values) {
 			let Sin = parseInt(values.Sin)||0;
 			let Ges = parseInt(values.Ges)||0;
@@ -1456,7 +1479,7 @@
 	});
 	
 	/* Ideen berechnen */
-	on("change:Wis change:IdeasPlus", function() {
+	on("sheet:opened change:Wis change:IdeasPlus", function() {
 		getAttrs(["Wis","IdeasPlus"], function (values) {
 			let Wis = parseInt(values.Wis)||0;
 			let IdeasPlus = parseInt(values.IdeasPlus)||0;
@@ -1468,7 +1491,7 @@
 	});
 	
 	/* Coups berechnen */
-	on("change:Ath change:CoupsPlus", function() {
+	on("sheet:opened change:Ath change:CoupsPlus", function() {
 		getAttrs(["Ath","CoupsPlus"], function (values) {
 			let Ath = parseInt(values.Ath)||0;
 			let CoupsPlus = parseInt(values.CoupsPlus)||0;
@@ -1480,7 +1503,7 @@
 	});
 	
 	/* Rage & Segnungen berechnen */
-	on("change:BlessingRage", function() {
+	on("sheet:opened change:BlessingRage", function() {
 		getAttrs(["BlessingRage"], function (values) {
 			let BlessingRage = parseInt(values.BlessingRage)||0;
 			let Blessing = 0;
@@ -1500,7 +1523,7 @@
 		});
 	});
 	
-	on("change:Blessing", function() {
+	on("sheet:opened change:Blessing", function() {
 		getAttrs(["Blessing"], function (values) {
 			let Blessing = parseInt(values.Blessing)||0;
 			
@@ -1517,7 +1540,7 @@
 		});
 	});
 	
-	on("change:Rage", function() {
+	on("sheet:opened change:Rage", function() {
 		getAttrs(["Rage"], function (values) {
 			let Rage = parseInt(values.Rage)||0;
 			
@@ -1536,7 +1559,7 @@
 	
 	
 	/* Akrobatik berechnen */
-	on("change:Ath change:AcrobaticFW", function() {
+	on("sheet:opened change:Ath change:AcrobaticFW", function() {
 		getAttrs(["Ath","AcrobaticFW"], function (values) {
 			let Base = parseInt(values.Ath)||0;
 			let FW = parseInt(values.AcrobaticFW)||0;
@@ -1547,7 +1570,7 @@
 	});
 	
 	/* Aufmerksamkeit berechnen */
-	on("change:Sin change:AttentionFW", function() {
+	on("sheet:opened change:Sin change:AttentionFW", function() {
 		getAttrs(["Sin","AttentionFW"], function (values) {
 			let Base = parseInt(values.Sin)||0;
 			let FW = parseInt(values.AttentionFW)||0;
@@ -1558,7 +1581,7 @@
 	});
 	
 	/* Erkennen berechnen */
-	on("change:Sin change:PerceptionFW", function() {
+	on("sheet:opened change:Sin change:PerceptionFW", function() {
 		getAttrs(["Sin","PerceptionFW"], function (values) {
 			let Base = parseInt(values.Sin)||0;
 			let FW = parseInt(values.PerceptionFW)||0;
@@ -1569,7 +1592,7 @@
 	});
 	
 	/* Erste Hilfe berechnen */
-	on("change:Wis change:FirstAidFW", function() {
+	on("sheet:opened change:Wis change:FirstAidFW", function() {
 		getAttrs(["Wis","FirstAidFW"], function (values) {
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.FirstAidFW)||0;
@@ -1580,7 +1603,7 @@
 	});
 	
 	/* Fingerfertigkeit berechnen */
-	on("change:Ges change:DexterityFW", function() {
+	on("sheet:opened change:Ges change:DexterityFW", function() {
 		getAttrs(["Ges","DexterityFW"], function (values) {
 			let Base = parseInt(values.Ges)||0;
 			let FW = parseInt(values.DexterityFW)||0;
@@ -1591,7 +1614,7 @@
 	});
 	
 	/* Geistesstärke berechnen */
-	on("change:Wil change:MentalPowerFW", function() {
+	on("sheet:opened change:Wil change:MentalPowerFW", function() {
 		getAttrs(["Wil","MentalPowerFW"], function (values) {
 			let Base = parseInt(values.Wil)||0;
 			let FW = parseInt(values.MentalPowerFW)||0;
@@ -1602,7 +1625,7 @@
 	});
 	
 	/* Handwerken berechnen */
-	on("change:Ges change:CraftingFW", function() {
+	on("sheet:opened change:Ges change:CraftingFW", function() {
 		getAttrs(["Ges","CraftingFW"], function (values) {
 			let Base = parseInt(values.Ges)||0;
 			let FW = parseInt(values.CraftingFW)||0;
@@ -1613,7 +1636,7 @@
 	});
 	
 	/* Heimlichkeit berechnen */
-	on("change:Ath change:StealthFW", function() {
+	on("sheet:opened change:Ath change:StealthFW", function() {
 		getAttrs(["Ath","StealthFW"], function (values) {
 			let Base = parseInt(values.Ath)||0;
 			let FW = parseInt(values.StealthFW)||0;
@@ -1624,7 +1647,7 @@
 	});
 	
 	/* Land und Leute berechnen */
-	on("change:Wis change:CountryPeopleFW", function() {
+	on("sheet:opened change:Wis change:CountryPeopleFW", function() {
 		getAttrs(["Wis","CountryPeopleFW"], function (values) {
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.CountryPeopleFW)||0;
@@ -1635,7 +1658,7 @@
 	});
 	
 	/* Redekunst berechnen */
-	on("change:Wil change:RhetoricFW", function() {
+	on("sheet:opened change:Wil change:RhetoricFW", function() {
 		getAttrs(["Wil","RhetoricFW"], function (values) {
 			let Base = parseInt(values.Wil)||0;
 			let FW = parseInt(values.RhetoricFW)||0;
@@ -1646,7 +1669,7 @@
 	});
 	
 	/* Muskelspiel berechnen */
-	on("change:Kkr change:StruggleFW", function() {
+	on("sheet:opened change:Kkr change:StruggleFW", function() {
 		getAttrs(["Kkr","StruggleFW"], function (values) {
 			let Base = parseInt(values.Kkr)||0;
 			let FW = parseInt(values.StruggleFW)||0;
@@ -1657,7 +1680,7 @@
 	});
 	
 	/* Reflexe berechnen */
-	on("change:Sin change:ReflexesFW", function() {
+	on("sheet:opened change:Sin change:ReflexesFW", function() {
 		getAttrs(["Sin","ReflexesFW"], function (values) {
 			let Base = parseInt(values.Sin)||0;
 			let FW = parseInt(values.ReflexesFW)||0;
@@ -1668,7 +1691,7 @@
 	});
 
 	/* Reiten berechnen */
-	on("change:Ath change:RidingFW", function() {
+	on("sheet:opened change:Ath change:RidingFW", function() {
 		getAttrs(["Ath","RidingFW"], function (values) {
 			let Base = parseInt(values.Ath)||0;
 			let FW = parseInt(values.RidingFW)||0;
@@ -1679,7 +1702,7 @@
 	});
 	
 	/* Unempfindlichkeit berechnen */
-	on("change:Kkr change:ToughnessFW", function() {
+	on("sheet:opened change:Kkr change:ToughnessFW", function() {
 		getAttrs(["Kkr","ToughnessFW"], function (values) {
 			let Base = parseInt(values.Kkr)||0;
 			let FW = parseInt(values.ToughnessFW)||0;
@@ -1690,7 +1713,7 @@
 	});	
 	
 	/* Wissensgebiete berechnen */
-	on("change:Wis change:KnowledgeFW", function() {
+	on("sheet:opened change:Wis change:KnowledgeFW", function() {
 		getAttrs(["Wis","KnowledgeFW"], function (values) {
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.KnowledgeFW)||0;
@@ -1701,7 +1724,7 @@
 	});	
 	
 	/* Hexerei berechnen */
-	on("change:Wis change:WitchcraftFW", function() {
+	on("sheet:opened change:Wis change:WitchcraftFW", function() {
 		getAttrs(["Wis","WitchcraftFW"], function (values) {
 			let Base = parseInt(values.Wis)||0;
 			let FW = parseInt(values.WitchcraftFW)||0;
@@ -1712,7 +1735,7 @@
 	});
 	
 	/* Aktionspunkte */
-	on("change:ArmorLevel change:influenceParalysisLevel", function() {
+	on("sheet:opened change:ArmorLevel change:influenceParalysisLevel", function() {
 		getAttrs(["ArmorLevel","influenceParalysisLevel"], function (values) {
 			let ArmorLevel = parseInt(values.ArmorLevel)||0;
 			let influenceParalysisLevel = parseInt(values.influenceParalysisLevel)||0;
@@ -1812,7 +1835,7 @@
 	});
 	
 	/* Kampffertigkeiten berechnen */
-	on("change:Ath change:Sin change:Ges change:Kkr change:BattleFistFw change:BattleKniveFW change:BattleFencingFW change:BattleSwordFW change:BattleSabreFW change:BattleSabreMountedFW change:BattleBluntFW change:BattlePolearmFW change:BattlePolearmMountFW change:BattleLanceFW change:BattleLanceMountedFW change:BattleSlingshotFW change:BattlePistolFW change:BattleCrossbowFW change:BattleMusketFW change:BattleDodgeFW change:BattleShieldFW", function() {
+	on("sheet:opened change:Ath change:Sin change:Ges change:Kkr change:BattleFistFw change:BattleKniveFW change:BattleFencingFW change:BattleSwordFW change:BattleSabreFW change:BattleSabreMountedFW change:BattleBluntFW change:BattlePolearmFW change:BattlePolearmMountFW change:BattleLanceFW change:BattleLanceMountedFW change:BattleSlingshotFW change:BattlePistolFW change:BattleCrossbowFW change:BattleMusketFW change:BattleDodgeFW change:BattleShieldFW", function() {
 		getAttrs([
 			"Ath",
 			"Sin",
@@ -1892,7 +1915,7 @@
 				console.log("Keine Anpassungen notwendig.");
 			} else {
 				console.log("Versionsupdate festgestellt. Folgende Änderungen werden durchgeführt.");
-				console.log("v1.1 bis v1.2.2: Keine Anpassungen notwendig.");				
+				console.log("v1.1 bis v1.2.3: Keine Anpassungen notwendig.");				
 			}
 			
 			setAttrs({
