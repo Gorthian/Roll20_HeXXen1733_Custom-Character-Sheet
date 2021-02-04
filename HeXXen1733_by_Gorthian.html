@@ -1250,30 +1250,182 @@
 
 				<!-- Allgemein NSC //-->
 				<div class='general-nsc'>
-					<span>Coming Soon</span>
-					
-					<!-- VARIABLEN FÜR NSC-Ansicht
-						<input class="" placeholder="Name" type="text" name="attr_Name"/>
-						<input class="" placeholder="Stufe" type="number" name="attr_Level"/>
-						<input class="" placeholder="" type="number" name="attr_HealthMod"/>
-						<input class="" placeholder="" type="number" name="attr_HealthMod_max"/>
-						<input class="" placeholder="" type="number" name="attr_ArmorLevel"/>
-						<input class="" placeholder="" type="number" name="attr_HEX"/>
-						<input class="" placeholder="" type="text" name="attr_HEX_growth">
-						
-						<select name="attr_NSCType">
-							<option value="boss" selected="selected">Anführer</option>
-							<option value="mob">Bandengegner</option>
-						</select>
-						
-						<fieldset class="repeating_nscskills">
-							<input type="text" name="attr_nscskill_name">
-							<input type="number" name="attr_nscskill_value">
-							<input type="number" name="attr_nscskill_costs">
-							<textarea class="textarea sheet-medium-textarea" placeholder="Beschreibung" name="attr_nscskill_description"></textarea>
-							<button type="roll" value="/me würfelt auf eine Fertigkeit\n/r (@{nscskill_value})t[@{tblHexxenmeister}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Nscskill"></button>
-						</fieldset>
-					//-->
+					<div class="table">
+						<div class="tr">
+							<div class="td width-50">
+								<h2>Allgemeine Informationen</h2>
+								<div class="table">									
+									<div class="tr height-01"><div class="td is-title width-20">&nbsp;</div><div class="td">&nbsp;</div></div>
+									<div class="tr alternate">
+										<div class="td is-title width-20">Name</div>
+										<div class="td"><input class="" placeholder="Name" type="text" name="attr_Name"/></div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title width-20">Typ</div>
+										<div class="td">
+											<select name="attr_NSCType">
+												<option value="boss" selected="selected">Anführer</option>
+												<option value="mob">Bandengegner</option>
+											</select>
+										</div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title width-20">Stufe</div>
+										<div class="td"><input class="" placeholder="" type="number" name="attr_Level"/></div>
+									</div>			
+									<div class="tr alternate">
+										<div class="td is-title width-20">LeP</div>
+										<div class="td">
+											<input class="" placeholder="" type="number" name="attr_HealthMod"/> / <input class="" placeholder="" type="number" name="attr_HealthMod_max"/>
+										</div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title width-20">Panzerwert</div>
+										<div class="td"><input class="" placeholder="" type="number" name="attr_ArmorLevel"/></div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title width-20">Hex</div>
+										<div class="td">
+											<input class="" placeholder="" type="number" name="attr_HexMod"/> / <input class="" placeholder="" type="number" name="attr_HexMod_max"/>
+										</div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title width-20">Hex-Wachstum</div>
+										<div class="td">
+											<input class="" placeholder="" type="text" name="attr_HexGrowth"/>
+										</div>
+									</div>
+									<div class="tr height-01">&nbsp;</div>
+								</div>
+							</div>
+							<div class="td width-50">
+								<h2>Attribute</h2>
+								<div class="table">
+									<div class="tr height-01">&nbsp;</div>
+									<div class="tr">
+										<div class="td">
+											<h2>Geistige Attribute</h2>
+											<div class="table">
+												<div class="tr height-01"><div class="td width-50">&nbsp;</div><div class="td">&nbsp;</div></div>
+												<div class="tr alternate">						
+													<div class="td"><b>[Sin]</b><br/>Sinnesschärfe</div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_Sin"/></div>
+												</div>
+												<div class="tr alternate">			
+													<div class="td"><b>[Wis]</b><br/>Wissen</div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wis"/></div>
+												</div>
+												<div class="tr alternate">		
+													<div class="td"><b>[Wil]</b><br/>Willenskraft</div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wil"/></div>
+												</div>
+											</div>											
+										</div>
+										<div class="td">
+											<h2>Körperliche Attribute</h2>
+											<div class="table">
+												<div class="tr height-01"><div class="td width-50">&nbsp;</div><div class="td">&nbsp;</div></div>
+												<div class="tr alternate">
+													<div class="td"><b>[Kkr]</b><br/>Körperkraft</div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_Kkr"/></div>
+												</div>
+												<div class="tr alternate">			
+													<div class="td"><b>[Ath]</b><br/>Athletik</div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ath"/></div>
+												</div>
+												<div class="tr alternate">			
+													<div class="td"><b>[Ges]</b><br/>Geschick</div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ges"/></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tr height-01">&nbsp;</div>
+								</div>
+							</div>
+						</div>
+						<div class="tr">
+							<div class="td">
+								<h2>Fertigkeiten</h2>
+								<fieldset class="repeating_nscskills">
+									Name: <input type="text" name="attr_nscskill_name">
+									<br/>Wert:<input type="number" name="attr_nscskill_value">
+									<br/>Hexkosten<input type="number" name="attr_nscskill_costs">
+									<textarea class="textarea sheet-medium-textarea" placeholder="Beschreibung" name="attr_nscskill_description"></textarea>
+									<button type="roll" value="/me würfelt auf eine Fertigkeit\n/r (@{nscskill_value})t[@{tblHexxenmeister}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Nscskill"></button>
+								</fieldset>
+							</div>
+							<div class="td">
+							<h2>Anhaltende Einflüsse</h2>
+								<div class="table">
+									<div class="tr height-01"><div class="td width-33"></div><div class="td"></div><div class="td width-33"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>
+									<div class="tr">
+										<div class="td is-title">Art</div>
+										<div class="td is-title centered"></div>
+										<div class="td is-title">Stufen</div>
+										<div class="td is-title centered">M</div>
+										<div class="td is-title centered">F</div>
+										<div class="td is-title centered">D</div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title">Äußerer Schaden</div>
+										<div class="td is-title">(<span class="info" name="attr_influenceExternalDamageLevel"></span>)</div>
+										<div class="td">
+											<div class="dots">
+												<input type="hidden" name="attr_influenceExternalDamageLevel" class="dot" value="0" />
+												<button type="action" name="act_influenceExternalDamage_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_influenceExternalDamage_1" class="dot gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_influenceExternalDamage_2" class="dot gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_influenceExternalDamage_3" class="dot gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_influenceExternalDamage_4" class="dot gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_influenceExternalDamage_5" class="dot gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>
+										</div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceExternalDamageIsMighty" value="1" /></div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceExternalDamageIsChallenging" value="1" /></div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceExternalDamageIsPermanent" value="1" /></div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title">Innerer Schaden</div>
+										<div class="td is-title">(<span class="info" name="attr_influenceInternalDamageLevel"></span>)</div>
+										<div class="td">
+											<div class="dots">
+												<input type="hidden" name="attr_influenceInternalDamageLevel" class="dot" value="0" />
+												<button type="action" name="act_influenceInternalDamage_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_influenceInternalDamage_1" class="dot gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_influenceInternalDamage_2" class="dot gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_influenceInternalDamage_3" class="dot gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_influenceInternalDamage_4" class="dot gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_influenceInternalDamage_5" class="dot gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>
+										</div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceInternalDamageIsMighty" value="1" /></div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceInternalDamageIsChallenging" value="1" /></div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceInternalDamageIsPermanent" value="1" /></div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title">Malusstufen</div>
+										<div class="td is-title">(<span class="info" name="attr_influenceMalusLevel"></span>)</div>
+										<div class="td">
+											<div class="dots">
+												<input type="hidden" name="attr_influenceMalusLevel" class="dot" value="0" />
+												<button type="action" name="act_influenceMalus_0" class="dot"><span class="checked"></span></button>|
+												<button type="action" name="act_influenceMalus_1" class="dot gt-0"><span class="checked"></span></button>
+												<button type="action" name="act_influenceMalus_2" class="dot gt-0 gt-1"><span class="checked"></span></button>
+												<button type="action" name="act_influenceMalus_3" class="dot gt-0 gt-1 gt-2"><span class="checked"></span></button>
+												<button type="action" name="act_influenceMalus_4" class="dot gt-0 gt-1 gt-2 gt-3"><span class="checked"></span></button>
+												<button type="action" name="act_influenceMalus_5" class="dot gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
+											</div>
+										</div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceMalusIsMighty" value="1" /></div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceMalusIsChallenging" value="1" /></div>
+										<div class="td centered"><input type="checkbox" name="attr_influenceMalusIsPermanent" value="1" /></div>
+									</div>
+									<div class="tr height-01">&nbsp;</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<!-- Hilfe & Einstellungen //-->
@@ -1308,7 +1460,6 @@
 											<div class="td">IdeasMod</div>
 										</div>
 									</div>									
-									<!-- Erst mit der NSC-Ansicht relevant<ul>Hex				: HEX</ul> //-->
 								</span>
 							</div>
 						</div>
@@ -1320,7 +1471,7 @@
 									<div class="tr">
 										<div class="td is-title width-33">NSC-Ansicht</div>
 										<div class="td">
-											<input type="checkbox" class="toggle-menue" id="toggle"/>
+											<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/>
 											<div class="sc-view"><button type="button"><label for="toggle">Aktivieren</label></button></div>
 											<div class="nsc-view"><button type="button"><label for="toggle">Deaktivieren</label></button></div>
 										</div>
@@ -1366,26 +1517,37 @@
 			</div>
 			<div class="td width-01"></div>
 			<div class="td width-10 centered alternate">
+				<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/>
 				<h4>LeP</h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_HealthMod" />
-				<h4>Puffer</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_HealthBuffer" />
+				<div class="sc-view">
+					<h4>Puffer</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_HealthBuffer" />
+				</div>
+				<div class="nsc-view">
+					<h4>Hex</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_HexMod" />
+				</div>
 				<h4>PW</h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_ArmorLevel" />
-				<h4>Coups</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_CoupsMod" />
-				<h4>Ideen</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_IdeasMod" />
-				<h4>Ambit.</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_Ambition" />
-				<h4>Segn.</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_Blessing" />
-				<h4>Rage</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_Rage" />
+				<div class="sc-view">
+					<h4>Coups</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_CoupsMod" />
+					<h4>Ideen</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_IdeasMod" />
+					<h4>Ambit.</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_Ambition" />
+					<h4>Segn.</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_Blessing" />
+					<h4>Rage</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_Rage" />
+				</div>
 				<h4>Ini</h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_InitiativeMod" />
-				<h4>AP</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_ActionPointsMod" />
+				<div class="sc-view">
+					<h4>AP</h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_ActionPointsMod" />
+				</div>
 				<h4>Würfeln</h4>
 				<button name="roll_hexx" type="roll" value="/me würfel Hexxenwürfel.\n/r (?{Anzahl?|1})t[@{tblHexxen}]" class="dHexx"></button>
 				<br/><button name="roll_janus" type="roll" value="/me würfel Januswürfel.\n/r (?{Anzahl?|1})t[@{tblJanus}]" class="dJanus"></button>
