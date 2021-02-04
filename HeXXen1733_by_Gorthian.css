@@ -324,6 +324,10 @@ button[type="roll"].sheet-dJanus{
 	width			: 95%;
 }
 
+.sheet-textarea-small {
+	height			: 20px;
+}
+
 .sheet-textarea-medium {
 	height			: 40px;
 }

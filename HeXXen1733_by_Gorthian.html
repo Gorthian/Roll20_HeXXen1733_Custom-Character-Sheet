@@ -1348,11 +1348,41 @@
 							<div class="td">
 								<h2>Fertigkeiten</h2>
 								<fieldset class="repeating_nscskills">
-									Name: <input type="text" name="attr_nscskill_name">
-									<br/>Wert:<input type="number" name="attr_nscskill_value">
-									<br/>Hexkosten<input type="number" name="attr_nscskill_costs">
-									<textarea class="textarea sheet-medium-textarea" placeholder="Beschreibung" name="attr_nscskill_description"></textarea>
-									<button type="roll" value="/me würfelt auf eine Fertigkeit\n/r (@{nscskill_value})t[@{tblHexxenmeister}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Nscskill"></button>
+									<div class="table">
+										<div class="tr">
+											<div class="td width-20 is-title">
+												Name 
+											</div>
+											<div class="td">
+												<input type="text" name="attr_nscskill_name">
+											</div>
+										</div>
+									</div>
+									<div class="table">
+										<div class="tr">
+											<div class="td width-20 is-title">
+												Wert
+											</div>
+											<div class="td">
+												<input type="number" name="attr_nscskill_value">
+												<button type="roll" value="/me würfelt auf @{nscskill_name}\n/r (@{nscskill_value})t[@{tblHexxenmeister}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Nscskill"></button>
+											</div>
+											<div class="td width-20 is-title">
+												Hexkosten
+											</div>
+											<div class="td">
+												<input type="number" name="attr_nscskill_costs">
+											</div>
+										</div>
+									</div>
+									<div class="table">
+										<div class="tr">
+											<div class="td">
+												<textarea class="textarea sheet-textarea-small" placeholder="Beschreibung" name="attr_nscskill_description"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr/>
 								</fieldset>
 							</div>
 							<div class="td">
@@ -1495,7 +1525,11 @@
 									<div class="tr">
 										<div class="td is-title width-33">Tabelle für Elixierwürfel</div>
 										<div class="td"><input class="" placeholder="" type="text" name="attr_tblElix"/></div>
-									</div>									
+									</div>
+									<div class="tr">
+										<div class="td is-title width-33">Tabelle für HeXXenmeisterwürfel</div>
+										<div class="td"><input class="" placeholder="" type="text" name="attr_tblHexxenmeister"/></div>
+									</div>										
 								</div>
 							</div>
 						</div>
