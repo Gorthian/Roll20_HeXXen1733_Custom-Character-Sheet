@@ -378,6 +378,15 @@ div.sheet-tooltip {
 /* Menu */
 
 /* Wechsel der Menüansicht */
+button label {
+	font-family			: "Texturina";
+	font-size			: 10pt;
+}
+
+.sheet-toggle-menue {
+	display: none;
+}
+
 .sheet-sc-menue,
 .sheet-toggle-menue:checked ~ .sheet-nsc-menue {
 	display: inline;

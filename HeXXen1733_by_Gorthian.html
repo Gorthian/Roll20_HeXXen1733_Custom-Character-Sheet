@@ -71,8 +71,8 @@
 	<div class="table table-menue">
 		<!-- Menü //-->
 		<div class="tr">
-			<div class="td">				
-				<!-- Wird später umgesetzt. In Version 1 auskommentieren //--> <!-- NSC-Ansicht:<input type="checkbox" class="toggle-menue" name="attr_IsNSC" value="1"/> //--> <!-- Muss zwingend direkt vor den Buttons stehen //-->
+			<div class="td">
+				<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
 				<!-- SC-Ansicht //-->
 				<div class="sc-menue">
 					<button type="action" name="act_general" class="button-menue">Allgemein</button>
@@ -1287,7 +1287,7 @@
 									<br/>Die Namen der Tabellen können weiter unten festgelegt werden.						
 								</span>
 							</div>
-						</div>
+						</div>						
 						<div class="tr height-01">&nbsp;</div>
 						<div class="tr">
 							<div class="td">
@@ -1315,8 +1315,16 @@
 						<div class="tr height-01">&nbsp;</div>
 						<div class="tr">
 							<div class="td">
-								<h2>Einstellungen</h2>
+								<h2>Einstellungen</h2>							
 								<div class="table">									
+									<div class="tr">
+										<div class="td is-title width-33">NSC-Ansicht</div>
+										<div class="td">
+											<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/>
+											<div class="sc-menue"><button type="button"><label for="toggle">Aktivieren</label></button></div>
+											<div class="nsc-menue"><button type="button"><label for="toggle">Deaktivieren</label></button></div>
+										</div>
+									</div>
 									<div class="tr">
 										<div class="td is-title width-33">Tabelle für HeXXenwürfel</div>
 										<div class="td"><input class="" placeholder="" type="text" name="attr_tblHexxen"/></div>
