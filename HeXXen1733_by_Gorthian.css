@@ -387,13 +387,13 @@ button label {
 	display: none;
 }
 
-.sheet-sc-menue,
-.sheet-toggle-menue:checked ~ .sheet-nsc-menue {
+.sheet-sc-view,
+.sheet-toggle-menue:checked ~ .sheet-nsc-view {
 	display: inline;
 }
 
-.sheet-nsc-menue,
-.sheet-toggle-menue:checked ~ .sheet-sc-menue {
+.sheet-nsc-view,
+.sheet-toggle-menue:checked ~ .sheet-sc-view {
 	display: none;
 }
 /*********************************/
