@@ -42,6 +42,7 @@
 	<input type="hidden" name="attr_ToughnessMod" />
 	<input type="hidden" name="attr_KnowledgeMod" />
 	<input type="hidden" name="attr_WitchcraftMod" />
+	<input type="hidden" name="attr_NavigationMod" />
 	<input type="hidden" name="attr_HealthNegativeLevel" />
 	<input type="hidden" name="attr_ActionPointsMod_max" />
 	<input type="hidden" name="attr_HealthMod_max" />
@@ -507,6 +508,13 @@
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_WitchcraftFW"/></div>
 										<div class="td"><span class="info-border" name="attr_WitchcraftMod"></span></div>				
 										<div class="td"><button type="roll" value="/me würfelt auf Hexerei\n/r (@{WitchcraftMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Witchcraft"></button></div>
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title">Schiffsnavigation</div>
+										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
+										<div class="td"><input class="" placeholder="0" type="number" name="attr_NavigationFW"/></div>
+										<div class="td"><span class="info-border" name="attr_NavigationtMod"></span></div>				
+										<div class="td"><button type="roll" value="/me würfelt auf Schiffsnavigation\n/r (@{NavigationMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Navigation"></button></div>
 									</div>
 								</div>								
 							</div>
@@ -1934,6 +1942,17 @@
 			let FW = parseInt(values.WitchcraftFW)||0;
 			setAttrs({
 				"WitchcraftMod"	: Base + FW
+			});
+		});
+	});
+	
+	/* Schiffsnavigation berechnen */
+	on("sheet:opened change:Wis change:NavigationFW", function() {
+		getAttrs(["Wis","NavigationFW"], function (values) {
+			let Base = parseInt(values.Wis)||0;
+			let FW = parseInt(values.NavigationFW)||0;
+			setAttrs({
+				"NavigationMod"	: Base + FW
 			});
 		});
 	});
