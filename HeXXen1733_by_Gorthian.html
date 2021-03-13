@@ -754,6 +754,12 @@
 						<div class="tr height-01">&nbsp;</div>
 					</div>										
 					<h2>Zustände</h2>
+					<select name="attr_addCondition">
+						<option value="0" selected="selected">Zustand aktivieren</option>
+						<option value="condition1">Zustand 1</option>
+						<option value="condition2">Zustand 2</option>
+						<option value="condition2">Zustand 3</option>						  
+					</select>
 					<div class="table">
 						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
 						<div class="tr alternate">
@@ -764,103 +770,20 @@
 							<div class="td is-title">Abbau</div>
 							<div class="td is-title">Helfen</div>							
 						</div>
+					</div>				
+					<fieldset class="repeating_conditions">
+					<div class="table">
+						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
 						<div class="tr alternate">
-							<div class="td is-title">Atemnot</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsBreathless"></div>
-							<div class="td">Innerer Schaden</div>
-							<div class="td">Abbau nur durch Luftzufuhr</div>
-							<div class="td">Unempfindlichkeit (oder je nach Situation) <button type="roll" value="/me versucht Atemnot abzubauen\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Breathless"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Fluch</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsCursed"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Kann aus eigener Kraft keine anhaltenden Einflüsse abbauen</div>
-							<div class="td">Pro Segnung -1 Malusstufe</div>
-							<div class="td">Quelle des Fluchs wird vernichtet</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Taumeln</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsTumbling"></div>
-							<div class="td">Lähmungsstufen</div>
-							<div class="td">-</div>
-							<div class="td">Akrobatik <button type="roll" value="/me versucht Taumeln abzubauen\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Tumbling"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Blindheit</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsBlind"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Bei Interaktionen mit der Umwelt: Malusstufen zählen doppelt</div>
-							<div class="td">Erkennen <button type="roll" value="/me versucht Blindheit abzubauen\n/r (@{PerceptionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Blind"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Furcht</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsFear"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Angriffe gegen den Verursacher der Furcht haben einen Malus von -5.</div>
-							<div class="td">Geistesstärke  <button type="roll" value="/me versucht Geistestärke abzubauen\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Fear"></button></div>
-							<div class="td">Redekunst (2AP). Auch mächtige Zustände werden 1:1 abgebaut</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Blutung</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsBleeding"></div>
-							<div class="td">Äußerer Schaden</div>
-							<div class="td">INI 0 - Schmerzschaden 1 Blutwürfel</div>
-							<div class="td">Unempfindlichkeit <button type="roll" value="/me versucht Blutung durch Unempfindlichkeit abzubauen\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Bleeding1"></button> oder Erste Hilfe <button type="roll" value="/me versucht Blutung mit Erste Hilfe abzubauen\n/r (@{FirstAidMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Bleeding2"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Trauma</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsTrauma"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">INI 0 - Geistschaden 1 Blutwürfel</div>
-							<div class="td">Geistesstärke <button type="roll" value="/me versucht Trauma abzubauen\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Trauma"></button></div>
-							<div class="td">Redekunst (2AP). Auch mächtige Zustände werden 1:1 abgebaut</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Krankheit</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsIll"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Alle Malusstufen-Zustände sind dauerhaft</div>
-							<div class="td">Bei Regeneration: Erste Hilfe</div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Verbrennung</div>							
-							<div class="td"><input type="checkbox" name="attr_StatusIsBurning"></div>
-							<div class="td">Äußerer Schaden</div>
-							<div class="td">-</div>
-							<div class="td">Unempfindlichkeit <button type="roll" value="/me versucht Verbrennung abzubauen\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Burning"></button></div>
-							<div class="td">Unempfindlichkeit (2AP)</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Fixierung</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsFixation"></div>
-							<div class="td">Lähmungsstufen</div>
-							<div class="td">Bewegung nicht möglich</div>
-							<div class="td">Akrobatik <button type="roll" value="/me versucht Fixierung abzubauen\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Fixation"></button></div>
-							<div class="td">Muskelspiel (2AP) oder Angriffsprobe</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Taubheit</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsDeaf"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Kann nichts hören</div>
-							<div class="td">Aufmerksamkeit <button type="roll" value="/me versucht Taubheit abzubauen\n/r (@{AttentionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Deaf"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Verzauberung</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsEnchanted"></div>
-							<div class="td">Lähmungsstufen</div>
-							<div class="td">-</div>
-							<div class="td">Geistesstärke <button type="roll" value="/me versucht Verzauberung abzubauen\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Entchanted"></button></div>
-							<div class="td">-</div>
+							<div class="td"><span class="info" name="attr_condition_name"></div>
+							<div class="td"><input type="checkbox" name="attr_condition_isActive"></div>
+							<div class="td"><span class="info" name="attr_condition_influence"></div>
+							<div class="td"><span class="info" name="attr_condition_effect"></div>
+							<div class="td"><span class="info" name="attr_condition_reducing"></div>
+							<div class="td"><span class="info" name="attr_condition_helping"></div>
 						</div>
 					</div>
+					</fieldset>						
 				</div>
 
 				<!-- Fertigkeiten //-->
@@ -2104,6 +2027,59 @@
 				"BattleDodgeMod"		: Ath + BattleDodgeFW,
 				"BattleShieldMod"		: Kkr + BattleShieldFW					
 			});
+		});
+	});
+	
+	/* Zustände verwalten */
+	on("change:addCondition", function() {
+		getAttrs(["addCondition"], function(values) {
+			let condition = values.addCondition||0;
+			let name = "";
+			let influence = "";
+			let effect = "";
+			let reducing = "";
+			let helping = "";
+			
+			console.log("Aktiviere Zustand:" + condition);
+			switch (condition) {
+				case "condition1":
+					name = "Zustand 1";
+					influence = "Einfluss 1";
+					effect = "Effekt 1";
+					reducing = "Abbau 1";
+					helping = "Helfen 1";
+					break;
+				case "condition2":
+					name = "Zustand 2";
+					influence = "Einfluss 2";
+					effect = "Effekt 2";
+					reducing = "Abbau 2";
+					helping = "Helfen 2";
+					break;
+				case "condition3":
+					name = "Zustand 3";
+					influence = "Einfluss 3";
+					effect = "Effekt 3";
+					reducing = "Abbau 3";
+					helping = "Helfen 3";
+					break;				
+				default:
+					condition = 0;				
+			}
+			
+			if (condition != 0) {
+				var newrowid = generateRowID();
+				var newrowattrs = {};
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_name"] = name;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_isActive"] = "1";
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_influence"] = influence;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_effect"] = effect;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_reducing"] = reducing;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_helping"] = helping;				
+				newrowattrs["addCondition"] = 0;				
+				
+				setAttrs(newrowattrs);
+			}			
 		});
 	});
 	
