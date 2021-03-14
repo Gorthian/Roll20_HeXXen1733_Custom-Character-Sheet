@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
-	Version				2.0.2
-	Letzte Änderung		2021-03-10
+	Version				2.0.3
+	Letzte Änderung		2021-03-14
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="2.0.1" />
+	<input type="hidden" name="attr_currentVersion" value="2.0.3" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -1651,8 +1651,9 @@
 	});
 	
 	on("sheet:opened change:Blessing", function() {
-		getAttrs(["Blessing"], function (values) {
+		getAttrs(["Blessing","Rage"], function (values) {
 			let Blessing = parseInt(values.Blessing)||0;
+			let Rage = parseInt(values.Rage)||0;
 			
 			if (Blessing > 0) {
 				BlessingRage = Blessing;
@@ -1668,7 +1669,8 @@
 	});
 	
 	on("sheet:opened change:Rage", function() {
-		getAttrs(["Rage"], function (values) {
+		getAttrs(["Blessing","Rage"], function (values) {
+			let Blessing = parseInt(values.Blessing)||0;
 			let Rage = parseInt(values.Rage)||0;
 			
 			if (Rage > 0) {
