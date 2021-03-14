@@ -1,6 +1,6 @@
 <!--
 	EDITED by 			Gorthian
-	Version				2.0.3
+	Version				2.1
 	Letzte Änderung		2021-03-14
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="2.0.3" />
+	<input type="hidden" name="attr_currentVersion" value="2.1" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -419,7 +419,7 @@
 										<div class="td">[Ges] <span class="info" name="attr_Ges"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_DexterityFW"/></div>
 										<div class="td"><span class="info-border" name="attr_DexterityMod"></span></div>				
-										<div class="td"><button type="roll" value="/me würfelt auf Erste Hilfe\n/r (@{DexterityMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Dexterity"></button></div>
+										<div class="td"><button type="roll" value="/me würfelt auf Fingerfertigkeit\n/r (@{DexterityMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Dexterity"></button></div>
 									</div>
 									<div class="tr alternate">
 										<div class="td is-title">Geistesstärke</div>
@@ -761,114 +761,129 @@
 						</div>
 						<div class="tr height-01">&nbsp;</div>
 					</div>										
-					<h2>Zustände</h2>
-					<div class="table">
-						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
-						<div class="tr alternate">
-							<div class="td is-title">Zustand</div>
-							<div class="td is-title">&nbsp;</div>
-							<div class="td is-title">Einfluss</div>
-							<div class="td is-title">Nebeneffekt</div>
-							<div class="td is-title">Abbau</div>
-							<div class="td is-title">Helfen</div>							
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Atemnot</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsBreathless"></div>
-							<div class="td">Innerer Schaden</div>
-							<div class="td">Abbau nur durch Luftzufuhr</div>
-							<div class="td">Unempfindlichkeit (oder je nach Situation) <button type="roll" value="/me versucht Atemnot abzubauen\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Breathless"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Fluch</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsCursed"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Kann aus eigener Kraft keine anhaltenden Einflüsse abbauen</div>
-							<div class="td">Pro Segnung -1 Malusstufe</div>
-							<div class="td">Quelle des Fluchs wird vernichtet</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Taumeln</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsTumbling"></div>
-							<div class="td">Lähmungsstufen</div>
-							<div class="td">-</div>
-							<div class="td">Akrobatik <button type="roll" value="/me versucht Taumeln abzubauen\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Tumbling"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Blindheit</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsBlind"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Bei Interaktionen mit der Umwelt: Malusstufen zählen doppelt</div>
-							<div class="td">Erkennen <button type="roll" value="/me versucht Blindheit abzubauen\n/r (@{PerceptionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Blind"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Furcht</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsFear"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Angriffe gegen den Verursacher der Furcht haben einen Malus von -5.</div>
-							<div class="td">Geistesstärke  <button type="roll" value="/me versucht Geistestärke abzubauen\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Fear"></button></div>
-							<div class="td">Redekunst (2AP). Auch mächtige Zustände werden 1:1 abgebaut</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Blutung</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsBleeding"></div>
-							<div class="td">Äußerer Schaden</div>
-							<div class="td">INI 0 - Schmerzschaden 1 Blutwürfel</div>
-							<div class="td">Unempfindlichkeit <button type="roll" value="/me versucht Blutung durch Unempfindlichkeit abzubauen\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Bleeding1"></button> oder Erste Hilfe <button type="roll" value="/me versucht Blutung mit Erste Hilfe abzubauen\n/r (@{FirstAidMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Bleeding2"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Trauma</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsTrauma"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">INI 0 - Geistschaden 1 Blutwürfel</div>
-							<div class="td">Geistesstärke <button type="roll" value="/me versucht Trauma abzubauen\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Trauma"></button></div>
-							<div class="td">Redekunst (2AP). Auch mächtige Zustände werden 1:1 abgebaut</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Krankheit</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsIll"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Alle Malusstufen-Zustände sind dauerhaft</div>
-							<div class="td">Bei Regeneration: Erste Hilfe</div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Verbrennung</div>							
-							<div class="td"><input type="checkbox" name="attr_StatusIsBurning"></div>
-							<div class="td">Äußerer Schaden</div>
-							<div class="td">-</div>
-							<div class="td">Unempfindlichkeit <button type="roll" value="/me versucht Verbrennung abzubauen\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Burning"></button></div>
-							<div class="td">Unempfindlichkeit (2AP)</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Fixierung</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsFixation"></div>
-							<div class="td">Lähmungsstufen</div>
-							<div class="td">Bewegung nicht möglich</div>
-							<div class="td">Akrobatik <button type="roll" value="/me versucht Fixierung abzubauen\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Fixation"></button></div>
-							<div class="td">Muskelspiel (2AP) oder Angriffsprobe</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Taubheit</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsDeaf"></div>
-							<div class="td">Malusstufen</div>
-							<div class="td">Kann nichts hören</div>
-							<div class="td">Aufmerksamkeit <button type="roll" value="/me versucht Taubheit abzubauen\n/r (@{AttentionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Deaf"></button></div>
-							<div class="td">-</div>
-						</div>
-						<div class="tr alternate">
-							<div class="td is-title">Verzauberung</div>
-							<div class="td"><input type="checkbox" name="attr_StatusIsEnchanted"></div>
-							<div class="td">Lähmungsstufen</div>
-							<div class="td">-</div>
-							<div class="td">Geistesstärke <button type="roll" value="/me versucht Verzauberung abzubauen\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Entchanted"></button></div>
-							<div class="td">-</div>
+					<h2>Typische Zustände</h2>
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-20">
+								<select name="attr_addCondition">
+									<option value="0" selected="selected">Zustand aktivieren</option>
+									<option value="condition1">Atemnot</option>
+									<option value="condition2">Belastung</option>
+									<option value="condition3">Blindheit</option>						  
+									<option value="condition4">Blutung</option>						  
+									<option value="condition5">Entrückung</option>						  
+									<option value="condition6">Erfrierung</option>						  
+									<option value="condition7">Fixierung</option>						  
+									<option value="condition8">Fluch</option>						  
+									<option value="condition9">Furcht</option>						  
+									<option value="condition10">Haaresfluch</option>						  
+									<option value="condition11">Krankheit</option>						  
+									<option value="condition12">Leichenstarre</option>						  
+									<option value="condition13">Pilzinfektion</option>						  
+									<option value="condition14">Schlechtes Gewissen</option>						  
+									<option value="condition15">Schläfrigkeit</option>						  
+									<option value="condition16">Schwere Krankheit</option>						  
+									<option value="condition17">Spinnenfluch</option>						  
+									<option value="condition18">Statue</option>						  
+									<option value="condition19">Stummheit</option>						  
+									<option value="condition20">Sucht</option>						  
+									<option value="condition21">Tanzwut</option>						  
+									<option value="condition22">Taubheit</option>						  
+									<option value="condition23">Taumeln</option>						  
+									<option value="condition24">Teerglut</option>						  
+									<option value="condition25">Tollwut</option>						  
+									<option value="condition26">Trauma</option>						  
+									<option value="condition27">Unheilfluch</option>						  
+									<option value="condition28">Verbrennung</option>						  
+									<option value="condition29">Vergiftung</option>						  
+									<option value="condition30">Verschmutzung</option>						  
+									<option value="condition31">Verzauberung</option>						  
+									<option value="condition32">Weh</option>						  
+									<option value="condition33">Zorn</option>						  
+								</select>
+							</div>
+							<div class="td">
+								<button type="roll" value="/me würfelt auf Akrobatik\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Acrobatic">Akrobatik</button>
+								<button type="roll" value="/me würfelt auf Aufmerksamkeit\n/r (@{AttentionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Attention">Aufmerksamkeit</button>
+								<button type="roll" value="/me würfelt auf Erkennen\n/r (@{PerceptionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Perception">Erkennen</button>
+								<button type="roll" value="/me würfelt auf Erste Hilfe\n/r (@{FirstAidMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_FirstAid">Erste Hilfe</button>
+								<button type="roll" value="/me würfelt auf Fingerfertigkeit\n/r (@{DexterityMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Dexterity">Fingerfertigkeit</button>
+								<button type="roll" value="/me würfelt auf Geistesstärke\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_MentalPower">Geistesstärke</button>
+								<button type="roll" value="/me würfelt auf Handwerken\n/r (@{CraftingMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Crafting">Handwerk</button>
+								<button type="roll" value="/me würfelt auf Heimlichkeit\n/r (@{StealthMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Stealth">Heimlichkeit</button>
+								<button type="roll" value="/me würfelt auf Land und Leute\n/r (@{CountryPeopleMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_CountryPeople">Land und Leute</button>
+								<button type="roll" value="/me würfelt auf Redekunst\n/r (@{RhetoricMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Rhetoric">Redekunst</button>
+								<button type="roll" value="/me würfelt auf Muskelspiel\n/r (@{StruggleMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Struggle">Muskelspiel</button>
+								<button type="roll" value="/me würfelt auf Reflexe\n/r (@{ReflexesMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Reflexes">Reflexe</button>
+								<button type="roll" value="/me würfelt auf Reiten\n/r (@{RidingMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Riding">Reiten</button>
+								<button type="roll" value="/me würfelt auf Unempfindlichkeit\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Toughness">Unempfindlichkeit</button>
+								<button type="roll" value="/me würfelt auf Wissensgebiete\n/r (@{KnowledgeMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Knowledge">Wissensgebiete</button>
+							</div>
 						</div>
 					</div>
+					<hr/>
+					<fieldset class="repeating_conditions">
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-10"><span class="info" name="attr_condition_name"></div>
+							<div class="td width-05"><input type="checkbox" name="attr_condition_isActive"></div>
+							<div class="td"><span class="info" name="attr_condition_influence"></div>
+						</div>
+					</div>
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Nebeneffekt</div><div class="td"><span name="attr_condition_effect"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Abbau</div><div class="td"><span name="attr_condition_reducing"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Helfen</div><div class="td"><span name="attr_condition_helping"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Details</div>
+							<div class="td"><span name="attr_condition_url"></div>
+						</div>						
+					</div>
+					<hr/>
+					</fieldset>
+					<h2>Eigene Zustände</h2>									
+					<fieldset class="repeating_customconditions">
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-20"><input type="text" placeholder="Name" name="attr_condition_name"></div>
+							<div class="td width-05"><input type="checkbox" name="attr_condition_isActive"></div>
+							<div class="td">
+								<select name="attr_condition_influence">
+									<option value="0" selected="selected">zugehörige Einflussstufen</option>
+									<option value="1">innere Schadensstufen</option>
+									<option value="2">äußere Schadensstufen</option>
+									<option value="3">Lähmungsstufen</option>
+									<option value="4">Malusstufen</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Nebeneffekt</div><div class="td"><input type="text" name="attr_condition_effect"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Abbau</div><div class="td"><input type="text" name="attr_condition_reducing"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Helfen</div><div class="td"><input type="text" name="attr_condition_helping"></div>
+						</div>						
+					</div>
+					<hr/>
+					</fieldset>					
 				</div>
 
 				<!-- Fertigkeiten //-->
@@ -1224,12 +1239,16 @@
 								<h2>Ausrüstung und Notizen</h2>
 								<div class="table"><div class="tr height-01">&nbsp;</div></div>
 								<textarea class="textarea" placeholder="Ausrüstung und Notizen" name="attr_Inventory"></textarea>
-								<h2>Konstruktionspunkte</h2>
+								<h2>Besondere Ressourcen</h2>
 								<div class="table">
 									<div class="tr height-01"><div class="td width-33"></div><div class="td"></div></div>
 									<div class="tr">
-										<div class="td is-title">Konstruktionspunkte</div>
+										<div class="td is-title">Konstruktionspunkte (Konstrukteur)</div>
 										<div class="td"><input type="number" name="attr_ConstructionPoints" /></div>
+									</div>
+									<div class="tr">
+										<div class="td is-title">Ingredenzien (Henker)</div>
+										<div class="td"><input type="Text" name="attr_Ingredients" /></div>
 									</div>
 								</div>
 							</div>
@@ -2149,6 +2168,304 @@
 		});
 	});
 	
+	/* Zustände verwalten */
+	/* Quelle für Zustände: http://hexxen1733-regelwiki.de/index.php/reg_zus_typische_zustaende.html */
+	on("change:addCondition", function() {
+		getAttrs(["addCondition"], function(values) {
+			let condition = values.addCondition||0;
+			let name = "";
+			let influence = "";
+			let effect = "";
+			let reducing = "";
+			let helping = "";
+			
+			console.log("Aktiviere Zustand:" + condition);
+			switch (condition) {
+				case "condition1":
+					name = "Atemnot";
+					influence = "innere Schadensstufen";
+					effect = "Abbau nicht möglich, so lange Ursache besteht.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_atemnot.html";
+					break;
+				case "condition2":
+					name = "Belastung";
+					influence = "Lähmungsstufen";
+					effect = "Keine Jägerkräfte (Gestik/Beweglichkeit) nutzbar";
+					reducing = "INI 0: Muskelspiel (1 Malus je Lähmungsstufe oder Vgl. gegen KKR+AS des NSC.) Bei Erfolg wird Last komplett entfernt.";
+					helping = "2AP: Siehe Abbau";
+					url="http://hexxen1733-regelwiki.de/index.php/belastung.html";
+					break;
+				case "condition3":
+					name = "Blindheit";
+					influence = "Malusstufen";
+					effect = "Malusstufen bei Proben mit Sichtkomponenten verdoppelt (max. -5)";
+					reducing = "INI 0: Erkennen";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blindheit.html";
+					break;
+				case "condition4":
+					name = "Blutung";
+					influence = "äußere Schadensstufen";
+					effect = "INI 0: 1 Blutwürfel Schmerzschaden";
+					reducing = "INI 0: Unempfindlichkeit oder Erste Hilfe";
+					helping = "2 AP: Erste Hilfe. Erfolge reduzieren Schadensstufen (auch bei mächtig). Kein LeP-Gewinn. EH-Kästchen muss gestrichen werden.";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blutung.html";
+					break;
+				case "condition5":
+					name = "Entrückung";
+					influence = "Malusstufen";
+					effect = "Malusstufen reduzieren verursachten Schaden, generieren aber keine Mali mehr.";
+					reducing = "INI 0: 1 AP, 1 Blutwürfel würfeln und um Ergebnis reduzieren";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/entrueckung.html";
+					break;
+				case "condition6":
+					name = "Erfrierung";
+					influence = "äußere Schadensstufen";
+					effect = "Entfernt Zustand Verbrennung";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_erfrierung.html";
+					break;
+				case "condition7":
+					name = "Fixierung";
+					influence = "Lähmungsstufen";
+					effect = "Kann sich nicht bewegen. Angriffe und Paraden sind möglich.";
+					reducing = "INI 0: Akrobatik";
+					helping = "2 AP: Muskelspiel oder Angriff mit passender Waffe.Erfolge reduzieren 1:1 Lähmungsstufen (auch bei mächtig)";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fixierung.html";
+					break;
+				case "condition8":
+					name = "Fluch";
+					influence = "Malusstufen";
+					effect = "Kann aus eigener Kranft keinerlei Einflussstufen abbauen";
+					reducing = "INI 0: Segnungen opfern. (1 Segnung je Malusstufe)";
+					helping = "Quelle des Fluchs vernichten.";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fluch.html";
+					break;
+				case "condition9":
+					name = "Furcht";
+					influence = "Malusstufen";
+					effect = "Malus -5 gegen den Verursacher der Furcht";
+					reducing = "INI 0: Geistesstärke";
+					helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig)";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_furcht.html";
+					break;
+				case "condition10":
+					name = "Haaresfluch";
+					influence = "Malusstufen";
+					effect = "INI 0: 1 Blutwürfel Schmerzschaden";
+					reducing = "INI 0: 2 AP Haare abschneiden. Probe auf Messer und Dolche. Erfolge reduzieren 1:1 Malusstufen.";
+					helping = "Siehe Abbau. Kann auch von einem nahe stehenden Jäger durchgeführt werden.";
+					url = "http://hexxen1733-regelwiki.de/index.php/haaresfluch.html";
+					break;
+				case "condition11":
+					name = "Krankheit";
+					influence = "Malusstufen";
+					effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\"";
+					reducing = "Nur in Regenerationsphase. Probe auf Erste Hilfe.";
+					helping = "Siehe Abbau";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_krankheit.html";
+					break;
+				case "condition12":
+					name = "Leichenstarre";
+					influence = "Äußere Schadensstufen";
+					effect = "Nach jeder Aktion/Reaktion Probe auf Unempfindlichkeit. Bei Misserfolg verlust aller AP für die Runde.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe";
+					url = "http://hexxen1733-regelwiki.de/index.php/leichenstarre.html";
+					break;
+				case "condition13":
+					name = "Pilzinfektion";
+					influence = "innere Schadensstufen";
+					effect = "INI 0: Nach Abbau fallen Schadensstufen auf 0. Jäger spuckt X Funguslaren aus. X = aktuelle Schadensstufen";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen";
+					url = "http://hexxen1733-regelwiki.de/index.php/pilzinfektion.html";
+					break;
+				case "condition14":
+					name = "Schlechtes Gewissen";
+					influence = "Malusstufen";
+					effect = "Vor Angriff auf den Verursacher muss der Jäger 1 Idee, Coup oder Segnung opfern.";
+					reducing = "INI 0: Geistesstärke";
+					helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
+					url = "http://hexxen1733-regelwiki.de/index.php/schlechtes-gewissen.html";
+					break;
+				case "condition15":
+					name = "Schläfrigkeit";
+					influence = "Malusstufen";
+					effect = "Bei 5 Malusstufen schläft der Jäger ein. Angriffe gegen ihn erhalten +5.";
+					reducing = "INI 0: Geistesstärke";
+					helping = "2 AP: Aufwecken ohne Probe. Malusstufen sinken auf 4. Gleiches gilt wenn er Schaden erleidet.";
+					url = "http://hexxen1733-regelwiki.de/index.php/schlaefrigkeit.html";
+					break;
+				case "condition16":
+					name = "Schwere Krankheit";
+					influence = "-";
+					effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\". Basis LeP reduzieren sich jeden Tag um 1. Sinken LeP unter 0 stirbt der Jäger";
+					reducing = "-";
+					helping = "Regenerationsphase: Muss durch Arzt/anderen Jäger behandelt werden. Probe auf Wissensgebiete durch Arzt. Danach Probe Unempfindlichkeit durch Jäger (Bonus durch Erfolge der Wissensgebiete-Probe). Erfolg reduziert Malus um 1. (maximal 1 pro Probe)";
+					url = "http://hexxen1733-regelwiki.de/index.php/schwere-krankheit.html";
+					break;
+				case "condition17":
+					name = "Spinnenfluch";
+					influence = "Malusstufen";
+					effect = "Muss pro Runde mind. einen Angriff gegen imaginäre Spinnen durchführen.(1AP) Pro Erfolg reduziert sich die Malusstufe um 1 und der Jäger erhält 1 Schmerzschaden.";
+					reducing = "-";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/spinnenfluch.html";
+					break;
+				case "condition18":
+					name = "Statue";
+					influence = "Lähmungsstufen";
+					effect = "Hat der Jäger alle AP verloren kann er den zustand nicht mehr aus eigener Kraft reduzieren";
+					reducing = "INI 0: Muskelspiel";
+					helping = "2 AP: Muskelspiel";
+					url = "http://hexxen1733-regelwiki.de/index.php/statue.html";
+					break;
+				case "condition19":
+					name = "Stummheit";
+					influence = "Malusstufen";
+					effect = "Kräfte und Effekte die auf Sprache basieren, können nicht genutzt werden.";
+					reducing = "INI 0: Redekunst";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_stummheit.html";
+					break;			
+				case "condition20":
+					name = "Sucht";
+					influence = "-";
+					effect = "-";
+					reducing = "-";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/sucht.html";
+					break;					
+				case "condition21":
+					name = "Tanzwut";
+					influence = "Lähmungsstufen";
+					effect = "Keine Aktionen, außer Ausweichen und Abbauen, möglich.";
+					reducing = "INI 0 oder als Reaktion (1AP): Muskelspiel. Erzeugt 1 Blutwürfel Schmerzschaden";
+					helping = "2 AP: Muskelspiel";
+					url = "http://hexxen1733-regelwiki.de/index.php/tanzwut.html";
+					break;
+				case "condition22":
+					name = "Taubheit";
+					influence = "Malusstufen";
+					effect = "Effekte und Kräfte die auf Sprache beruhen wirken nicht auf den Jäger";
+					reducing = "INI 0: Aufmerksamkeit";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taubheit.html";
+					break;
+				case "condition23":
+					name = "Taumeln";
+					influence = "Lähmungsstufen";
+					effect = "-";
+					reducing = "INI 0: Akrobatik";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taumeln.html";
+					break;
+				case "condition24":
+					name = "Teerglut";
+					influence = "äußere Schadensstufen";
+					effect = "Nur 1 Schaden pro Stufe in INI 0";
+					reducing = "INI 0: Fingerfertigkeit mit Malus 2";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/teerglut.html";
+					break;
+				case "condition25":
+					name = "Tollwut";
+					influence = "innere Schadensstufen";
+					effect = "Bonus auf Nahkampf, Malus auf Fernkampf in Höhe der Schadensstufen. Bei 5 Stufen sofort 5 Schmerzschaden und Reduktion der Stufen auf 0.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe";
+					url = "http://hexxen1733-regelwiki.de/index.php/tollwut.html";
+					break;
+				case "condition26":
+					name = "Trauma";
+					influence = "Malusstufen";
+					effect = "INI 0: 1 Blutwürfel Geistschaden";
+					reducing = "INI 0: Geistesstärke";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_trauma.html";
+					break;
+				case "condition27":
+					name = "Unheilflich";
+					influence = "Malusstufen";
+					effect = "Angreifen erhalten einen Bonus in Höhe der Malusstufen.";
+					reducing = "Töten einen Wesens den Unheil reduziert Malusstufen um 1";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/unheilfluch.html";
+					break;
+				case "condition28":
+					name = "Verbrennung";
+					influence = "äußere Schadensstufen";
+					effect = "-";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Unempfindlichkeit. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verbrennung.html";
+					break;
+				case "condition29":
+					name = "Vergiftung";
+					influence = "innere Schadensstufen";
+					effect = "-";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen.";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_vergiftung.html";
+					break;
+				case "condition30":
+					name = "Verschmutzung";
+					influence = "Lähmungsstufen";
+					effect = "Jäger generiert Puffer LeP in Höhe der Lähmungsstufen die er erhält";
+					reducing = "INI 0: Muskelspiel";
+					helping = "2 AP: Fingerfertigkeit";
+					url = "http://hexxen1733-regelwiki.de/index.php/verschmutzung.html";
+					break;
+				case "condition31":
+					name = "Verzauberung";
+					influence = "Lähmungsstufen";
+					effect = "-";
+					reducing = "INI 0: Geistesstärke";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verzauberung.html";
+					break;
+				case "condition32":
+					name = "Weh";
+					influence = "Malusstufen";
+					effect = "Bei erreichen der 5. Malusstufe Verlust von Blutwürfel AP. Überzählige AP erzeugen je Symbol auf einem Blutwürfel 3 Schmerzschaden.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe";
+					url = "http://hexxen1733-regelwiki.de/index.php/weh.html";
+					break;
+				case "condition33":
+					name = "Zorn";
+					influence = "Malusstufen";
+					effect = "Komplex. Siehe Regelwiki";
+					reducing = "INI 0: Geistesstärke mit Malus in Höhe Zornstufe";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/zorn.html";
+					break;					
+				default:
+					condition = 0;				
+			}
+			
+			if (condition != 0) {
+				var newrowid = generateRowID();
+				var newrowattrs = {};
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_name"] = name;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_isActive"] = "1";
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_influence"] = influence;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_effect"] = effect;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_reducing"] = reducing;
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_helping"] = helping;				
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_url"] = url;				
+				newrowattrs["addCondition"] = 0;				
+				
+				setAttrs(newrowattrs);
+			}			
+		});
+	});
+	
 	/* Versionierungsskripte */
 	on("sheet:opened", function() {
 		getAttrs(["oldVersion","currentVersion"], function (values) {
@@ -2162,7 +2479,8 @@
 			} else {
 				console.log("Versionsupdate festgestellt. Folgende Änderungen werden durchgeführt.");
 				console.log("v1.1 bis v1.3: Keine Anpassungen notwendig.");
-				console.log("v2.0 bis v2.0.1: Keine Anpassungen notwendig.");
+				console.log("v2.0 bis v2.0.4: Keine Anpassungen notwendig.");
+				console.log("v2.1 bis v2.1: Keine Anpassungen notwendig.");
 			}
 			
 			setAttrs({
