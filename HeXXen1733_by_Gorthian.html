@@ -773,6 +773,22 @@
 						<option value="condition15">Schläfrigkeit</option>						  
 						<option value="condition16">Schwere Krankheit</option>						  
 						<option value="condition17">Spinnenfluch</option>						  
+						<option value="condition18">Statue</option>						  
+						<option value="condition19">Stummheit</option>						  
+						<option value="condition20">Sucht</option>						  
+						<option value="condition21">Tanzwut</option>						  
+						<option value="condition22">Taubheit</option>						  
+						<option value="condition23">Taumeln</option>						  
+						<option value="condition24">Teerglut</option>						  
+						<option value="condition25">Tollwut</option>						  
+						<option value="condition26">Trauma</option>						  
+						<option value="condition27">Unheilfluch</option>						  
+						<option value="condition28">Verbrennung</option>						  
+						<option value="condition29">Vergiftung</option>						  
+						<option value="condition30">Verschmutzung</option>						  
+						<option value="condition31">Verzauberung</option>						  
+						<option value="condition32">Weh</option>						  
+						<option value="condition33">Zorn</option>						  
 					</select>
 					<div class="table">
 						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
@@ -2194,6 +2210,134 @@
 					reducing = "-";
 					helping = "-";
 					url = "http://hexxen1733-regelwiki.de/index.php/spinnenfluch.html";
+					break;
+				case "condition18":
+					name = "Statue";
+					influence = "Lähmungsstufen";
+					effect = "Hat der Jäger alle AP verloren kann er den zustand nicht mehr aus eigener Kraft reduzieren";
+					reducing = "INI 0: Muskelspiel";
+					helping = "2 AP: Muskelspiel";
+					url = "http://hexxen1733-regelwiki.de/index.php/statue.html";
+					break;
+				case "condition19":
+					name = "Stummheit";
+					influence = "Malusstufen";
+					effect = "Kräfte und Effekte die auf Sprache basieren, können nicht genutzt werden.";
+					reducing = "INI 0: Redekunst";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_stummheit.html";
+					break;			
+				case "condition20":
+					name = "Sucht";
+					influence = "-";
+					effect = "-";
+					reducing = "-";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/sucht.html";
+					break;					
+				case "condition21":
+					name = "Tanzwut";
+					influence = "Lähmungsstufen";
+					effect = "Keine Aktionen, außer Ausweichen und Abbauen, möglich.";
+					reducing = "INI 0 oder als Reaktion (1AP): Muskelspiel. Erzeugt 1 Blutwürfel Schmerzschaden";
+					helping = "2 AP: Muskelspiel";
+					url = "http://hexxen1733-regelwiki.de/index.php/tanzwut.html";
+					break;
+				case "condition22":
+					name = "Taubheit";
+					influence = "Malusstufen";
+					effect = "Effekte und Kräfte die auf Sprache beruhen wirken nicht auf den Jäger";
+					reducing = "INI 0: Aufmerksamkeit";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taubheit.html";
+					break;
+				case "condition23":
+					name = "Taumeln";
+					influence = "Lähmungsstufen";
+					effect = "-";
+					reducing = "INI 0: Akrobatik";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taumeln.html";
+					break;
+				case "condition24":
+					name = "Teerglut";
+					influence = "äußere Schadensstufen";
+					effect = "Nur 1 Schaden pro Stufe in INI 0";
+					reducing = "INI 0: Fingerfertigkeit mit Malus 2";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/teerglut.html";
+					break;
+				case "condition25":
+					name = "Tollwut";
+					influence = "innere Schadensstufen";
+					effect = "Bonus auf Nahkampf, Malus auf Fernkampf in Höhe der Schadensstufen. Bei 5 Stufen sofort 5 Schmerzschaden und Reduktion der Stufen auf 0.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe";
+					url = "http://hexxen1733-regelwiki.de/index.php/tollwut.html";
+					break;
+				case "condition26":
+					name = "Trauma";
+					influence = "Malusstufen";
+					effect = "INI 0: 1 Blutwürfel Geistschaden";
+					reducing = "INI 0: Geistesstärke";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_trauma.html";
+					break;
+				case "condition27":
+					name = "Unheilflich";
+					influence = "Malusstufen";
+					effect = "Angreifen erhalten einen Bonus in Höhe der Malusstufen.";
+					reducing = "Töten einen Wesens den Unheil reduziert Malusstufen um 1";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/unheilfluch.html";
+					break;
+				case "condition28":
+					name = "Verbrennung";
+					influence = "äußere Schadensstufen";
+					effect = "-";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Unempfindlichkeit. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verbrennung.html";
+					break;
+				case "condition29":
+					name = "Vergiftung";
+					influence = "innere Schadensstufen";
+					effect = "-";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen.";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_vergiftung.html";
+					break;
+				case "condition30":
+					name = "Verschmutzung";
+					influence = "Lähmungsstufen";
+					effect = "Jäger generiert Puffer LeP in Höhe der Lähmungsstufen die er erhält";
+					reducing = "INI 0: Muskelspiel";
+					helping = "2 AP: Fingerfertigkeit";
+					url = "http://hexxen1733-regelwiki.de/index.php/verschmutzung.html";
+					break;
+				case "condition31":
+					name = "Verzauberung";
+					influence = "Lähmungsstufen";
+					effect = "-";
+					reducing = "INI 0: Geistesstärke";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verzauberung.html";
+					break;
+				case "condition32":
+					name = "Weh";
+					influence = "Malusstufen";
+					effect = "Bei erreichen der 5. Malusstufe Verlust von Blutwürfel AP. Überzählige AP erzeugen je Symbol auf einem Blutwürfel 3 Schmerzschaden.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe";
+					url = "http://hexxen1733-regelwiki.de/index.php/weh.html";
+					break;
+				case "condition33":
+					name = "Zorn";
+					influence = "Malusstufen";
+					effect = "Komplex. Siehe Regelwiki";
+					reducing = "INI 0: Geistesstärke mit Malus in Höhe Zornstufe";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/zorn.html";
 					break;					
 				default:
 					condition = 0;				
