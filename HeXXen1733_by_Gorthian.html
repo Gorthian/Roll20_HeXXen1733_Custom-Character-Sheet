@@ -768,6 +768,11 @@
 						<option value="condition10">Haaresfluch</option>						  
 						<option value="condition11">Krankheit</option>						  
 						<option value="condition12">Leichenstarre</option>						  
+						<option value="condition13">Pilzinfektion</option>						  
+						<option value="condition14">Schlechtes Gewissen</option>						  
+						<option value="condition15">Schläfrigkeit</option>						  
+						<option value="condition16">Schwere Krankheit</option>						  
+						<option value="condition17">Spinnenfluch</option>						  
 					</select>
 					<div class="table">
 						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
@@ -2149,7 +2154,47 @@
 					reducing = "INI 0: Unempfindlichkeit";
 					helping = "2 AP: Erste Hilfe";
 					url = "http://hexxen1733-regelwiki.de/index.php/leichenstarre.html";
-					break;				
+					break;
+				case "condition13":
+					name = "Pilzinfektion";
+					influence = "innere Schadensstufen";
+					effect = "INI 0: Nach Abbau fallen Schadensstufen auf 0. Jäger spuckt X Funguslaren aus. X = aktuelle Schadensstufen";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen";
+					url = "http://hexxen1733-regelwiki.de/index.php/pilzinfektion.html";
+					break;
+				case "condition14":
+					name = "Schlechtes Gewissen";
+					influence = "Malusstufen";
+					effect = "Vor Angriff auf den Verursacher muss der Jäger 1 Idee, Coup oder Segnung opfern.";
+					reducing = "INI 0: Geistesstärke";
+					helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
+					url = "http://hexxen1733-regelwiki.de/index.php/schlechtes-gewissen.html";
+					break;
+				case "condition15":
+					name = "Schläfrigkeit";
+					influence = "Malusstufen";
+					effect = "Bei 5 Malusstufen schläft der Jäger ein. Angriffe gegen ihn erhalten +5.";
+					reducing = "INI 0: Geistesstärke";
+					helping = "2 AP: Aufwecken ohne Probe. Malusstufen sinken auf 4. Gleiches gilt wenn er Schaden erleidet.";
+					url = "http://hexxen1733-regelwiki.de/index.php/schlaefrigkeit.html";
+					break;
+				case "condition16":
+					name = "Schwere Krankheit";
+					influence = "-";
+					effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\". Basis LeP reduzieren sich jeden Tag um 1. Sinken LeP unter 0 stirbt der Jäger";
+					reducing = "-";
+					helping = "Regenerationsphase: Muss durch Arzt/anderen Jäger behandelt werden. Probe auf Wissensgebiete durch Arzt. Danach Probe Unempfindlichkeit durch Jäger (Bonus durch Erfolge der Wissensgebiete-Probe). Erfolg reduziert Malus um 1. (maximal 1 pro Probe)";
+					url = "http://hexxen1733-regelwiki.de/index.php/schwere-krankheit.html";
+					break;
+				case "condition17":
+					name = "Spinnenfluch";
+					influence = "Malusstufen";
+					effect = "Muss pro Runde mind. einen Angriff gegen imaginäre Spinnen durchführen.(1AP) Pro Erfolg reduziert sich die Malusstufe um 1 und der Jäger erhält 1 Schmerzschaden.";
+					reducing = "-";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/spinnenfluch.html";
+					break;					
 				default:
 					condition = 0;				
 			}
