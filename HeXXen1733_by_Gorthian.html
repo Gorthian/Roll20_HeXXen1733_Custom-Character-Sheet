@@ -1,6 +1,6 @@
 <!--
 	EDITED by 			Gorthian
-	Version				2.0.4
+	Version				2.1
 	Letzte Änderung		2021-03-14
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="2.0.3" />
+	<input type="hidden" name="attr_currentVersion" value="2.1" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -837,7 +837,8 @@
 						</div>
 						<div class="tr">
 							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Details</div><div class="td"><span name="attr_condition_url"></div>
+							<div class="td is-title width-15">Details</div>
+							<div class="td"><span name="attr_condition_url"></div>
 						</div>						
 					</div>
 					<hr/>
@@ -1209,12 +1210,16 @@
 								<h2>Ausrüstung und Notizen</h2>
 								<div class="table"><div class="tr height-01">&nbsp;</div></div>
 								<textarea class="textarea" placeholder="Ausrüstung und Notizen" name="attr_Inventory"></textarea>
-								<h2>Konstruktionspunkte</h2>
+								<h2>Besondere Ressourcen</h2>
 								<div class="table">
 									<div class="tr height-01"><div class="td width-33"></div><div class="td"></div></div>
 									<div class="tr">
-										<div class="td is-title">Konstruktionspunkte</div>
+										<div class="td is-title">Konstruktionspunkte (Konstrukteur)</div>
 										<div class="td"><input type="number" name="attr_ConstructionPoints" /></div>
+									</div>
+									<div class="tr">
+										<div class="td is-title">Ingredenzien (Henker)</div>
+										<div class="td"><input type="Text" name="attr_Ingredients" /></div>
 									</div>
 								</div>
 							</div>
