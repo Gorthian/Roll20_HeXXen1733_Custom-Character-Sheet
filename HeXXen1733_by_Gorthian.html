@@ -418,7 +418,7 @@
 										<div class="td">[Ges] <span class="info" name="attr_Ges"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_DexterityFW"/></div>
 										<div class="td"><span class="info-border" name="attr_DexterityMod"></span></div>				
-										<div class="td"><button type="roll" value="/me würfelt auf Erste Hilfe\n/r (@{DexterityMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Dexterity"></button></div>
+										<div class="td"><button type="roll" value="/me würfelt auf Fingerfertigkeit\n/r (@{DexterityMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Dexterity"></button></div>
 									</div>
 									<div class="tr alternate">
 										<div class="td is-title">Geistesstärke</div>
@@ -754,90 +754,126 @@
 						<div class="tr height-01">&nbsp;</div>
 					</div>										
 					<h2>Typische Zustände</h2>
-					<select name="attr_addCondition">
-						<option value="0" selected="selected">Zustand aktivieren</option>
-						<option value="condition1">Atemnot</option>
-						<option value="condition2">Belastung</option>
-						<option value="condition3">Blindheit</option>						  
-						<option value="condition4">Blutung</option>						  
-						<option value="condition5">Entrückung</option>						  
-						<option value="condition6">Erfrierung</option>						  
-						<option value="condition7">Fixierung</option>						  
-						<option value="condition8">Fluch</option>						  
-						<option value="condition9">Furcht</option>						  
-						<option value="condition10">Haaresfluch</option>						  
-						<option value="condition11">Krankheit</option>						  
-						<option value="condition12">Leichenstarre</option>						  
-						<option value="condition13">Pilzinfektion</option>						  
-						<option value="condition14">Schlechtes Gewissen</option>						  
-						<option value="condition15">Schläfrigkeit</option>						  
-						<option value="condition16">Schwere Krankheit</option>						  
-						<option value="condition17">Spinnenfluch</option>						  
-						<option value="condition18">Statue</option>						  
-						<option value="condition19">Stummheit</option>						  
-						<option value="condition20">Sucht</option>						  
-						<option value="condition21">Tanzwut</option>						  
-						<option value="condition22">Taubheit</option>						  
-						<option value="condition23">Taumeln</option>						  
-						<option value="condition24">Teerglut</option>						  
-						<option value="condition25">Tollwut</option>						  
-						<option value="condition26">Trauma</option>						  
-						<option value="condition27">Unheilfluch</option>						  
-						<option value="condition28">Verbrennung</option>						  
-						<option value="condition29">Vergiftung</option>						  
-						<option value="condition30">Verschmutzung</option>						  
-						<option value="condition31">Verzauberung</option>						  
-						<option value="condition32">Weh</option>						  
-						<option value="condition33">Zorn</option>						  
-					</select>
-					<div class="table">
-						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
-						<div class="tr alternate">
-							<div class="td is-title">Zustand</div>
-							<div class="td is-title">&nbsp;</div>
-							<div class="td is-title">Einfluss</div>
-							<div class="td is-title">Nebeneffekt</div>
-							<div class="td is-title">Abbau</div>
-							<div class="td is-title">Helfen</div>							
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-20">
+								<select name="attr_addCondition">
+									<option value="0" selected="selected">Zustand aktivieren</option>
+									<option value="condition1">Atemnot</option>
+									<option value="condition2">Belastung</option>
+									<option value="condition3">Blindheit</option>						  
+									<option value="condition4">Blutung</option>						  
+									<option value="condition5">Entrückung</option>						  
+									<option value="condition6">Erfrierung</option>						  
+									<option value="condition7">Fixierung</option>						  
+									<option value="condition8">Fluch</option>						  
+									<option value="condition9">Furcht</option>						  
+									<option value="condition10">Haaresfluch</option>						  
+									<option value="condition11">Krankheit</option>						  
+									<option value="condition12">Leichenstarre</option>						  
+									<option value="condition13">Pilzinfektion</option>						  
+									<option value="condition14">Schlechtes Gewissen</option>						  
+									<option value="condition15">Schläfrigkeit</option>						  
+									<option value="condition16">Schwere Krankheit</option>						  
+									<option value="condition17">Spinnenfluch</option>						  
+									<option value="condition18">Statue</option>						  
+									<option value="condition19">Stummheit</option>						  
+									<option value="condition20">Sucht</option>						  
+									<option value="condition21">Tanzwut</option>						  
+									<option value="condition22">Taubheit</option>						  
+									<option value="condition23">Taumeln</option>						  
+									<option value="condition24">Teerglut</option>						  
+									<option value="condition25">Tollwut</option>						  
+									<option value="condition26">Trauma</option>						  
+									<option value="condition27">Unheilfluch</option>						  
+									<option value="condition28">Verbrennung</option>						  
+									<option value="condition29">Vergiftung</option>						  
+									<option value="condition30">Verschmutzung</option>						  
+									<option value="condition31">Verzauberung</option>						  
+									<option value="condition32">Weh</option>						  
+									<option value="condition33">Zorn</option>						  
+								</select>
+							</div>
+							<div class="td">
+								<button type="roll" value="/me würfelt auf Akrobatik\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Acrobatic">Akrobatik</button>
+								<button type="roll" value="/me würfelt auf Aufmerksamkeit\n/r (@{AttentionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Attention">Aufmerksamkeit</button>
+								<button type="roll" value="/me würfelt auf Erkennen\n/r (@{PerceptionMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Perception">Erkennen</button>
+								<button type="roll" value="/me würfelt auf Erste Hilfe\n/r (@{FirstAidMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_FirstAid">Erste Hilfe</button>
+								<button type="roll" value="/me würfelt auf Fingerfertigkeit\n/r (@{DexterityMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Dexterity">Fingerfertigkeit</button>
+								<button type="roll" value="/me würfelt auf Geistesstärke\n/r (@{MentalPowerMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_MentalPower">Geistesstärke</button>
+								<button type="roll" value="/me würfelt auf Handwerken\n/r (@{CraftingMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Crafting">Handwerk</button>
+								<button type="roll" value="/me würfelt auf Heimlichkeit\n/r (@{StealthMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Stealth">Heimlichkeit</button>
+								<button type="roll" value="/me würfelt auf Land und Leute\n/r (@{CountryPeopleMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_CountryPeople">Land und Leute</button>
+								<button type="roll" value="/me würfelt auf Redekunst\n/r (@{RhetoricMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Rhetoric">Redekunst</button>
+								<button type="roll" value="/me würfelt auf Muskelspiel\n/r (@{StruggleMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Struggle">Muskelspiel</button>
+								<button type="roll" value="/me würfelt auf Reflexe\n/r (@{ReflexesMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Reflexes">Reflexe</button>
+								<button type="roll" value="/me würfelt auf Reiten\n/r (@{RidingMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Riding">Reiten</button>
+								<button type="roll" value="/me würfelt auf Unempfindlichkeit\n/r (@{ToughnessMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Toughness">Unempfindlichkeit</button>
+								<button type="roll" value="/me würfelt auf Wissensgebiete\n/r (@{KnowledgeMod})t[@{tblHexxen}]\n/r (?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" name="Roll_Knowledge">Wissensgebiete</button>
+							</div>
 						</div>
-					</div>				
+					</div>
+					<hr/>
 					<fieldset class="repeating_conditions">
-					<div class="table">
-						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
-						<div class="tr alternate">
-							<div class="td"><span class="info" name="attr_condition_name"></div>
-							<div class="td"><input type="checkbox" name="attr_condition_isActive"></div>
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-10"><span class="info" name="attr_condition_name"></div>
+							<div class="td width-05"><input type="checkbox" name="attr_condition_isActive"></div>
 							<div class="td"><span class="info" name="attr_condition_influence"></div>
-							<div class="td"><span class="info" name="attr_condition_effect"></div>
-							<div class="td"><span class="info" name="attr_condition_reducing"></div>
-							<div class="td"><span class="info" name="attr_condition_helping"></div>
 						</div>
 					</div>
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Nebeneffekt</div><div class="td"><span name="attr_condition_effect"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Abbau</div><div class="td"><span name="attr_condition_reducing"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Helfen</div><div class="td"><span name="attr_condition_helping"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Details</div><div class="td"><span name="attr_condition_url"></div>
+						</div>						
+					</div>
+					<hr/>
 					</fieldset>
-					<h2>Eigene Zustände</h2>					
-					<div class="table">
-						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
-						<div class="tr alternate">
-							<div class="td is-title">Zustand</div>
-							<div class="td is-title">&nbsp;</div>
-							<div class="td is-title">Einfluss</div>
-							<div class="td is-title">Nebeneffekt</div>
-							<div class="td is-title">Abbau</div>
-							<div class="td is-title">Helfen</div>							
-						</div>
-					</div>				
-					<fieldset class="repeating_custom_conditions">
-					<div class="table">
-						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
-						<div class="tr alternate">
-							<div class="td"><input type="text" value="" name="attr_condition_name"></div>
-							<div class="td"><input type="checkbox" name="attr_condition_isActive"></div>
-							<div class="td"><input type="text" value="" name="attr_condition_influence"></div>
-							<div class="td"><input type="text" value="" name="attr_condition_effect"></div>
-							<div class="td"><input type="text" value="" name="attr_condition_reducing"></div>
-							<div class="td"><input type="text" value="" name="attr_condition_helping"></div>
+					<h2>Eigene Zustände</h2>									
+					<fieldset class="repeating_customconditions">
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-20"><input type="text" placeholder="Name" name="attr_condition_name"></div>
+							<div class="td width-05"><input type="checkbox" name="attr_condition_isActive"></div>
+							<div class="td">
+								<select name="attr_condition_influence">
+									<option value="0" selected="selected">zugehörige Einflussstufen</option>
+									<option value="1">innere Schadensstufen</option>
+									<option value="2">äußere Schadensstufen</option>
+									<option value="3">Lähmungsstufen</option>
+									<option value="4">Malusstufen</option>
+								</select>
+							</div>
 						</div>
 					</div>
+					<div class="table">						
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Nebeneffekt</div><div class="td"><input type="text" name="attr_condition_effect"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Abbau</div><div class="td"><input type="text" name="attr_condition_reducing"></div>
+						</div>
+						<div class="tr">
+							<div class="td width-10">&nbsp;</div>
+							<div class="td is-title width-15">Helfen</div><div class="td"><input type="text" name="attr_condition_helping"></div>
+						</div>						
+					</div>
+					<hr/>
 					</fieldset>					
 				</div>
 
@@ -2377,6 +2413,7 @@
 				newrowattrs["repeating_conditions_" + newrowid + "_condition_effect"] = effect;
 				newrowattrs["repeating_conditions_" + newrowid + "_condition_reducing"] = reducing;
 				newrowattrs["repeating_conditions_" + newrowid + "_condition_helping"] = helping;				
+				newrowattrs["repeating_conditions_" + newrowid + "_condition_url"] = url;				
 				newrowattrs["addCondition"] = 0;				
 				
 				setAttrs(newrowattrs);
