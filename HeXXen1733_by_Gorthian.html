@@ -753,7 +753,7 @@
 						</div>
 						<div class="tr height-01">&nbsp;</div>
 					</div>										
-					<h2>Zustände</h2>
+					<h2>Typische Zustände</h2>
 					<select name="attr_addCondition">
 						<option value="0" selected="selected">Zustand aktivieren</option>
 						<option value="condition1">Atemnot</option>
@@ -813,7 +813,32 @@
 							<div class="td"><span class="info" name="attr_condition_helping"></div>
 						</div>
 					</div>
-					</fieldset>						
+					</fieldset>
+					<h2>Eigene Zustände</h2>					
+					<div class="table">
+						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
+						<div class="tr alternate">
+							<div class="td is-title">Zustand</div>
+							<div class="td is-title">&nbsp;</div>
+							<div class="td is-title">Einfluss</div>
+							<div class="td is-title">Nebeneffekt</div>
+							<div class="td is-title">Abbau</div>
+							<div class="td is-title">Helfen</div>							
+						</div>
+					</div>				
+					<fieldset class="repeating_custom_conditions">
+					<div class="table">
+						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
+						<div class="tr alternate">
+							<div class="td"><input type="text" value="" name="attr_condition_name"></div>
+							<div class="td"><input type="checkbox" name="attr_condition_isActive"></div>
+							<div class="td"><input type="text" value="" name="attr_condition_influence"></div>
+							<div class="td"><input type="text" value="" name="attr_condition_effect"></div>
+							<div class="td"><input type="text" value="" name="attr_condition_reducing"></div>
+							<div class="td"><input type="text" value="" name="attr_condition_helping"></div>
+						</div>
+					</div>
+					</fieldset>					
 				</div>
 
 				<!-- Fertigkeiten //-->
