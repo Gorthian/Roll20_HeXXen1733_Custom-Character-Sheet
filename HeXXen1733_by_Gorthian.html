@@ -756,9 +756,18 @@
 					<h2>Zustände</h2>
 					<select name="attr_addCondition">
 						<option value="0" selected="selected">Zustand aktivieren</option>
-						<option value="condition1">Zustand 1</option>
-						<option value="condition2">Zustand 2</option>
-						<option value="condition2">Zustand 3</option>						  
+						<option value="condition1">Atemnot</option>
+						<option value="condition2">Belastung</option>
+						<option value="condition3">Blindheit</option>						  
+						<option value="condition4">Blutung</option>						  
+						<option value="condition5">Entrückung</option>						  
+						<option value="condition6">Erfrierung</option>						  
+						<option value="condition7">Fixierung</option>						  
+						<option value="condition8">Fluch</option>						  
+						<option value="condition9">Furcht</option>						  
+						<option value="condition10">Haaresfluch</option>						  
+						<option value="condition11">Krankheit</option>						  
+						<option value="condition12">Leichenstarre</option>						  
 					</select>
 					<div class="table">
 						<div class="tr height-01"><div class="td width-10"></div><div class="td width-10"></div><div class="td"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>						
@@ -2033,6 +2042,7 @@
 	});
 	
 	/* Zustände verwalten */
+	/* Quelle für Zustände: http://hexxen1733-regelwiki.de/index.php/reg_zus_typische_zustaende.html */
 	on("change:addCondition", function() {
 		getAttrs(["addCondition"], function(values) {
 			let condition = values.addCondition||0;
@@ -2045,25 +2055,100 @@
 			console.log("Aktiviere Zustand:" + condition);
 			switch (condition) {
 				case "condition1":
-					name = "Zustand 1";
-					influence = "Einfluss 1";
-					effect = "Effekt 1";
-					reducing = "Abbau 1";
-					helping = "Helfen 1";
+					name = "Atemnot";
+					influence = "innere Schadensstufen";
+					effect = "Abbau nicht möglich, so lange Ursache besteht.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_atemnot.html";
 					break;
 				case "condition2":
-					name = "Zustand 2";
-					influence = "Einfluss 2";
-					effect = "Effekt 2";
-					reducing = "Abbau 2";
-					helping = "Helfen 2";
+					name = "Belastung";
+					influence = "Lähmungsstufen";
+					effect = "Keine Jägerkräfte (Gestik/Beweglichkeit) nutzbar";
+					reducing = "INI 0: Muskelspiel (1 Malus je Lähmungsstufe oder Vgl. gegen KKR+AS des NSC.) Bei Erfolg wird Last komplett entfernt.";
+					helping = "2AP: Siehe Abbau";
+					url="http://hexxen1733-regelwiki.de/index.php/belastung.html";
 					break;
 				case "condition3":
-					name = "Zustand 3";
-					influence = "Einfluss 3";
-					effect = "Effekt 3";
-					reducing = "Abbau 3";
-					helping = "Helfen 3";
+					name = "Blindheit";
+					influence = "Malusstufen";
+					effect = "Malusstufen bei Proben mit Sichtkomponenten verdoppelt (max. -5)";
+					reducing = "INI 0: Erkennen";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blindheit.html";
+					break;
+				case "condition4":
+					name = "Blutung";
+					influence = "äußere Schadensstufen";
+					effect = "INI 0: 1 Blutwürfel Schmerzschaden";
+					reducing = "INI 0: Unempfindlichkeit oder Erste Hilfe";
+					helping = "2 AP: Erste Hilfe. Erfolge reduzieren Schadensstufen (auch bei mächtig). Kein LeP-Gewinn. EH-Kästchen muss gestrichen werden.";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blutung.html";
+					break;
+				case "condition5":
+					name = "Entrückung";
+					influence = "Malusstufen";
+					effect = "Malusstufen reduzieren verursachten Schaden, generieren aber keine Mali mehr.";
+					reducing = "INI 0: 1 AP, 1 Blutwürfel würfeln und um Ergebnis reduzieren";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/entrueckung.html";
+					break;
+				case "condition6":
+					name = "Erfrierung";
+					influence = "äußere Schadensstufen";
+					effect = "Entfernt Zustand Verbrennung";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "-";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_erfrierung.html";
+					break;
+				case "condition7":
+					name = "Fixierung";
+					influence = "Lähmungsstufen";
+					effect = "Kann sich nicht bewegen. Angriffe und Paraden sind möglich.";
+					reducing = "INI 0: Akrobatik";
+					helping = "2 AP: Muskelspiel oder Angriff mit passender Waffe.Erfolge reduzieren 1:1 Lähmungsstufen (auch bei mächtig)";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fixierung.html";
+					break;
+				case "condition8":
+					name = "Fluch";
+					influence = "Malusstufen";
+					effect = "Kann aus eigener Kranft keinerlei Einflussstufen abbauen";
+					reducing = "INI 0: Segnungen opfern. (1 Segnung je Malusstufe)";
+					helping = "Quelle des Fluchs vernichten.";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fluch.html";
+					break;
+				case "condition9":
+					name = "Furcht";
+					influence = "Malusstufen";
+					effect = "Malus -5 gegen den Verursacher der Furcht";
+					reducing = "INI 0: Geistesstärke";
+					helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig)";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_furcht.html";
+					break;
+				case "condition10":
+					name = "Haaresfluch";
+					influence = "Malusstufen";
+					effect = "INI 0: 1 Blutwürfel Schmerzschaden";
+					reducing = "INI 0: 2 AP Haare abschneiden. Probe auf Messer und Dolche. Erfolge reduzieren 1:1 Malusstufen.";
+					helping = "Siehe Abbau. Kann auch von einem nahe stehenden Jäger durchgeführt werden.";
+					url = "http://hexxen1733-regelwiki.de/index.php/haaresfluch.html";
+					break;
+				case "condition11":
+					name = "Krankheit";
+					influence = "Malusstufen";
+					effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\"";
+					reducing = "Nur in Regenerationsphase. Probe auf Erste Hilfe.";
+					helping = "Siehe Abbau";
+					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_krankheit.html";
+					break;
+				case "condition12":
+					name = "Leichenstarre";
+					influence = "Äußere Schadensstufen";
+					effect = "Nach jeder Aktion/Reaktion Probe auf Unempfindlichkeit. Bei Misserfolg verlust aller AP für die Runde.";
+					reducing = "INI 0: Unempfindlichkeit";
+					helping = "2 AP: Erste Hilfe";
+					url = "http://hexxen1733-regelwiki.de/index.php/leichenstarre.html";
 					break;				
 				default:
 					condition = 0;				
