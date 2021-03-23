@@ -14,7 +14,7 @@
 	<input type="hidden" name="attr_oldVersion" value="" />
 	<input type="hidden" name="attr_currentVersion" value="2.1" />
 	
-	<input type="hidden" name="attr_rollJanus" value="(?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]" />
+	<input type="hidden" name="attr_rollJanus" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -1626,23 +1626,26 @@
         });
     });
 	
-	/* Standardwerte für Würfeltabellen setzen */
+	/* Standardwerte für Würfeltabellen und Attribute setzen */
 	on("sheet:opened", function() {
 		getAttrs(["tblHexxen","tblJanus","tblHexxenmeister","sheetTab"], function (values) {
 			let tblHexxen = values.tblHexxen;
 			let tblJanus = values.tblJanus;
 			let tblHexxenmeister = values.tblHexxenmeister;
 			let sheetTab = values.sheetTab||"general";
+			let rollJanus = values.rollJanus;
 			
 			if (tblHexxen === "") tblHexxen = "HeXXen";
 			if (tblJanus === "") tblJanus = "Janus";
 			if (tblHexxenmeister === "") tblHexxenmeister = "HeXXenmeister";
+			rollJanus="(?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]";
 			
 			setAttrs({
 				"tblHexxen": tblHexxen,
 				"tblJanus": tblJanus,
 				"tblHexxenmeister": tblHexxenmeister,
-				"sheetTab": sheetTab
+				"sheetTab": sheetTab,
+				"rollJanus": rollJanus
 			});
 		});
 	});
