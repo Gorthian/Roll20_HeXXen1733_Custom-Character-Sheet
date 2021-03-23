@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
-	Version				2.1
-	Letzte Änderung		2021-03-14
+	Version				2.1.1
+	Letzte Änderung		2021-03-23
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -1528,6 +1528,13 @@
 										</div>
 									</div>
 									<div class="tr">
+										<div class="td is-title width-33">Automatische Janusberechnung</div>
+										<div class="td">
+											<input type="checkbox" class="" name="attr_JanusAutoCalc" value="1"/>
+											<br/>Bei Proben wird direkt die berechnete Anzahl an Januswürfel verwendet. Keine manuelle Korrektur möglich.
+										</div>
+									</div>
+									<div class="tr">
 										<div class="td is-title width-33">Tabelle für HeXXenwürfel</div>
 										<div class="td"><input class="" placeholder="" type="text" name="attr_tblHexxen"/></div>
 									</div>
@@ -1634,17 +1641,34 @@
 			let tblHexxenmeister = values.tblHexxenmeister;
 			let sheetTab = values.sheetTab||"general";
 			let rollJanus = values.rollJanus;
-			
+						
 			if (tblHexxen === "") tblHexxen = "HeXXen";
 			if (tblJanus === "") tblJanus = "Janus";
 			if (tblHexxenmeister === "") tblHexxenmeister = "HeXXenmeister";
-			rollJanus="(?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]";
-			
+						
 			setAttrs({
 				"tblHexxen": tblHexxen,
 				"tblJanus": tblJanus,
 				"tblHexxenmeister": tblHexxenmeister,
-				"sheetTab": sheetTab,
+				"sheetTab": sheetTab
+			});
+		});
+	});
+	
+	/* Automatische Berechnung der Januswürfel aktivieren/deaktivieren */
+	on("sheet:opened change:JanusAutoCalc", function() {
+		getAttrs(["JanusAutoCalc"], function (values) {
+			let JanusAutoCalc = values.JanusAutoCalc;
+			let rollJanus = "";
+			console.log ("CHECK:" + JanusAutoCalc);
+			
+			if (JanusAutoCalc === "1"){
+				rollJanus = "@{JanusCalc}t[@{tblJanus}]";
+			} else {
+				rollJanus = "(?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]";
+			}
+			
+			setAttrs({			
 				"rollJanus": rollJanus
 			});
 		});
