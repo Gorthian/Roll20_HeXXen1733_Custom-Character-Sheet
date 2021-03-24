@@ -15,6 +15,7 @@
 	<input type="hidden" name="attr_currentVersion" value="2.1.1" />
 	
 	<input type="hidden" name="attr_rollJanus" />
+	<input type="hidden" name="attr_rollSeperator" />
 	
 	<input type="hidden" name="attr_BlessingRage" />
 	<input type="hidden" name="attr_Blessing" />
@@ -392,7 +393,7 @@
 										<div class="td">[Ath] <span class="info" name="attr_Ath"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_AcrobaticFW"/></div>
 										<div class="td"><span class="info-border" name="attr_AcrobaticMod"></span></div>				
-										<div class="td"><button type="roll" value="/me würfelt auf Akrobatik\n/r (@{AcrobaticMod})t[@{tblHexxen}]\n/r (@{rollJanus})" name="Roll_Acrobatic"></button></div>
+										<div class="td"><button type="roll" value="/me würfelt auf Akrobatik\n/r (@{AcrobaticMod})t[@{tblHexxen}]@{rollSeperator}@{rollJanus}" name="Roll_Acrobatic"></button></div>
 									</div>
 									<div class="tr alternate">
 										<div class="td is-title">Aufmerksamkeit</div>
@@ -1535,6 +1536,14 @@
 										</div>
 									</div>
 									<div class="tr">
+										<div class="td is-title width-33">Automatische Ergebnisberechnung</div>
+										<div class="td">
+											<input type="checkbox" class="" name="attr_SumAutoCalc" value="1"/>
+											<br/>Bei Proben werden Erfolge direkt mit Januswürfeln verrechnet.
+											<br/>Bedingt die "Automatische Janusberechnung"
+										</div>
+									</div>
+									<div class="tr">
 										<div class="td is-title width-33">Tabelle für HeXXenwürfel</div>
 										<div class="td"><input class="" placeholder="" type="text" name="attr_tblHexxen"/></div>
 									</div>
@@ -1656,32 +1665,45 @@
 	});
 	
 	/* Automatische Berechnung der Januswürfel aktivieren/deaktivieren */
-	on("sheet:opened change:JanusAutoCalc", function() {
-		getAttrs(["JanusAutoCalc"], function (values) {
+	on("sheet:opened change:JanusAutoCalc change:SumAutoCalc", function() {
+		getAttrs(["JanusAutoCalc","SumAutoCalc"], function (values) {
 			let JanusAutoCalc = values.JanusAutoCalc;
+			let SumAutoCalc = values.SumAutoCalc;
 			let rollJanus = "";
-			console.log ("CHECK:" + JanusAutoCalc);
-			
+			let rollSeperator = "";
+						
 			if (JanusAutoCalc === "1"){
 				rollJanus = "@{JanusCalc}t[@{tblJanus}]";
 			} else {
 				rollJanus = "(?{Anzahl Janus?|@{JanusCalc}})t[@{tblJanus}]";
+				SumAutoCalc = "0";
+			}
+			
+			if (SumAutoCalc === "1"){
+				rollSeperator = "+";
+				JanusAutoCalc = "1";
+			} else {
+				rollSeperator = "\n/r ";
 			}
 			
 			setAttrs({			
-				"rollJanus": rollJanus
+				"rollJanus": rollJanus,
+				"rollSeperator": rollSeperator,
+				"JanusAutoCalc": JanusAutoCalc,
+				"SumAutoCalc": SumAutoCalc
 			});
 		});
 	});
 	
 	/* Januspool berechnen */
 	on("sheet:opened change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
-		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod"], function (values) {
+		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc"], function (values) {
 			let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
 			let MalusMod = parseInt(values.MalusMod)||0;
 			let BonusInsidious = parseInt(values.BonusInsidious)||0;
 			let BonusFocused = parseInt(values.BonusFocused)||0;
 			let BonusMod = parseInt(values.BonusMod)||0;
+			let SumAutoCalc = values.SumAutoCalc;
 			let JanusCalc = 0;
 			let JanusText = "";
 			
@@ -1689,11 +1711,14 @@
 			
 			if (JanusCalc < 0 ) {
 				JanusText = "gegen Dich";
-				JanusCalc = JanusCalc * -1;
+				if (SumAutoCalc === "0"){
+					JanusCalc = JanusCalc * -1;
+				}
 			} else {
 				JanusText = "für Dich"
 			}
 			if (JanusCalc > 5) JanusCalc = 5;
+			if (JanusCalc < -5) JanusCalc = -5;
 			
 			setAttrs({
 				"JanusCalc"	: JanusCalc,
