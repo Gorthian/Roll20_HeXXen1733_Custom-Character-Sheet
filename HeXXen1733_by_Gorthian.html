@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
-	Version				2.1.1
-	Letzte Änderung		2021-03-23
+	Version				2.1.2
+	Letzte Änderung		2021-03-24
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="2.1.1" />
+	<input type="hidden" name="attr_currentVersion" value="2.1.2" />
 	
 	<input type="hidden" name="attr_rollJanus" />
 	<input type="hidden" name="attr_rollSeperator" />
@@ -130,7 +130,7 @@
 				<div class="tooltip">Weitere Boni für diesen Wurf</div>
 			</div>
 			<div class="td is-title width-20">
-				Würfel (<span class="info" name="attr_JanusText"></span>) : <span class="info-border" name="attr_JanusCalc"></span>
+				Januswürfel (<span class="info" name="attr_JanusText"></span>) : <span class="info-border" name="attr_JanusCalc"></span>
 			</div>
 		</div>
 	</div>
@@ -1710,12 +1710,12 @@
 			JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod;
 			
 			if (JanusCalc < 0 ) {
-				JanusText = "gegen Dich";
+				JanusText = "Malus";
 				if (SumAutoCalc === "0"){
 					JanusCalc = JanusCalc * -1;
 				}
 			} else {
-				JanusText = "für Dich"
+				JanusText = "Bonus"
 			}
 			if (JanusCalc > 5) JanusCalc = 5;
 			if (JanusCalc < -5) JanusCalc = -5;
