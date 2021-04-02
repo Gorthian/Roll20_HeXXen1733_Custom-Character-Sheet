@@ -98,47 +98,84 @@
 			</div>
 		</div>
 	</div>
+	<!-- Zentrale Probe //-->
 	<!-- Proben modifizieren //-->
-	<div class="table">
-		<div class="tr alternate">
-			<div class="td is-title width-10">
-				Mali <span class="info-border" name="attr_influenceMalusLevel" class="show-tooltip"></span>
-				<div class="tooltip">Mali durch Malusstufen</div>
+	<div class="info-border">
+		<div class="table">
+			<div class="tr">
+				<div class="td is-title width-15">Probe auf:</div>
+				<div class="td width-33">
+					<select name="attr_rollAction">
+						<option value="">** Attribute **</option>
+						<option value="1">Sinnesschärfe</option>
+						<option value="2">Wissen</option>
+						<option value="3">Willenskraft</option>
+						<option value="4">Körperkraft</option>
+						<option value="5">Athletik</option>
+						<option value="6">Geschick</option>
+						<option value="">** Allg. Fertigkeiten **</option>
+						<option value="100">Akrobatik</option>
+						<option value="101">Aufmerksamkeit</option>
+						<option value="102">Erkennen</option>
+						<option value="103">Erste Hilfe</option>
+						<option value="104">Fingerfertigkeit</option>
+						<option value="105">Geistesstärke</option>
+						<option value="106">Handwerken</option>
+						<option value="107">Heimlichkeit</option>
+						<option value="108">Land und Leute</option>
+						<option value="109">Redekunst</option>
+						<option value="110">Muskelspiel</option>
+						<option value="111">Reflexe</option>
+						<option value="112">Reiten</option>
+						<option value="113">Unempfindlichkeit</option>
+						<option value="114">Wissensgebiete</option>
+					</select>
+				</div>
+				<div class="td">
+					Wert: <span name="attr_rollActionValue"></span>
+				</div>
+				<div class="td">
+					Janus: <span name="attr_rollActionJanus"></span>
+				</div>
 			</div>
-			<div class="td width-05">
-				+
-			</div>
-			<div class="td">
-				<input class="show-tooltip" type="number" placeholder="0" name="attr_MalusMod" />
-				<div class="tooltip">Weitere Mali für diesen Wurf</div>
-			</div>
-			<div class="td is-title width-10">
-				Boni
-			</div>
-			<div class="td">
-				Heimtückisch
-			</div>
-			<div class="td width-05">
-				<input type="checkbox" name="attr_BonusInsidious" value="2" />
-			</div>
-			<div class="td">
-				Fokusiert
-			</div>
-			<div class="td width-05">
-				<input type="checkbox" name="attr_BonusFocused" value="3" />
-			</div>
-			<div class="td width-05">
-				+
-			</div>
-			<div class="td">
-				<input class="show-tooltip" type="number" placeholder="0" name="attr_BonusMod" />
-				<div class="tooltip">Weitere Boni für diesen Wurf</div>
-			</div>
-			<div class="td is-title width-20">
-				Januswürfel (<span class="info" name="attr_JanusText"></span>) : <span class="info-border" name="attr_JanusCalc"></span>
+		</div>
+		<div class="table">
+			<div class="tr alternate">
+				<div class="td">
+					Malusstufen <span class="info-border" name="attr_influenceMalusLevel"></span>				
+				</div>
+				<div class="td">
+					weitere Mali <input type="number" placeholder="0" name="attr_MalusMod" />
+				</div>
+				<div class="td">
+					weitere Boni <input type="number" placeholder="0" name="attr_BonusMod" />
+				</div>
+				<div class="td">
+					Gesamt (<span class="info" name="attr_JanusText"></span>) : <span class="info-border" name="attr_JanusCalc"></span>
+				</div>
+			</div>			
+		</div>
+		<div class="table">
+			<div class="tr">
+				<div class="td">
+					Heimtückisch: 
+				</div>
+				<div class="td width-05">
+					<input type="checkbox" name="attr_BonusInsidious" value="2" />
+				</div>
+				<div class="td">
+					Fokusiert: 
+				</div>
+				<div class="td width-05">
+					<input type="checkbox" name="attr_BonusFocused" value="3" />
+				</div>
+				<div class="td">
+					<button type="roll" value="/me @{rollActionText}\n/r (@{rollSkillValue})t[@{tblHexxen}]@{rollSeparator}@{rollJanus}" name="Roll_Attention"></button>
+				</div>
 			</div>
 		</div>
 	</div>
+	
 	<div class="table">
 		<!-- Inhalts-Tabs //-->
 		<div class="tr">
@@ -272,14 +309,17 @@
 												<div class="tr alternate">						
 													<div class="td"><b>[Sin]</b><br/>Sinnesschärfe</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Sin"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_SinJanus"/></div>
 												</div>
 												<div class="tr alternate">			
 													<div class="td"><b>[Wis]</b><br/>Wissen</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wis"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_WisJanus"/></div>
 												</div>
 												<div class="tr alternate">		
 													<div class="td"><b>[Wil]</b><br/>Willenskraft</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wil"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_WilJanus"/></div>
 												</div>
 											</div>											
 										</div>
@@ -290,14 +330,17 @@
 												<div class="tr alternate">
 													<div class="td"><b>[Kkr]</b><br/>Körperkraft</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Kkr"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_KkrJanus"/></div>
 												</div>
 												<div class="tr alternate">			
 													<div class="td"><b>[Ath]</b><br/>Athletik</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ath"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_AthJanus"/></div>
 												</div>
 												<div class="tr alternate">			
 													<div class="td"><b>[Ges]</b><br/>Geschick</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ges"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_GesJanus"/></div>
 												</div>
 											</div>
 										</div>
@@ -1811,7 +1854,7 @@
             });
         });
     });
-	
+
 	/* Standardwerte für Würfeltabellen und Attribute setzen */
 	on("sheet:opened", function() {
 		getAttrs(["tblHexxen","tblJanus","tblHexxenmeister","sheetTab"], function (values) {
@@ -1832,6 +1875,12 @@
 				"sheetTab": sheetTab
 			});
 		});
+	});
+	
+	/* Probenwurf festlegen */
+	on("change:rollAction change:Sin change:SinJanus change:Wis change:WisJanus change:Wil change:WilJanus change:Kkr change:KkrJanus change:Ath change:AthJanus change:Ges change:GesJanus", function() {
+		setRollAction();
+		calculateJanusPool();
 	});
 	
 	/* Automatische Berechnung der Januswürfel aktivieren/deaktivieren */
@@ -1875,34 +1924,8 @@
 	
 	/* Januspool berechnen */
 	on("sheet:opened change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
-		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc"], function (values) {
-			let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
-			let MalusMod = parseInt(values.MalusMod)||0;
-			let BonusInsidious = parseInt(values.BonusInsidious)||0;
-			let BonusFocused = parseInt(values.BonusFocused)||0;
-			let BonusMod = parseInt(values.BonusMod)||0;
-			let SumAutoCalc = values.SumAutoCalc;
-			let JanusCalc = 0;
-			let JanusText = "";
-			
-			/* warum hier hinter dem "=" nochmal JanusCalc was ja hier vorher immer null ist? */
-			JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod;
-			
-			if (JanusCalc < 0 ) {
-				JanusText = "Malus"; /* wenn Text hier geändert wird auch in vorheriger Funktion anpassen! */
-				if (SumAutoCalc === "0"){
-					JanusCalc = JanusCalc * -1; /* Positiv machen wenn nicht addiert wird */
-				}
-			} else {
-				JanusText = "Bonus"
-			}
-			if (JanusCalc > 5) JanusCalc = 5;
-			if (JanusCalc < -5) JanusCalc = -5;
-			
-			setAttrs({
-				"JanusCalc"	: JanusCalc,
-				"JanusText" : JanusText
-			});
+		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
+			calculateJanusPool(values);
 		});
 	});
 	
@@ -2692,4 +2715,101 @@
 			});
 		});
 	});
+
+	/* Eigene Funktionen */
+	
+	function calculateJanusPool() {
+		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
+			let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
+			let MalusMod = parseInt(values.MalusMod)||0;
+			let BonusInsidious = parseInt(values.BonusInsidious)||0;
+			let BonusFocused = parseInt(values.BonusFocused)||0;
+			let BonusMod = parseInt(values.BonusMod)||0;
+			let rollActionJanus = parseInt(values.rollActionJanus)||0;
+			let SumAutoCalc = values.SumAutoCalc;
+			let JanusCalc = 0;
+			let JanusText = "";
+			console.log("calculateJanusPool");
+			
+			JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod + rollActionJanus;
+			
+			if (JanusCalc < 0 ) {
+				JanusText = "Malus"; /* wenn Text hier geändert wird auch in vorheriger Funktion anpassen! */
+				if (SumAutoCalc === "0"){
+					JanusCalc = JanusCalc * -1; /* Positiv machen wenn nicht addiert wird */
+				}
+			} else {
+				JanusText = "Bonus"
+			}
+			if (JanusCalc > 5) JanusCalc = 5;
+			if (JanusCalc < -5) JanusCalc = -5;
+			
+			setAttrs({
+				"JanusCalc"	: JanusCalc,
+				"JanusText" : JanusText
+			});
+		});
+	}
+	
+	function setRollAction() {
+		getAttrs(["rollAction","Sin","SinJanus","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
+			let rollAction = values.rollAction;
+			let sinValue = values.Sin||0;
+			let sinJanus = values.SinJanus||0;
+			let wisValue = values.Wis||0;			
+			let wisJanus = values.WisJanus||0;			
+			let wilValue = values.Wil||0;
+			let wilJanus = values.WilJanus||0;
+			let kkrValue = values.Kkr||0;
+			let kkrJanus = values.KkrJanus||0;
+			let athValue = values.Ath||0;
+			let athJanus = values.AthJanus||0;
+			let gesValue = values.Ges||0;
+			let gesJanus = values.GesJanus||0;			
+			let rollActionText = "";
+			let rollActionValue = 0;			
+			let rollActionJanus = 0;			
+			console.log("setRollAction");
+			
+			switch (rollAction) {
+				case "1":
+					rollActionText = "würfelt auf Sinnesschärfe";
+					rollActionValue = sinValue;
+					rollActionJanus = sinJanus;					
+					break;
+				case "2":
+					rollActionText = "würfelt auf Wissen";
+					rollActionValue = wisValue;
+					rollActionJanus = wisJanus;					
+					break;
+				case "3":
+					rollActionText = "würfelt auf Willenskraft";
+					rollActionValue = wilValue;
+					rollActionJanus = wilJanus;					
+					break;
+				case "4":
+					rollActionText = "würfelt auf Körperkraft";
+					rollActionValue = kkrValue;
+					rollActionJanus = kkrJanus;					
+					break;
+				case "5":
+					rollActionText = "würfelt auf Athletik";
+					rollActionValue = athValue;
+					rollActionJanus = athJanus;					
+					break;
+				case "6":
+					rollActionText = "würfelt auf Geschick";
+					rollActionValue = gesValue;
+					rollActionJanus = gesJanus;					
+					break;
+				default:
+					break;
+			}			
+						
+			setAttrs({			
+				"rollActionText": rollActionText,
+				"rollActionValue": rollActionValue,
+				"rollActionJanus": rollActionJanus
+			});
+		});	}
 </script>
