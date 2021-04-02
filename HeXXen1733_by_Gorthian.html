@@ -70,13 +70,12 @@
 	<input type="hidden" name="attr_BattleDodgeMod" />
 	<input type="hidden" name="attr_BattleShieldMod" />
 	<!-- Versteckte Attribute //-->
-	
-	
+		
 	<div class="table table-menue">
 		<!-- Menü //-->
 		<div class="tr">
 			<div class="td">
-				<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
+				<input type="checkbox" class="toggle-menue hide" name="attr_IsNSC" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
 				<!-- SC-Ansicht //-->
 				<div class="sc-view">
 					<button type="action" name="act_general" class="button-menue">Allgemein</button>
@@ -85,7 +84,7 @@
 					<button type="action" name="act_battle" class="button-menue">Kampf</button>
 					<button type="action" name="act_inventory" class="button-menue">Besitz</button>			
 					<!-- Mare Monstrum - Fibel des Jägerhandwerks //-->
-					<input type="checkbox" class="toggle-module-MM-FdJ" name="attr_module-MM-FdJ" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
+					<input type="checkbox" class="toggle-module-MM-FdJ hide" name="attr_module-MM-FdJ" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
 					<div class="module-MM-FdJ-ON">
 						<button type="action" name="act_module-MM-FdJ" class="button-menue">MM - FdJ</button>
 					</div>
@@ -1568,9 +1567,7 @@
 									<div class="tr">
 										<div class="td is-title width-33">NSC-Ansicht</div>
 										<div class="td">
-											<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/>
-											<div class="sc-view"><button type="button"><label for="toggle">Aktivieren</label></button></div>
-											<div class="nsc-view"><button type="button"><label for="toggle">Deaktivieren</label></button></div>
+											<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/>											
 										</div>
 									</div>
 									<div class="tr">
@@ -1614,7 +1611,7 @@
 								</div>
 							</div>
 						</div>
-						<input type="checkbox" class="toggle-menue" name="attr_isNSC" id="toggle-menue" value="1"/>
+						<input type="checkbox" class="toggle-menue hide" name="attr_isNSC" id="toggle-menue" value="1"/>
 						<div class="tr height-01 sc-view">&nbsp;</div>
 						<div class="tr sc-view">
 							<div class="td">
@@ -1625,9 +1622,7 @@
 											Mare Monstrum - Fibel des Jägerhandwerks
 										</div>
 										<div class="td">
-											<input type="checkbox" class="toggle-module-MM-FdJ" name="attr_module-MM-FdJ" id="toggle-module-MM-FdJ" value="1"/>
-											<div class="module-MM-FdJ-OFF"><button type="button"><label for="toggle-module-MM-FdJ">Aktivieren</label></button></div>
-											<div class="module-MM-FdJ-ON"><button type="button"><label for="toggle-module-MM-FdJ">Deaktivieren</label></button></div>
+											<input type="checkbox" class="toggle-module-MM-FdJ" name="attr_module-MM-FdJ" value="1"/>
 										</div>
 									</div>
 								</div>
@@ -1652,7 +1647,7 @@
 			</div>
 			<div class="td width-01"></div>
 			<div class="td width-10 centered alternate">
-				<input type="checkbox" class="toggle-menue" name="attr_IsNSC" id="toggle" value="1"/>
+				<input type="checkbox" class="toggle-menue hide" name="attr_IsNSC" id="toggle" value="1"/>
 				<h4>LeP</h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_HealthMod" />
 				<div class="sc-view">

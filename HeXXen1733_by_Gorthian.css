@@ -383,14 +383,14 @@ div.sheet-tooltip {
 
 /* Menu */
 
+.sheet-hide {
+	display: none;
+}
+
 /* Wechsel der Menüansicht */
 button label {
 	font-family			: "Texturina";
 	font-size			: 10pt;
-}
-
-.sheet-toggle-menue {
-	display: none;
 }
 
 .sheet-sc-view,
@@ -404,10 +404,6 @@ button label {
 }
 
 /* Anzeige der Module und Erweiterungen */
-
-.sheet-toggle-module-MM-FdJ {
-	display: none;
-}
 
 .sheet-module-MM-FdJ-OFF,
 .sheet-toggle-module-MM-FdJ:checked ~ .sheet-module-MM-FdJ-ON {
