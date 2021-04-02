@@ -84,12 +84,12 @@
 					<button type="action" name="act_skills" class="button-menue">Fertigkeiten</button>
 					<button type="action" name="act_battle" class="button-menue">Kampf</button>
 					<button type="action" name="act_inventory" class="button-menue">Besitz</button>			
-				</div>
-				<!-- Mare Monstrum - Fibel des Jägerhandwerks //-->
-				<input type="checkbox" class="toggle-module-MM-FdJ" name="attr_module-MM-FdJ" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
-				<div class="module-MM-FdJ-ON">
-					<button type="action" name="act_module-MM-FdJ" class="button-menue">MM - FdJ</button>
-				</div>
+					<!-- Mare Monstrum - Fibel des Jägerhandwerks //-->
+					<input type="checkbox" class="toggle-module-MM-FdJ" name="attr_module-MM-FdJ" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
+					<div class="module-MM-FdJ-ON">
+						<button type="action" name="act_module-MM-FdJ" class="button-menue">MM - FdJ</button>
+					</div>
+				</div>				
 				<!-- NSC-Ansicht //-->
 				<div class="nsc-view">
 					<button type="action" name="act_general-nsc" class="button-menue">Allgemein</button>
@@ -1614,8 +1614,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="tr height-01">&nbsp;</div>
-						<div class="tr">
+						<input type="checkbox" class="toggle-menue" name="attr_isNSC" id="toggle-menue" value="1"/>
+						<div class="tr height-01 sc-view">&nbsp;</div>
+						<div class="tr sc-view">
 							<div class="td">
 								<h2>Module & Erweiterungen</h2>
 								<div class="table">									
@@ -1632,6 +1633,7 @@
 								</div>
 							</div>
 						</div>
+						
 						<div class="tr height-01">&nbsp;</div>
 						<div class="tr">
 							<div class="td">
