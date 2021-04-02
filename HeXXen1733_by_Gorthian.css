@@ -1,7 +1,7 @@
 /*
 	EDITED by 			Gorthian
 	Version				2.1.3
-	Letzte Änderung		2021-02-04
+	Letzte Änderung		2021-04-02
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -400,6 +400,23 @@ button label {
 .sheet-toggle-menue:checked ~ .sheet-sc-view {
 	display: none;
 }
+
+/* Anzeige der Module und Erweiterungen */
+
+.sheet-toggle-module-MM-FdJ {
+	display: none;
+}
+
+.sheet-module-MM-FdJ-OFF,
+.sheet-toggle-module-MM-FdJ:checked ~ .sheet-module-MM-FdJ-ON {
+	display: inline;
+}
+
+.sheet-module-MM-FdJ-ON,
+.sheet-toggle-module-MM-FdJ:checked ~ .sheet-module-MM-FdJ-OFF {
+	display: none;
+}
+
 /*********************************/
 
 /* Radiobuttons */
