@@ -415,6 +415,16 @@ button label {
 	display: none;
 }
 
+.sheet-module-MM-FdJ-Alter-OFF,
+.sheet-toggle-module-MM-FdJ-Alter:checked ~ .sheet-module-MM-FdJ-Alter-ON {
+	display: inline;
+}
+
+.sheet-module-MM-FdJ-Alter-ON,
+.sheet-toggle-module-MM-FdJ-Alter:checked ~ .sheet-module-MM-FdJ-Alter-OFF {
+	display: none;
+}
+
 /*********************************/
 
 /* Radiobuttons */
