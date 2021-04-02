@@ -85,6 +85,11 @@
 					<button type="action" name="act_battle" class="button-menue">Kampf</button>
 					<button type="action" name="act_inventory" class="button-menue">Besitz</button>			
 				</div>
+				<!-- Mare Monstrum - Fibel des Jägerhandwerks //-->
+				<input type="checkbox" class="toggle-module-MM-FdJ" name="attr_module-MM-FdJ" id="toggle" value="1"/><!-- Muss zwingend direkt vor den Buttons stehen //-->
+				<div class="module-MM-FdJ-ON">
+					<button type="action" name="act_module-MM-FdJ" class="button-menue">MM - FdJ</button>
+				</div>
 				<!-- NSC-Ansicht //-->
 				<div class="nsc-view">
 					<button type="action" name="act_general-nsc" class="button-menue">Allgemein</button>
@@ -1298,6 +1303,17 @@
 						</div>
 					</div>
 				</div>
+				
+				<!-- Mare Monstrum - Fibel des Jägerhandwerks //-->
+				<div class="module-MM-FdJ">
+					<div class="table">
+						<div class="tr">
+							<div class="td">
+								<h2>Mare Monstrum - Fibel des Jägerhandwerks</h2>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<!-- Allgemein NSC //-->
 				<div class='general-nsc'>
@@ -1679,7 +1695,7 @@
 
 <!-- SheetWorker //-->
 <script type="text/worker">
-	const buttonlist = ["general","status","skills","battle","inventory","general-nsc","help"];
+	const buttonlist = ["general","status","skills","battle","inventory","general-nsc","help","module-MM-FdJ"];
     buttonlist.forEach(button => {
         on(`clicked:${button}`, function() {
             setAttrs({

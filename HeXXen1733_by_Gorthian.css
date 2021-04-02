@@ -360,7 +360,8 @@ div.sheet-tooltip {
 .sheet-skills,
 .sheet-battle,
 .sheet-inventory,
-.sheet-general-nsc, 
+.sheet-general-nsc,
+.sheet-module-MM-FdJ, 
 .sheet-help {
 	/* Rahmen nur zu Debug-Zwecken */
 	/* border	: 1px solid blue; */
@@ -375,6 +376,7 @@ div.sheet-tooltip {
 .sheet-tabstoggle[value="battle"] ~ div.sheet-battle,
 .sheet-tabstoggle[value="inventory"] ~ div.sheet-inventory,
 .sheet-tabstoggle[value="general-nsc"] ~ div.sheet-general-nsc,
+.sheet-tabstoggle[value="module-MM-FdJ"] ~ div.sheet-module-MM-FdJ,
 .sheet-tabstoggle[value="help"] ~ div.sheet-help {
 	display: block;
 }
