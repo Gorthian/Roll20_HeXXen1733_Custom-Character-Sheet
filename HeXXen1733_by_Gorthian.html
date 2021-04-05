@@ -1921,7 +1921,12 @@
 			for (const [key, value] of Object.entries(oSkills)) {
 				recalcSkill(key,oAttributes[value]);
 			}
+			
 			toggleJanusCalc();
+			calculateJanusPool();
+			recalcBlessingRage();
+			recalcBlessing();
+			recalcRage();
 		});
 		
 		/* onChange-Events für die Attribute erstellen*/
@@ -1937,76 +1942,31 @@
 				recalcSkill(key,oAttributes[value]);
 			});
 		}
-	/* Event-Listener -- Ende */	
-	
-	/* Automatische Berechnung der Januswürfel aktivieren/deaktivieren */
-	on("change:JanusAutoCalc change:SumAutoCalc", function() {
-		toggleJanusCalc();		
-	});
-	
-	/* Januspool berechnen */
-	on("sheet:opened change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
-		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
-			calculateJanusPool(values);
+		
+		/* Automatische Berechnung der Januswürfel aktivieren/deaktivieren */
+		on("change:JanusAutoCalc change:SumAutoCalc", function() {
+			toggleJanusCalc();		
 		});
-	});
-	
-	/* Rage & Segnungen berechnen */
-	on("sheet:opened change:BlessingRage", function() {
-		getAttrs(["BlessingRage"], function (values) {
-			let BlessingRage = parseInt(values.BlessingRage)||0;
-			let Blessing = 0;
-			let Rage = 0;
-			if (BlessingRage < 0) {
-				Rage = BlessingRage * -1;
-				Blessing = 0;
-			}
-			if (BlessingRage > 0) {
-				Rage = 0;
-				Blessing = BlessingRage;
-			}			
-			setAttrs({
-				"Blessing"	: Blessing,
-				"Rage"		: Rage
-			});
+		
+		/* Januspool berechnen */
+		on("change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
+			calculateJanusPool();
 		});
-	});
-	
-	on("sheet:opened change:Blessing", function() {
-		getAttrs(["Blessing","Rage"], function (values) {
-			let Blessing = parseInt(values.Blessing)||0;
-			let Rage = parseInt(values.Rage)||0;
-			
-			if (Blessing > 0) {
-				BlessingRage = Blessing;
-				Rage = 0;
-			} else {
-				BlessingRage = 0
-			}
-			setAttrs({
-				"BlessingRageLevel"	: BlessingRage,
-				"Rage"				: Rage
-			});
+		
+		/* Rage & Segnungen berechnen */
+		on("change:BlessingRage", function() {
+			recalcBlessingRage();
 		});
-	});
-	
-	on("sheet:opened change:Rage", function() {
-		getAttrs(["Blessing","Rage"], function (values) {
-			let Blessing = parseInt(values.Blessing)||0;
-			let Rage = parseInt(values.Rage)||0;
-			
-			if (Rage > 0) {
-				BlessingRage = Rage * -1;
-				Blessing = 0;
-			} else {
-				BlessingRage = 0
-			}
-			setAttrs({
-				"BlessingRageLevel"	: BlessingRage,
-				"Blessing"			: Blessing
-			});
+		
+		on("change:Blessing", function() {
+			recalcBlessing();
 		});
-	});	
+		
+		on("change:Rage", function() {
+			recalcRage();
+		});
+	/* Event-Listener -- Ende */		
+	
 			
 	/* Aktionspunkte */
 	on("sheet:opened change:ArmorLevel change:influenceParalysisLevel", function() {
@@ -2429,41 +2389,7 @@
 		});
 	});
 
-	/* Eigene Funktionen */
-	
-	function calculateJanusPool() {
-		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
-			let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
-			let MalusMod = parseInt(values.MalusMod)||0;
-			let BonusInsidious = parseInt(values.BonusInsidious)||0;
-			let BonusFocused = parseInt(values.BonusFocused)||0;
-			let BonusMod = parseInt(values.BonusMod)||0;
-			let rollActionJanus = parseInt(values.rollActionJanus)||0;
-			let SumAutoCalc = values.SumAutoCalc;
-			let JanusCalc = 0;
-			let JanusText = "";
-			console.log("calculateJanusPool");
-			
-			JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod + rollActionJanus;
-			
-			if (JanusCalc < 0 ) {
-				JanusText = "Malus"; /* wenn Text hier geändert wird auch in vorheriger Funktion anpassen! */
-				if (SumAutoCalc === "0"){
-					JanusCalc = JanusCalc * -1; /* Positiv machen wenn nicht addiert wird */
-				}
-			} else {
-				JanusText = "Bonus"
-			}
-			if (JanusCalc > 5) JanusCalc = 5;
-			if (JanusCalc < -5) JanusCalc = -5;
-			
-			setAttrs({
-				"JanusCalc"	: JanusCalc,
-				"JanusText" : JanusText
-			});
-		});
-	}
-	
+	/* Eigene Funktionen */	
 	function setRollAction() {
 		getAttrs(["rollAction","Sin","SinModifier","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
 			let rollAction = values.rollAction;
@@ -2676,6 +2602,40 @@
 			});			
 		}
 		
+		/* Januspool berechnen */
+		function calculateJanusPool() {
+			getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
+				let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
+				let MalusMod = parseInt(values.MalusMod)||0;
+				let BonusInsidious = parseInt(values.BonusInsidious)||0;
+				let BonusFocused = parseInt(values.BonusFocused)||0;
+				let BonusMod = parseInt(values.BonusMod)||0;
+				let rollActionJanus = parseInt(values.rollActionJanus)||0;
+				let SumAutoCalc = values.SumAutoCalc;
+				let JanusCalc = 0;
+				let JanusText = "";
+				console.log("calculateJanusPool");
+				
+				JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod + rollActionJanus;
+				
+				if (JanusCalc < 0 ) {
+					JanusText = "Malus"; /* wenn Text hier geändert wird auch in vorheriger Funktion anpassen! */
+					if (SumAutoCalc === "0"){
+						JanusCalc = JanusCalc * -1; /* Positiv machen wenn nicht addiert wird */
+					}
+				} else {
+					JanusText = "Bonus"
+				}
+				if (JanusCalc > 5) JanusCalc = 5;
+				if (JanusCalc < -5) JanusCalc = -5;
+				
+				setAttrs({
+					"JanusCalc"	: JanusCalc,
+					"JanusText" : JanusText
+				});
+			});
+		}
+		
 		function toggleJanusCalc() {
 			console.log("toggleJanusCalc");
 
@@ -2712,6 +2672,68 @@
 					"JanusAutoCalc": JanusAutoCalc,
 					"SumAutoCalc": SumAutoCalc,
 					"JanusCalc": JanusCalc
+				});
+			});
+		}
+		
+		function recalcBlessing() {
+			console.log("recalcBlessing");	
+
+			getAttrs(["Blessing","Rage"], function (values) {
+				let Blessing = parseInt(values.Blessing)||0;
+				let Rage = parseInt(values.Rage)||0;
+				
+				if (Blessing > 0) {
+					BlessingRage = Blessing;
+					Rage = 0;
+				} else {
+					BlessingRage = 0
+				}
+				setAttrs({
+					"BlessingRageLevel"	: BlessingRage,
+					"Rage"				: Rage
+				});
+			});
+		}
+		
+		function recalcRage() {
+			console.log("recalcRage");	
+			
+			getAttrs(["Blessing","Rage"], function (values) {
+				let Blessing = parseInt(values.Blessing)||0;
+				let Rage = parseInt(values.Rage)||0;
+				
+				if (Rage > 0) {
+					BlessingRage = Rage * -1;
+					Blessing = 0;
+				} else {
+					BlessingRage = 0
+				}
+				setAttrs({
+					"BlessingRageLevel"	: BlessingRage,
+					"Blessing"			: Blessing
+				});
+			});
+		}
+		
+		function recalcBlessingRage() {
+			console.log("recalcBlessingRage");	
+			
+			getAttrs(["BlessingRage"], function (values) {
+				let BlessingRage = parseInt(values.BlessingRage)||0;
+				let Blessing = 0;
+				let Rage = 0;
+				if (BlessingRage < 0) {
+					Rage = BlessingRage * -1;
+					Blessing = 0;
+				}
+				if (BlessingRage > 0) {
+					Rage = 0;
+					Blessing = BlessingRage;
+				}			
+				setAttrs({
+					"Blessing"	: Blessing,
+					"Rage"		: Rage
 				});
 			});
 		}
