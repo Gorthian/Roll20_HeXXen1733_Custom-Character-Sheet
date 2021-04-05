@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
 	Version				2.1.3
-	Letzte Änderung		2021-04-02
+	Letzte Änderung		2021-04-05
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -305,7 +305,7 @@
 										<div class="td">
 											<h2>Geistige Attribute</h2>
 											<div class="table">
-												<div class="tr height-01"><div class="td width-50">&nbsp;</div><div class="td">&nbsp;</div></div>
+												<div class="tr height-01"><div class="td width-33">&nbsp;</div><div class="td">&nbsp;</div></div>
 												<div class="tr alternate">						
 													<div class="td"><b>[Sin]</b><br/>Sinnesschärfe</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Sin"/></div>
@@ -326,7 +326,7 @@
 										<div class="td">
 											<h2>Körperliche Attribute</h2>
 											<div class="table">
-												<div class="tr height-01"><div class="td width-50">&nbsp;</div><div class="td">&nbsp;</div></div>
+												<div class="tr height-01"><div class="td width-33">&nbsp;</div><div class="td">&nbsp;</div></div>
 												<div class="tr alternate">
 													<div class="td"><b>[Kkr]</b><br/>Körperkraft</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Kkr"/></div>
@@ -1855,120 +1855,99 @@
         });
     });
 	
+	/* Globale Variablen -- Start */
+		var oAttributes = {
+			"Senses": "Sin",
+			"Understanding": "Wis",
+			"Willpower": "Wil",
+			"Strength": "Kkr",
+			"Athletic": "Ath",
+			"Finess": "Ges"
+		};
+		
+		/* Liste aller Fertigkeiten und deren dazugehörigem Attribut */
+		var oSkills = {
+			"Acrobatic": "Athletic",
+			"Attention": "Senses",
+			"Perception": "Senses",
+			"FirstAid": "Understanding",
+			"Dexterity": "Finess",
+			"MentalPower": "Willpower",
+			"Crafting": "Finess",
+			"Stealth": "Athletic",
+			"CountryPeople": "Understanding",
+			"Rhetoric": "Willpower",
+			"Struggle": "Strength",
+			"Reflexes": "Senses",
+			"Riding": "Athletic",
+			"Toughness": "Strength",
+			"Knowledge": "Understanding",
+			"Witchcraft": "Understanding",
+			"Navigation": "Understanding",
+			"BattleFist": "Athletic",
+			"BattleKnive": "Finess",
+			"BattleFencing": "Athletic",
+			"BattleSword": "Strength",
+			"BattleSabre": "Strength",
+			"BattleSabreMounted": "Strength",
+			"BattleBlunt": "Strength",
+			"BattlePolearm": "Strength",
+			"BattlePolearmMount": "Strength",
+			"BattleLance": "Strength",
+			"BattleLanceMounted": "Strength",
+			"BattleSlingshot": "Finess",
+			"BattlePistol": "Senses",
+			"BattleCrossbow": "Senses",
+			"BattleMusket": "Senses",
+			"BattleDodge": "Athletic",
+			"BattleShield": "Strength"
+		};
+		
+	/* Globale Variablen -- Ende */
+	
 	/* Event-Listener -- Start */
 	
 		/* Beim Laden des Sheets */
 		on("sheet:opened", function() {
-			recalcSenses();
-			recalcUnderstanding();
+			/* Standardwerte setzen */
+			setDefaultValues()
+			
+			/* Alle Attribute durchgehen und die entsprechenden recalc-Funktionen aufrufen */
+			for (const [key, value] of Object.entries(oAttributes)) {
+				recalcAttribute(key);
+			}
+			
+			/* Alle Fertigkeiten durchgehen und die entsprechenden recalc-Funktionen aufrufen */
+			for (const [key, value] of Object.entries(oSkills)) {
+				recalcSkill(key,oAttributes[value]);
+			}
+			toggleJanusCalc();
 		});
 		
-		/* Attributsänderungen */
-		on("change:Sin", function () {
-			recalcSenses();
-		});
-		on("change:Wis", function () {
-			recalcUnderstanding();
-		});
-	/* Event-Listener -- Ende */	
-
-	/* Standardwerte für Würfeltabellen und Attribute setzen */
-	on("sheet:opened", function() {
-		getAttrs(["tblHexxen","tblJanus","tblHexxenmeister","sheetTab"], function (values) {
-			let tblHexxen = values.tblHexxen;
-			let tblJanus = values.tblJanus;
-			let tblHexxenmeister = values.tblHexxenmeister;
-			let sheetTab = values.sheetTab||"general";
-			let rollJanus = values.rollJanus;
-						
-			if (tblHexxen === "") tblHexxen = "HeXXen";
-			if (tblJanus === "") tblJanus = "Janus";
-			if (tblHexxenmeister === "") tblHexxenmeister = "HeXXenmeister";
-						
-			setAttrs({
-				"tblHexxen": tblHexxen,
-				"tblJanus": tblJanus,
-				"tblHexxenmeister": tblHexxenmeister,
-				"sheetTab": sheetTab
+		/* onChange-Events für die Attribute erstellen*/
+		for (const [key, value] of Object.entries(oAttributes)) {
+			on("change:"+value, function () {
+				recalcAttribute(key);
 			});
-		});
-	});
-	
-	/* Probenwurf festlegen */
-	on("change:rollAction change:Sin change:SinModifier change:Wis change:WisJanus change:Wil change:WilJanus change:Kkr change:KkrJanus change:Ath change:AthJanus change:Ges change:GesJanus", function() {
-		setRollAction();
-		calculateJanusPool();
-	});
+		}
+
+		/* onChange-Events für die Fertigkeiten erstellen*/
+		for (const [key, value] of Object.entries(oSkills)) {
+			on("change:"+key+"FW", function () {
+				recalcSkill(key,oAttributes[value]);
+			});
+		}
+	/* Event-Listener -- Ende */	
 	
 	/* Automatische Berechnung der Januswürfel aktivieren/deaktivieren */
-	on("sheet:opened change:JanusAutoCalc change:SumAutoCalc", function() {
-		getAttrs(["JanusAutoCalc","SumAutoCalc","JanusCalc","JanusText"], function (values) {
-			let JanusAutoCalc = values.JanusAutoCalc;
-			let SumAutoCalc = values.SumAutoCalc;
-			let JanusCalc = parseInt(values.JanusCalc); 
-			let JanusText = values.JanusText;
-			let rollJanus = "";
-			let rollSeparator = "";
-						
-			if (JanusCalc < 0) { JanusCalc = JanusCalc * -1; } /* oder Math.abs() - positiv vorbelegen */
-				
-			/* Automatisch oder soll beim Würfeln jedesmal nach der Anzahl der Januswürfel gefragt werden */
-			if (JanusAutoCalc === "1"){
-				rollJanus = "@{JanusCalc}t[@{tblJanus}]";
-			} else {
-				rollJanus = "?{Anzahl Janus?|@{JanusCalc}}t[@{tblJanus}]";
-			}
-			
-			if (SumAutoCalc === "1"){
-				rollSeparator = "+"; /* Januswürfel werden addiert */
-				if(JanusText === "Malus") /* muss gleicher Text wie in nächster Funktion sein */
-				{
-					JanusCalc = JanusCalc * -1; /* Januswurf wird abgezogen (negativ addiert) */
-				}
-			} else {
-				rollSeparator = "\n/r "; /* 2 getrennte Würfe, Januswürfelzahl immer Positiv */
-			}
-			
-			setAttrs({			
-				"rollJanus": rollJanus,
-				"rollSeparator": rollSeparator,
-				"JanusAutoCalc": JanusAutoCalc,
-				"SumAutoCalc": SumAutoCalc,
-				"JanusCalc": JanusCalc
-			});
-		});
+	on("change:JanusAutoCalc change:SumAutoCalc", function() {
+		toggleJanusCalc();		
 	});
 	
 	/* Januspool berechnen */
 	on("sheet:opened change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
 		getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
 			calculateJanusPool(values);
-		});
-	});
-	
-	/* Lebensenergie berechnen */
-	on("sheet:opened change:Kkr change:Wil change:ToughnessFW change:HealthPlus", function() {
-		getAttrs(["Kkr","Wil","ToughnessFW","HealthPlus"], function (values) {
-			let Kkr = parseInt(values.Kkr)||0;
-			let Wil = parseInt(values.Wil)||0;
-			let ToughnessFW = parseInt(values.ToughnessFW)||0;
-			let HealthPlus = parseInt(values.HealthPlus)||0;
-			setAttrs({
-				"HealthCalc"	: Kkr + Wil + ToughnessFW + 7,
-				"HealthMod_max"	: Kkr + Wil + ToughnessFW + 7 + HealthPlus
-			});
-		});
-	});	
-	
-	/* Coups berechnen */
-	on("sheet:opened change:Ath change:CoupsPlus", function() {
-		getAttrs(["Ath","CoupsPlus"], function (values) {
-			let Ath = parseInt(values.Ath)||0;
-			let CoupsPlus = parseInt(values.CoupsPlus)||0;
-			setAttrs({
-				"CoupsCalc"		: Ath,
-				"CoupsMod_max"	: Ath + CoupsPlus
-			});
 		});
 	});
 	
@@ -2028,107 +2007,7 @@
 			});
 		});
 	});	
-	
-	
-	/* Akrobatik berechnen */
-	on("sheet:opened change:Ath change:AcrobaticFW", function() {
-		getAttrs(["Ath","AcrobaticFW"], function (values) {
-			let Base = parseInt(values.Ath)||0;
-			let FW = parseInt(values.AcrobaticFW)||0;
-			setAttrs({
-				"AcrobaticMod"	: Base + FW
-			});
-		});
-	});
-
-	/* Fingerfertigkeit berechnen */
-	on("sheet:opened change:Ges change:DexterityFW", function() {
-		getAttrs(["Ges","DexterityFW"], function (values) {
-			let Base = parseInt(values.Ges)||0;
-			let FW = parseInt(values.DexterityFW)||0;
-			setAttrs({
-				"DexterityMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Geistesstärke berechnen */
-	on("sheet:opened change:Wil change:MentalPowerFW", function() {
-		getAttrs(["Wil","MentalPowerFW"], function (values) {
-			let Base = parseInt(values.Wil)||0;
-			let FW = parseInt(values.MentalPowerFW)||0;
-			setAttrs({
-				"MentalPowerMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Handwerken berechnen */
-	on("sheet:opened change:Ges change:CraftingFW", function() {
-		getAttrs(["Ges","CraftingFW"], function (values) {
-			let Base = parseInt(values.Ges)||0;
-			let FW = parseInt(values.CraftingFW)||0;
-			setAttrs({
-				"CraftingMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Heimlichkeit berechnen */
-	on("sheet:opened change:Ath change:StealthFW", function() {
-		getAttrs(["Ath","StealthFW"], function (values) {
-			let Base = parseInt(values.Ath)||0;
-			let FW = parseInt(values.StealthFW)||0;
-			setAttrs({
-				"StealthMod"	: Base + FW
-			});
-		});
-	});	
-	
-	/* Redekunst berechnen */
-	on("sheet:opened change:Wil change:RhetoricFW", function() {
-		getAttrs(["Wil","RhetoricFW"], function (values) {
-			let Base = parseInt(values.Wil)||0;
-			let FW = parseInt(values.RhetoricFW)||0;
-			setAttrs({
-				"RhetoricMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Muskelspiel berechnen */
-	on("sheet:opened change:Kkr change:StruggleFW", function() {
-		getAttrs(["Kkr","StruggleFW"], function (values) {
-			let Base = parseInt(values.Kkr)||0;
-			let FW = parseInt(values.StruggleFW)||0;
-			setAttrs({
-				"StruggleMod"	: Base + FW
-			});
-		});
-	});	
-	
-	/* Reiten berechnen */
-	on("sheet:opened change:Ath change:RidingFW", function() {
-		getAttrs(["Ath","RidingFW"], function (values) {
-			let Base = parseInt(values.Ath)||0;
-			let FW = parseInt(values.RidingFW)||0;
-			setAttrs({
-				"RidingMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Unempfindlichkeit berechnen */
-	on("sheet:opened change:Kkr change:ToughnessFW", function() {
-		getAttrs(["Kkr","ToughnessFW"], function (values) {
-			let Base = parseInt(values.Kkr)||0;
-			let FW = parseInt(values.ToughnessFW)||0;
-			setAttrs({
-				"ToughnessMod"	: Base + FW
-			});
-		});
-	});		
-	
+			
 	/* Aktionspunkte */
 	on("sheet:opened change:ArmorLevel change:influenceParalysisLevel", function() {
 		getAttrs(["ArmorLevel","influenceParalysisLevel"], function (values) {
@@ -2228,67 +2107,7 @@
 			});			
 		});		
 	});
-	
-	/* Kampffertigkeiten berechnen */
-	on("sheet:opened change:Ath change:Sin change:Ges change:Kkr change:BattleFistFw change:BattleKniveFW change:BattleFencingFW change:BattleSwordFW change:BattleSabreFW change:BattleSabreMountedFW change:BattleBluntFW change:BattlePolearmFW change:BattlePolearmMountFW change:BattleLanceFW change:BattleLanceMountedFW change:BattleSlingshotFW change:BattlePistolFW change:BattleCrossbowFW change:BattleMusketFW change:BattleDodgeFW change:BattleShieldFW", function() {
-		getAttrs([
-			"Ath",
-			"Sin",
-			"Ges",
-			"Kkr",
-			"BattleFistFW",
-			"BattleKniveFW",
-			"BattleFencingFW",
-			"BattleSwordFW",
-			"BattleSabreFW",
-			"BattleSabreMountedFW",
-			"BattleBluntFW",
-			"BattlePolearmFW",
-			"BattlePolearmMountFW",
-			"BattleLanceFW",
-			"BattleLanceMountedFW",
-			"BattleSlingshotFW",			
-			"BattleDodgeFW",
-			"BattleShieldFW"
-		], function (values) {
-			let Ath = parseInt(values.Ath)||0;
-			let Sin = parseInt(values.Sin)||0;
-			let Ges = parseInt(values.Ges)||0;
-			let Kkr = parseInt(values.Kkr)||0;
-			let BattleFistFW = parseInt(values.BattleFistFW)||0;
-			let BattleKniveFW = parseInt(values.BattleKniveFW)||0;
-			let BattleFencingFW = parseInt(values.BattleFencingFW)||0;
-			let BattleSwordFW = parseInt(values.BattleSwordFW)||0;
-			let BattleSabreFW = parseInt(values.BattleSabreFW)||0;
-			let BattleSabreMountedFW = parseInt(values.BattleSabreMountedFW)||0;
-			let BattleBluntFW = parseInt(values.BattleBluntFW)||0;
-			let BattlePolearmFW = parseInt(values.BattlePolearmFW)||0;
-			let BattlePolearmMountFW = parseInt(values.BattlePolearmMountFW)||0;
-			let BattleLanceFW = parseInt(values.BattleLanceFW)||0;
-			let BattleLanceMountedFW = parseInt(values.BattleLanceMountedFW)||0;
-			let BattleSlingshotFW = parseInt(values.BattleSlingshotFW)||0;
-			let BattleDodgeFW = parseInt(values.BattleDodgeFW)||0;
-			let BattleShieldFW = parseInt(values.BattleShieldFW)||0;
-
-			setAttrs({
-				"BattleFistMod"			: Ath + BattleFistFW,
-				"BattleKniveMod"		: Ges + BattleKniveFW,
-				"BattleFencingMod"		: Ath + BattleFencingFW,
-				"BattleSwordMod"		: Kkr + BattleSwordFW,
-				"BattleSabreMod"		: Kkr + BattleSabreFW,
-				"BattleSabreMountedMod"	: Kkr + BattleSabreMountedFW,
-				"BattleBluntMod"		: Kkr + BattleBluntFW,
-				"BattlePolearmMod"		: Kkr + BattlePolearmFW,
-				"BattlePolearmMountMod"	: Kkr + BattlePolearmMountFW,					
-				"BattleLanceMod"		: Kkr + BattleLanceFW,			
-				"BattleLanceMountedMod"	: Kkr + BattleLanceMountedFW,			
-				"BattleSlingshotMod"	: Ges + BattleSlingshotFW,
-				"BattleDodgeMod"		: Ath + BattleDodgeFW,
-				"BattleShieldMod"		: Kkr + BattleShieldFW					
-			});
-		});
-	});
-	
+		
 	/* Zustände verwalten */
 	/* Quelle für Zustände: http://hexxen1733-regelwiki.de/index.php/reg_zus_typische_zustaende.html */
 	on("change:addCondition", function() {
@@ -2708,82 +2527,193 @@
 		});	
 	}
 	
-	/* Globale Variablen */
-	var oAttributes = {
-		"senses": "Sin",
-		"understanding": "Wis",
-		"dexterity": "Ges"
-	};
-	
 	/* Funktionen -- Start */
-	function recalcSenses() {
-		console.log("recalcSenses");
+		/* Neuberechnungen bei geänderten Attributswerten */
+		function recalcAttribute(sAttribute) {
+			console.log("recalcAttribute: "+sAttribute);
+			
+			switch (sAttribute) {
+				case "Athletic":
+					setCoups();
+				case "Understanding":
+					setIdeas();
+				case "Finess": case "Senses":
+					setInitiative();
+				case "Strength": case "Willpower":
+					setLivepoints();
+				default:
+					/* Alle dazugehörigen Fertigkeiten neu berechnen */
+					for (const [key, value] of Object.entries(oSkills)) {
+						if (value == sAttribute) {
+							setSkill(key,oAttributes[value])
+						}
+					}
+			};
+		}
 		
-		setInitiative();
-		setSkill("Attention",oAttributes.senses);
-		setSkill("Perception",oAttributes.senses);
-		setSkill("Reflexes",oAttributes.senses);
-		setSkill("BattlePistol",oAttributes.senses);
-		setSkill("BattleCrossbow",oAttributes.senses);
-		setSkill("BattleMusket",oAttributes.senses);
-	}
-	
-	function recalcUnderstanding() {
-		console.log("recalcUnderstanding");
+		/* Neuberechnungen bei geänderten Fertigkeitswerten */
+		function recalcSkill(sSkill,sAttribute) {
+			console.log("recalcSkill: "+sSkill);
+			
+			switch (sSkill) {
+				case "Toughness":
+					setLivepoints();
+				case "Reflexes":
+					setInitiative();
+				default:
+					setSkill(sSkill,sAttribute);
+			};
+		}
 		
-		setIdeas();
-		setSkill("FirstAid",oAttributes.understanding);
-		setSkill("CountryPeople",oAttributes.understanding);
-		setSkill("Knowledge",oAttributes.understanding);
-		setSkill("Witchcraft",oAttributes.understanding);
-		setSkill("Navigation",oAttributes.understanding);
-	}
-	
-	function setIdeas() {
-		console.log("setIdeas");
+		function setLivepoints() {
+			console.log("setLivepoints");
+			
+			getAttrs([oAttributes.Strength,oAttributes.Willpower,"ToughnessFW","HealthPlus"], function (values) {
+				let iStrength = parseInt(values[oAttributes.Strength])||0;
+				let iWillpower = parseInt(values[oAttributes.Willpower])||0;
+				let iToughnessFW = parseInt(values["ToughnessFW"])||0;
+				let iHealthPlus = parseInt(values["HealthPlus"])||0;
+				
+				setAttrs({
+					"HealthCalc"	: iStrength + iWillpower + iToughnessFW + 7,
+					"HealthMod_max"	: iStrength + iWillpower + iToughnessFW + 7 + iHealthPlus
+				});
+			});		
+		}
 		
-		getAttrs([oAttributes.understanding,"IdeasPlus"], function (values) {
-			let Wis = parseInt(values.Wis)||0;
-			let IdeasPlus = parseInt(values.IdeasPlus)||0;
-			setAttrs({
-				"IdeasCalc"		: Wis,
-				"IdeasMod_max"	: Wis + IdeasPlus
+		function setIdeas() {
+			console.log("setIdeas");
+			
+			getAttrs([oAttributes.Understanding,"IdeasPlus"], function (values) {
+				let iUnderstanding = parseInt(values[oAttributes.Understanding])||0;
+				let iIdeasPlus = parseInt(values["IdeasPlus"])||0;
+				setAttrs({
+					"IdeasCalc"		: iUnderstanding,
+					"IdeasMod_max"	: iUnderstanding + iIdeasPlus
+				});
 			});
-		});
-	}
-	
-	function setInitiative() {
-		console.log("setInitiative");
+		}
 		
-		getAttrs([oAttributes.senses,oAttributes.dexterity,"ReflexesFW","InitiativePlus"], function (values) {
-			var senses = parseInt(values.Sin||0);
-			var dexterity = parseInt(values.Ges||0);
-			var reflexes = parseInt(values.ReflexesFW||0);
-			var initiativePlus = parseInt(values.InitiativePlus||0);
+		function setCoups() {
+			console.log("setCoups");
 			
-			var initiative = senses + dexterity + reflexes;
-			var initiativeMax = initiative + initiativePlus;
+			getAttrs([oAttributes.Athletic,"CoupsPlus"], function (values) {
+				let iAthletic = parseInt(values[oAttributes.Athletic])||0;
+				let iCoupsPlus = parseInt(values["CoupsPlus"])||0;
+				setAttrs({
+					"CoupsCalc"		: iAthletic,
+					"CoupsMod_max"	: iAthletic + iCoupsPlus
+				});
+			});
+		}
+		
+		function setInitiative() {
+			console.log("setInitiative");
 			
-			setAttrs({
-				"InitiativeCalc": initiative,
-				"InitiativeMod_max": initiativeMax
+			getAttrs([oAttributes.Senses,oAttributes.Finess,"ReflexesFW","InitiativePlus"], function (values) {
+				var iSenses = parseInt(values[oAttributes.Senses]||0);
+				var iDexterity = parseInt(values[oAttributes.Finess]||0);
+				var iReflexes = parseInt(values["ReflexesFW"]||0);
+				var iInitiativePlus = parseInt(values["InitiativePlus"]||0);
+				
+				var iInitiative = iSenses + iDexterity + iReflexes;
+				var iInitiativeMax = iInitiative + iInitiativePlus;
+				
+				setAttrs({
+					"InitiativeCalc": iInitiative,
+					"InitiativeMod_max": iInitiativeMax
+				});			
+			});
+		}
+		
+		function setSkill(skill,attr) {
+			console.log("setSkill : " + skill + " + " + attr);
+			
+			getAttrs([skill+"FW",attr], function (values) {
+				var iSkill = parseInt(values[skill+"FW"]||0);			
+				var iAttr = parseInt(values[attr]||0);			
+				var iSum = 0;
+				
+				/* Falls versehentlich negative Fertigkeiten hinterlegt sind korrigieren */
+				if (iSkill < 0) {
+					iSkill = 0;
+					setAttrs({[skill+"FW"]: iSkill});
+				}
+				
+				/* Falls versehentlich negative Attribute hinterlegt sind korrigieren */
+				if (iAttr < 0) {
+					iAttr = 0;
+					setAttrs({[attr]: iAttr});
+				}
+				
+				iSum = iSkill + iAttr;
+				
+				setAttrs({
+					[skill+"Mod"]: iSum			
+				});
+			});
+		}
+		
+		function setDefaultValues() {
+			console.log("setDefaultValues");
+			
+			getAttrs(["tblHexxen","tblJanus","tblHexxenmeister","sheetTab"], function (values) {
+				let tblHexxen = values["tblHexxen"];
+				let tblJanus = values["tblJanus"];
+				let tblHexxenmeister = values["tblHexxenmeister"];
+				let sheetTab = values["sheetTab"]||"general";
+											
+				if (tblHexxen === "") tblHexxen = "HeXXen";
+				if (tblJanus === "") tblJanus = "Janus";
+				if (tblHexxenmeister === "") tblHexxenmeister = "HeXXenmeister";
+							
+				setAttrs({
+					"tblHexxen": tblHexxen,
+					"tblJanus": tblJanus,
+					"tblHexxenmeister": tblHexxenmeister,
+					"sheetTab": sheetTab
+				});
 			});			
-		});
-	}
-	
-	function setSkill(skill,attr) {
-		console.log("calcSkill : " + skill + " + " + attr);
+		}
 		
-		getAttrs([skill+"FW",attr], function (values) {
-			var iSkill = parseInt(values[skill+"FW"]||0);			
-			var iAttr = parseInt(values[attr]||0);			
+		function toggleJanusCalc() {
+			console.log("toggleJanusCalc");
 
-			var iSum = iSkill + iAttr;
-			
-			setAttrs(
-				{[skill+"Mod"]: iSum
+			getAttrs(["JanusAutoCalc","SumAutoCalc","JanusCalc","JanusText"], function (values) {
+				let JanusAutoCalc = values.JanusAutoCalc;
+				let SumAutoCalc = values.SumAutoCalc;
+				let JanusCalc = parseInt(values.JanusCalc); 
+				let JanusText = values.JanusText;
+				let rollJanus = "";
+				let rollSeparator = "";
+							
+				if (JanusCalc < 0) { JanusCalc = JanusCalc * -1; } /* oder Math.abs() - positiv vorbelegen */
+					
+				/* Automatisch oder soll beim Würfeln jedesmal nach der Anzahl der Januswürfel gefragt werden */
+				if (JanusAutoCalc === "1"){
+					rollJanus = "@{JanusCalc}t[@{tblJanus}]";
+				} else {
+					rollJanus = "?{Anzahl Janus?|@{JanusCalc}}t[@{tblJanus}]";
+				}
+				
+				if (SumAutoCalc === "1"){
+					rollSeparator = "+"; /* Januswürfel werden addiert */
+					if(JanusText === "Malus") /* muss gleicher Text wie in nächster Funktion sein */
+					{
+						JanusCalc = JanusCalc * -1; /* Januswurf wird abgezogen (negativ addiert) */
+					}
+				} else {
+					rollSeparator = "\n/r "; /* 2 getrennte Würfe, Januswürfelzahl immer Positiv */
+				}
+				
+				setAttrs({			
+					"rollJanus": rollJanus,
+					"rollSeparator": rollSeparator,
+					"JanusAutoCalc": JanusAutoCalc,
+					"SumAutoCalc": SumAutoCalc,
+					"JanusCalc": JanusCalc
+				});
 			});
-		});
-	}	
+		}
 	/* Funktionen -- Ende */
 </script>
