@@ -1903,14 +1903,61 @@
 			"BattleShield": "Strength"
 		};
 		
+		/* Liste aller Attribute & Fertigkeiten und deren ID für die Proben */
+		var oRollAction = {
+			"Senses": 1,
+			"Understanding": 2,
+			"Willpower": 3,
+			"Strength": 4,
+			"Athletic": 5,
+			"Finess": 6,
+			"Acrobatic": 100,
+			"Attention": 101,
+			"Perception": 102,
+			"FirstAid": 103,
+			"Dexterity": 104,
+			"MentalPower": 105,
+			"Crafting": 106,
+			"Stealth": 107,
+			"CountryPeople": 108,
+			"Rhetoric": 109,
+			"Struggle": 110,
+			"Reflexes": 111,
+			"Riding": 112,
+			"Toughness": 113,
+			"Knowledge": 114,
+			"Witchcraft": 115,
+			"Navigation": 116,
+			"BattleFist": 200,
+			"BattleKnive": 201,
+			"BattleFencing": 202,
+			"BattleSword": 203,
+			"BattleSabre": 204,
+			"BattleSabreMounted": 205,
+			"BattleBlunt": 206,
+			"BattlePolearm": 207,
+			"BattlePolearmMount": 208,
+			"BattleLance": 209,
+			"BattleLanceMounted": 210,
+			"BattleSlingshot": 211,
+			"BattlePistol": 212,
+			"BattleCrossbow": 213,
+			"BattleMusket": 214,
+			"BattleDodge": 215,
+			"BattleShield": 216
+		};
+		
 	/* Globale Variablen -- Ende */
 	
 	/* Event-Listener -- Start */
 	
 		/* Beim Laden des Sheets */
 		on("sheet:opened", function() {
+			/* Auf Updates prüfen */
+			checkUpdate();
+			
 			/* Standardwerte setzen */
-			setDefaultValues()
+			setDefaultValues();
 			
 			/* Alle Attribute durchgehen und die entsprechenden recalc-Funktionen aufrufen */
 			for (const [key, value] of Object.entries(oAttributes)) {
@@ -1927,6 +1974,7 @@
 			recalcBlessingRage();
 			recalcBlessing();
 			recalcRage();
+			recalcActionpoints();
 		});
 		
 		/* onChange-Events für die Attribute erstellen*/
@@ -1965,494 +2013,113 @@
 		on("change:Rage", function() {
 			recalcRage();
 		});
-	/* Event-Listener -- Ende */		
-	
-			
-	/* Aktionspunkte */
-	on("sheet:opened change:ArmorLevel change:influenceParalysisLevel", function() {
-		getAttrs(["ArmorLevel","influenceParalysisLevel"], function (values) {
-			let ArmorLevel = parseInt(values.ArmorLevel)||0;
-			let influenceParalysisLevel = parseInt(values.influenceParalysisLevel)||0;
-			setAttrs({
-				"ActionPointsMod_max"	: 6 - ArmorLevel - influenceParalysisLevel
-			});
-		});
-	});
-	
-	/* Anhaltende Einflüsse */
-	const influenceValues = ["0","1","2","3","4","5"];	
-	influenceValues.forEach(function(value) {
-		/* Äußerer Schaden */
-		on(`clicked:influenceExternalDamage_${value}`, function() {
-			setAttrs({
-				"influenceExternalDamageLevel"	: value
-			});
-		});
-		/* Innerer Schaden */
-		on(`clicked:influenceInternalDamage_${value}`, function() {
-			setAttrs({
-				"influenceInternalDamageLevel"	: value
-			});
-		});
-		/* Malusstufen */
-		on(`clicked:influenceMalus_${value}`, function() {
-			setAttrs({
-				"influenceMalusLevel"	: value
-			});
-		});
-		/* Lähmungsstufen */
-		on(`clicked:influenceParalysis_${value}`, function() {
-			setAttrs({
-				"influenceParalysisLevel"	: value
-			});
-		});
-	});
-
-	/* Ambitionen */
-	const AmbitionValues = ["0","1","2","3","4","5"];	
-	AmbitionValues.forEach(function(value) {
-		on(`clicked:Ambition_${value}`, function() {
-			setAttrs({
-				"Ambition"	: value,
-			});			
-		});		
-	});
-
-	/* Rage <-> Segnungen */
-	const blessingRageValues = ["-5","-4","-3","-2","-1","0","1","2","3","4","5"];	
-	blessingRageValues.forEach(function(value) {
-		on(`clicked:BlessingRageLevel_${value}`, function() {
-			setAttrs({
-				"BlessingRageLevel"		: value,
-				"BlessingRage"			: value				
-			});			
-		});		
-	});	
-	
-	/* Minus-[LeP] */
-	const healthNegativeValues = ["0","1","2","3","4","5","6","7","8","9","10"];	
-	healthNegativeValues.forEach(function(value) {
-		on(`clicked:HealthNegative_${value}`, function() {
-			setAttrs({
-				"HealthNegativeLevel"	: value,
-				"HealthMod"				: value * -1				
-			});
-			
-			if (value > 0) {
-				setAttrs({
-					"CoupsMod"	: 0,
-					"IdeasMod"	: 0
-				});
-			};
-			
-		});		
-	});	
-	
-	/* Erste Hilfe Anwendungen */
-	const firstAidValues = ["0","1","2"];	
-	firstAidValues.forEach(function(value) {
-		on(`clicked:FirstAid_${value}`, function() {
-			setAttrs({
-				"FirstAidLevel"	: value,
-			});			
-		});		
-	});
-	
-	/* Magische Heilung Anwendungen */
-	const magicalAidValues = ["0","1","2","3","4"];	
-	magicalAidValues.forEach(function(value) {
-		on(`clicked:MagicalAid_${value}`, function() {
-			setAttrs({
-				"MagicalAidLevel"	: value,
-			});			
-		});		
-	});
 		
-	/* Zustände verwalten */
-	/* Quelle für Zustände: http://hexxen1733-regelwiki.de/index.php/reg_zus_typische_zustaende.html */
-	on("change:addCondition", function() {
-		getAttrs(["addCondition"], function(values) {
-			let condition = values.addCondition||0;
-			let name = "";
-			let influence = "";
-			let effect = "";
-			let reducing = "";
-			let helping = "";
-			
-			console.log("Aktiviere Zustand:" + condition);
-			switch (condition) {
-				case "condition1":
-					name = "Atemnot";
-					influence = "innere Schadensstufen";
-					effect = "Abbau nicht möglich, so lange Ursache besteht.";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_atemnot.html";
-					break;
-				case "condition2":
-					name = "Belastung";
-					influence = "Lähmungsstufen";
-					effect = "Keine Jägerkräfte (Gestik/Beweglichkeit) nutzbar";
-					reducing = "INI 0: Muskelspiel (1 Malus je Lähmungsstufe oder Vgl. gegen KKR+AS des NSC.) Bei Erfolg wird Last komplett entfernt.";
-					helping = "2AP: Siehe Abbau";
-					url="http://hexxen1733-regelwiki.de/index.php/belastung.html";
-					break;
-				case "condition3":
-					name = "Blindheit";
-					influence = "Malusstufen";
-					effect = "Malusstufen bei Proben mit Sichtkomponenten verdoppelt (max. -5)";
-					reducing = "INI 0: Erkennen";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blindheit.html";
-					break;
-				case "condition4":
-					name = "Blutung";
-					influence = "äußere Schadensstufen";
-					effect = "INI 0: 1 Blutwürfel Schmerzschaden";
-					reducing = "INI 0: Unempfindlichkeit oder Erste Hilfe";
-					helping = "2 AP: Erste Hilfe. Erfolge reduzieren Schadensstufen (auch bei mächtig). Kein LeP-Gewinn. EH-Kästchen muss gestrichen werden.";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blutung.html";
-					break;
-				case "condition5":
-					name = "Entrückung";
-					influence = "Malusstufen";
-					effect = "Malusstufen reduzieren verursachten Schaden, generieren aber keine Mali mehr.";
-					reducing = "INI 0: 1 AP, 1 Blutwürfel würfeln und um Ergebnis reduzieren";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/entrueckung.html";
-					break;
-				case "condition6":
-					name = "Erfrierung";
-					influence = "äußere Schadensstufen";
-					effect = "Entfernt Zustand Verbrennung";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_erfrierung.html";
-					break;
-				case "condition7":
-					name = "Fixierung";
-					influence = "Lähmungsstufen";
-					effect = "Kann sich nicht bewegen. Angriffe und Paraden sind möglich.";
-					reducing = "INI 0: Akrobatik";
-					helping = "2 AP: Muskelspiel oder Angriff mit passender Waffe.Erfolge reduzieren 1:1 Lähmungsstufen (auch bei mächtig)";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fixierung.html";
-					break;
-				case "condition8":
-					name = "Fluch";
-					influence = "Malusstufen";
-					effect = "Kann aus eigener Kranft keinerlei Einflussstufen abbauen";
-					reducing = "INI 0: Segnungen opfern. (1 Segnung je Malusstufe)";
-					helping = "Quelle des Fluchs vernichten.";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fluch.html";
-					break;
-				case "condition9":
-					name = "Furcht";
-					influence = "Malusstufen";
-					effect = "Malus -5 gegen den Verursacher der Furcht";
-					reducing = "INI 0: Geistesstärke";
-					helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig)";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_furcht.html";
-					break;
-				case "condition10":
-					name = "Haaresfluch";
-					influence = "Malusstufen";
-					effect = "INI 0: 1 Blutwürfel Schmerzschaden";
-					reducing = "INI 0: 2 AP Haare abschneiden. Probe auf Messer und Dolche. Erfolge reduzieren 1:1 Malusstufen.";
-					helping = "Siehe Abbau. Kann auch von einem nahe stehenden Jäger durchgeführt werden.";
-					url = "http://hexxen1733-regelwiki.de/index.php/haaresfluch.html";
-					break;
-				case "condition11":
-					name = "Krankheit";
-					influence = "Malusstufen";
-					effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\"";
-					reducing = "Nur in Regenerationsphase. Probe auf Erste Hilfe.";
-					helping = "Siehe Abbau";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_krankheit.html";
-					break;
-				case "condition12":
-					name = "Leichenstarre";
-					influence = "Äußere Schadensstufen";
-					effect = "Nach jeder Aktion/Reaktion Probe auf Unempfindlichkeit. Bei Misserfolg verlust aller AP für die Runde.";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "2 AP: Erste Hilfe";
-					url = "http://hexxen1733-regelwiki.de/index.php/leichenstarre.html";
-					break;
-				case "condition13":
-					name = "Pilzinfektion";
-					influence = "innere Schadensstufen";
-					effect = "INI 0: Nach Abbau fallen Schadensstufen auf 0. Jäger spuckt X Funguslaren aus. X = aktuelle Schadensstufen";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen";
-					url = "http://hexxen1733-regelwiki.de/index.php/pilzinfektion.html";
-					break;
-				case "condition14":
-					name = "Schlechtes Gewissen";
-					influence = "Malusstufen";
-					effect = "Vor Angriff auf den Verursacher muss der Jäger 1 Idee, Coup oder Segnung opfern.";
-					reducing = "INI 0: Geistesstärke";
-					helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
-					url = "http://hexxen1733-regelwiki.de/index.php/schlechtes-gewissen.html";
-					break;
-				case "condition15":
-					name = "Schläfrigkeit";
-					influence = "Malusstufen";
-					effect = "Bei 5 Malusstufen schläft der Jäger ein. Angriffe gegen ihn erhalten +5.";
-					reducing = "INI 0: Geistesstärke";
-					helping = "2 AP: Aufwecken ohne Probe. Malusstufen sinken auf 4. Gleiches gilt wenn er Schaden erleidet.";
-					url = "http://hexxen1733-regelwiki.de/index.php/schlaefrigkeit.html";
-					break;
-				case "condition16":
-					name = "Schwere Krankheit";
-					influence = "-";
-					effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\". Basis LeP reduzieren sich jeden Tag um 1. Sinken LeP unter 0 stirbt der Jäger";
-					reducing = "-";
-					helping = "Regenerationsphase: Muss durch Arzt/anderen Jäger behandelt werden. Probe auf Wissensgebiete durch Arzt. Danach Probe Unempfindlichkeit durch Jäger (Bonus durch Erfolge der Wissensgebiete-Probe). Erfolg reduziert Malus um 1. (maximal 1 pro Probe)";
-					url = "http://hexxen1733-regelwiki.de/index.php/schwere-krankheit.html";
-					break;
-				case "condition17":
-					name = "Spinnenfluch";
-					influence = "Malusstufen";
-					effect = "Muss pro Runde mind. einen Angriff gegen imaginäre Spinnen durchführen.(1AP) Pro Erfolg reduziert sich die Malusstufe um 1 und der Jäger erhält 1 Schmerzschaden.";
-					reducing = "-";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/spinnenfluch.html";
-					break;
-				case "condition18":
-					name = "Statue";
-					influence = "Lähmungsstufen";
-					effect = "Hat der Jäger alle AP verloren kann er den zustand nicht mehr aus eigener Kraft reduzieren";
-					reducing = "INI 0: Muskelspiel";
-					helping = "2 AP: Muskelspiel";
-					url = "http://hexxen1733-regelwiki.de/index.php/statue.html";
-					break;
-				case "condition19":
-					name = "Stummheit";
-					influence = "Malusstufen";
-					effect = "Kräfte und Effekte die auf Sprache basieren, können nicht genutzt werden.";
-					reducing = "INI 0: Redekunst";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_stummheit.html";
-					break;			
-				case "condition20":
-					name = "Sucht";
-					influence = "-";
-					effect = "-";
-					reducing = "-";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/sucht.html";
-					break;					
-				case "condition21":
-					name = "Tanzwut";
-					influence = "Lähmungsstufen";
-					effect = "Keine Aktionen, außer Ausweichen und Abbauen, möglich.";
-					reducing = "INI 0 oder als Reaktion (1AP): Muskelspiel. Erzeugt 1 Blutwürfel Schmerzschaden";
-					helping = "2 AP: Muskelspiel";
-					url = "http://hexxen1733-regelwiki.de/index.php/tanzwut.html";
-					break;
-				case "condition22":
-					name = "Taubheit";
-					influence = "Malusstufen";
-					effect = "Effekte und Kräfte die auf Sprache beruhen wirken nicht auf den Jäger";
-					reducing = "INI 0: Aufmerksamkeit";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taubheit.html";
-					break;
-				case "condition23":
-					name = "Taumeln";
-					influence = "Lähmungsstufen";
-					effect = "-";
-					reducing = "INI 0: Akrobatik";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taumeln.html";
-					break;
-				case "condition24":
-					name = "Teerglut";
-					influence = "äußere Schadensstufen";
-					effect = "Nur 1 Schaden pro Stufe in INI 0";
-					reducing = "INI 0: Fingerfertigkeit mit Malus 2";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/teerglut.html";
-					break;
-				case "condition25":
-					name = "Tollwut";
-					influence = "innere Schadensstufen";
-					effect = "Bonus auf Nahkampf, Malus auf Fernkampf in Höhe der Schadensstufen. Bei 5 Stufen sofort 5 Schmerzschaden und Reduktion der Stufen auf 0.";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "2 AP: Erste Hilfe";
-					url = "http://hexxen1733-regelwiki.de/index.php/tollwut.html";
-					break;
-				case "condition26":
-					name = "Trauma";
-					influence = "Malusstufen";
-					effect = "INI 0: 1 Blutwürfel Geistschaden";
-					reducing = "INI 0: Geistesstärke";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_trauma.html";
-					break;
-				case "condition27":
-					name = "Unheilflich";
-					influence = "Malusstufen";
-					effect = "Angreifen erhalten einen Bonus in Höhe der Malusstufen.";
-					reducing = "Töten einen Wesens den Unheil reduziert Malusstufen um 1";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/unheilfluch.html";
-					break;
-				case "condition28":
-					name = "Verbrennung";
-					influence = "äußere Schadensstufen";
-					effect = "-";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "2 AP: Unempfindlichkeit. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verbrennung.html";
-					break;
-				case "condition29":
-					name = "Vergiftung";
-					influence = "innere Schadensstufen";
-					effect = "-";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen.";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_vergiftung.html";
-					break;
-				case "condition30":
-					name = "Verschmutzung";
-					influence = "Lähmungsstufen";
-					effect = "Jäger generiert Puffer LeP in Höhe der Lähmungsstufen die er erhält";
-					reducing = "INI 0: Muskelspiel";
-					helping = "2 AP: Fingerfertigkeit";
-					url = "http://hexxen1733-regelwiki.de/index.php/verschmutzung.html";
-					break;
-				case "condition31":
-					name = "Verzauberung";
-					influence = "Lähmungsstufen";
-					effect = "-";
-					reducing = "INI 0: Geistesstärke";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verzauberung.html";
-					break;
-				case "condition32":
-					name = "Weh";
-					influence = "Malusstufen";
-					effect = "Bei erreichen der 5. Malusstufe Verlust von Blutwürfel AP. Überzählige AP erzeugen je Symbol auf einem Blutwürfel 3 Schmerzschaden.";
-					reducing = "INI 0: Unempfindlichkeit";
-					helping = "2 AP: Erste Hilfe";
-					url = "http://hexxen1733-regelwiki.de/index.php/weh.html";
-					break;
-				case "condition33":
-					name = "Zorn";
-					influence = "Malusstufen";
-					effect = "Komplex. Siehe Regelwiki";
-					reducing = "INI 0: Geistesstärke mit Malus in Höhe Zornstufe";
-					helping = "-";
-					url = "http://hexxen1733-regelwiki.de/index.php/zorn.html";
-					break;					
-				default:
-					condition = 0;				
-			}
-			
-			if (condition != 0) {
-				var newrowid = generateRowID();
-				var newrowattrs = {};
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_name"] = name;
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_isActive"] = "1";
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_influence"] = influence;
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_effect"] = effect;
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_reducing"] = reducing;
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_helping"] = helping;				
-				newrowattrs["repeating_conditions_" + newrowid + "_condition_url"] = url;				
-				newrowattrs["addCondition"] = 0;				
+		/* Aktionspunkte */
+		on("change:ArmorLevel change:influenceParalysisLevel", function() {
+			recalcActionpoints();
+		});
+		
+		/* Aktuelle Probe konfigurieren */
+		on("change:rollAction", function() {
+			setRollAction();
+		});
+		
+		/* Zustände verwalten */
+		/* Quelle für Zustände: http://hexxen1733-regelwiki.de/index.php/reg_zus_typische_zustaende.html */
+		on("change:addCondition", function() {
+			addCondition();
+		});
+		
+		/* Anhaltende Einflüsse */
+		const influenceValues = ["0","1","2","3","4","5"];	
+		influenceValues.forEach(function(value) {
+			/* Äußerer Schaden */
+			on(`clicked:influenceExternalDamage_${value}`, function() {
+				setAttrs({
+					"influenceExternalDamageLevel"	: value
+				});
+			});
+			/* Innerer Schaden */
+			on(`clicked:influenceInternalDamage_${value}`, function() {
+				setAttrs({
+					"influenceInternalDamageLevel"	: value
+				});
+			});
+			/* Malusstufen */
+			on(`clicked:influenceMalus_${value}`, function() {
+				setAttrs({
+					"influenceMalusLevel"	: value
+				});
+			});
+			/* Lähmungsstufen */
+			on(`clicked:influenceParalysis_${value}`, function() {
+				setAttrs({
+					"influenceParalysisLevel"	: value
+				});
+			});
+		});
+		
+		/* Ambitionen */
+		const AmbitionValues = ["0","1","2","3","4","5"];	
+		AmbitionValues.forEach(function(value) {
+			on(`clicked:Ambition_${value}`, function() {
+				setAttrs({
+					"Ambition"	: value,
+				});			
+			});		
+		});
+		
+		/* Rage <-> Segnungen */
+		const blessingRageValues = ["-5","-4","-3","-2","-1","0","1","2","3","4","5"];	
+		blessingRageValues.forEach(function(value) {
+			on(`clicked:BlessingRageLevel_${value}`, function() {
+				setAttrs({
+					"BlessingRageLevel"		: value,
+					"BlessingRage"			: value				
+				});			
+			});		
+		});
+		
+		/* Minus-[LeP] */
+		const healthNegativeValues = ["0","1","2","3","4","5","6","7","8","9","10"];	
+		healthNegativeValues.forEach(function(value) {
+			on(`clicked:HealthNegative_${value}`, function() {
+				setAttrs({
+					"HealthNegativeLevel"	: value,
+					"HealthMod"				: value * -1				
+				});
 				
-				setAttrs(newrowattrs);
-			}			
-		});
-	});
-	
-	/* Versionierungsskripte */
-	on("sheet:opened", function() {
-		getAttrs(["oldVersion","currentVersion"], function (values) {
-			let oldVersion = values.oldVersion||0;
-			let currentVersion = values.currentVersion||0;
-			
-			console.log ("Bisherige Version:" + oldVersion);
-			console.log ("Aktuelle Version:" + currentVersion);
-			if (oldVersion === currentVersion) {
-				console.log("Keine Anpassungen notwendig.");
-			} else {
-				console.log("Versionsupdate festgestellt. Folgende Änderungen werden durchgeführt.");
-				console.log("v1.1 bis v1.3: Keine Anpassungen notwendig.");
-				console.log("v2.0 bis v2.0.4: Keine Anpassungen notwendig.");
-				console.log("v2.1 bis v2.1: Keine Anpassungen notwendig.");
-			}
-			
-			setAttrs({
-				"oldVersion"	: currentVersion
-			});
-		});
-	});
-
-	/* Eigene Funktionen */	
-	function setRollAction() {
-		getAttrs(["rollAction","Sin","SinModifier","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
-			let rollAction = values.rollAction;
-			let sinValue = values.Sin||0;
-			let SinModifier = values.SinModifier||0;
-			let wisValue = values.Wis||0;			
-			let wisJanus = values.WisJanus||0;			
-			let wilValue = values.Wil||0;
-			let wilJanus = values.WilJanus||0;
-			let kkrValue = values.Kkr||0;
-			let kkrJanus = values.KkrJanus||0;
-			let athValue = values.Ath||0;
-			let athJanus = values.AthJanus||0;
-			let gesValue = values.Ges||0;
-			let gesJanus = values.GesJanus||0;			
-			let rollActionText = "";
-			let rollActionValue = 0;			
-			let rollActionJanus = 0;			
-			console.log("setRollAction");
-			
-			switch (rollAction) {
-				case "1":
-					rollActionText = "würfelt auf Sinnesschärfe";
-					rollActionValue = sinValue;
-					rollActionJanus = SinModifier;					
-					break;
-				case "2":
-					rollActionText = "würfelt auf Wissen";
-					rollActionValue = wisValue;
-					rollActionJanus = wisJanus;					
-					break;
-				case "3":
-					rollActionText = "würfelt auf Willenskraft";
-					rollActionValue = wilValue;
-					rollActionJanus = wilJanus;					
-					break;
-				case "4":
-					rollActionText = "würfelt auf Körperkraft";
-					rollActionValue = kkrValue;
-					rollActionJanus = kkrJanus;					
-					break;
-				case "5":
-					rollActionText = "würfelt auf Athletik";
-					rollActionValue = athValue;
-					rollActionJanus = athJanus;					
-					break;
-				case "6":
-					rollActionText = "würfelt auf Geschick";
-					rollActionValue = gesValue;
-					rollActionJanus = gesJanus;					
-					break;
-				default:
-					break;
-			}			
-						
-			setAttrs({			
-				"rollActionText": rollActionText,
-				"rollActionValue": rollActionValue,
-				"rollActionJanus": rollActionJanus
-			});
+				if (value > 0) {
+					setAttrs({
+						"CoupsMod"	: 0,
+						"IdeasMod"	: 0
+					});
+				};
+				
+			});		
 		});	
-	}
-	
+		
+		/* Erste Hilfe Anwendungen */
+		const firstAidValues = ["0","1","2"];	
+		firstAidValues.forEach(function(value) {
+			on(`clicked:FirstAid_${value}`, function() {
+				setAttrs({
+					"FirstAidLevel"	: value,
+				});			
+			});		
+		});
+		
+		/* Magische Heilung Anwendungen */
+		const magicalAidValues = ["0","1","2","3","4"];	
+		magicalAidValues.forEach(function(value) {
+			on(`clicked:MagicalAid_${value}`, function() {
+				setAttrs({
+					"MagicalAidLevel"	: value,
+				});			
+			});		
+		});
+	/* Event-Listener -- Ende */						
+		
 	/* Funktionen -- Start */
 		/* Neuberechnungen bei geänderten Attributswerten */
 		function recalcAttribute(sAttribute) {
@@ -2474,6 +2141,14 @@
 							setSkill(key,oAttributes[value])
 						}
 					}
+					
+					/* Falls bei der Probe das aktuelle Attribut ausgewählt ist, Probe neu berechnen */
+					getAttrs(["rollAction"], function(values){
+						if (values["RollAction"] == oRollAction[sAttribute])
+						{
+							setRollAction();
+						}
+					});
 			};
 		}
 		
@@ -2734,6 +2409,401 @@
 				setAttrs({
 					"Blessing"	: Blessing,
 					"Rage"		: Rage
+				});
+			});
+		}
+		
+		function recalcActionpoints () {
+			console.log("recalcActionpoints");
+			
+			getAttrs(["ArmorLevel","influenceParalysisLevel"], function (values) {
+				let ArmorLevel = parseInt(values.ArmorLevel)||0;
+				let influenceParalysisLevel = parseInt(values.influenceParalysisLevel)||0;
+				setAttrs({
+					"ActionPointsMod_max"	: 6 - ArmorLevel - influenceParalysisLevel
+				});
+			});
+		}
+		
+		function setRollAction() {
+			console.log("setRoleAction");
+			
+			getAttrs(["rollAction","Sin","SinModifier","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
+				let rollAction = values.rollAction;
+				let sinValue = values.Sin||0;
+				let SinModifier = values.SinModifier||0;
+				let wisValue = values.Wis||0;			
+				let wisJanus = values.WisJanus||0;			
+				let wilValue = values.Wil||0;
+				let wilJanus = values.WilJanus||0;
+				let kkrValue = values.Kkr||0;
+				let kkrJanus = values.KkrJanus||0;
+				let athValue = values.Ath||0;
+				let athJanus = values.AthJanus||0;
+				let gesValue = values.Ges||0;
+				let gesJanus = values.GesJanus||0;			
+				let rollActionText = "";
+				let rollActionValue = 0;			
+				let rollActionJanus = 0;			
+				
+				switch (rollAction) {
+					case "1":
+						rollActionText = "würfelt auf Sinnesschärfe";
+						rollActionValue = sinValue;
+						rollActionJanus = SinModifier;					
+						break;
+					case "2":
+						rollActionText = "würfelt auf Wissen";
+						rollActionValue = wisValue;
+						rollActionJanus = wisJanus;					
+						break;
+					case "3":
+						rollActionText = "würfelt auf Willenskraft";
+						rollActionValue = wilValue;
+						rollActionJanus = wilJanus;					
+						break;
+					case "4":
+						rollActionText = "würfelt auf Körperkraft";
+						rollActionValue = kkrValue;
+						rollActionJanus = kkrJanus;					
+						break;
+					case "5":
+						rollActionText = "würfelt auf Athletik";
+						rollActionValue = athValue;
+						rollActionJanus = athJanus;					
+						break;
+					case "6":
+						rollActionText = "würfelt auf Geschick";
+						rollActionValue = gesValue;
+						rollActionJanus = gesJanus;					
+						break;
+					default:
+						break;
+				}			
+							
+				setAttrs({			
+					"rollActionText": rollActionText,
+					"rollActionValue": rollActionValue,
+					"rollActionJanus": rollActionJanus
+				});
+			});	
+		}
+		
+		function addCondition () {
+			getAttrs(["addCondition"], function(values) {
+				let condition = values.addCondition||0;
+				let name = "";
+				let influence = "";
+				let effect = "";
+				let reducing = "";
+				let helping = "";
+				
+				console.log("Aktiviere Zustand:" + condition);
+				switch (condition) {
+					case "condition1":
+						name = "Atemnot";
+						influence = "innere Schadensstufen";
+						effect = "Abbau nicht möglich, so lange Ursache besteht.";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_atemnot.html";
+						break;
+					case "condition2":
+						name = "Belastung";
+						influence = "Lähmungsstufen";
+						effect = "Keine Jägerkräfte (Gestik/Beweglichkeit) nutzbar";
+						reducing = "INI 0: Muskelspiel (1 Malus je Lähmungsstufe oder Vgl. gegen KKR+AS des NSC.) Bei Erfolg wird Last komplett entfernt.";
+						helping = "2AP: Siehe Abbau";
+						url="http://hexxen1733-regelwiki.de/index.php/belastung.html";
+						break;
+					case "condition3":
+						name = "Blindheit";
+						influence = "Malusstufen";
+						effect = "Malusstufen bei Proben mit Sichtkomponenten verdoppelt (max. -5)";
+						reducing = "INI 0: Erkennen";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blindheit.html";
+						break;
+					case "condition4":
+						name = "Blutung";
+						influence = "äußere Schadensstufen";
+						effect = "INI 0: 1 Blutwürfel Schmerzschaden";
+						reducing = "INI 0: Unempfindlichkeit oder Erste Hilfe";
+						helping = "2 AP: Erste Hilfe. Erfolge reduzieren Schadensstufen (auch bei mächtig). Kein LeP-Gewinn. EH-Kästchen muss gestrichen werden.";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_blutung.html";
+						break;
+					case "condition5":
+						name = "Entrückung";
+						influence = "Malusstufen";
+						effect = "Malusstufen reduzieren verursachten Schaden, generieren aber keine Mali mehr.";
+						reducing = "INI 0: 1 AP, 1 Blutwürfel würfeln und um Ergebnis reduzieren";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/entrueckung.html";
+						break;
+					case "condition6":
+						name = "Erfrierung";
+						influence = "äußere Schadensstufen";
+						effect = "Entfernt Zustand Verbrennung";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_erfrierung.html";
+						break;
+					case "condition7":
+						name = "Fixierung";
+						influence = "Lähmungsstufen";
+						effect = "Kann sich nicht bewegen. Angriffe und Paraden sind möglich.";
+						reducing = "INI 0: Akrobatik";
+						helping = "2 AP: Muskelspiel oder Angriff mit passender Waffe.Erfolge reduzieren 1:1 Lähmungsstufen (auch bei mächtig)";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fixierung.html";
+						break;
+					case "condition8":
+						name = "Fluch";
+						influence = "Malusstufen";
+						effect = "Kann aus eigener Kranft keinerlei Einflussstufen abbauen";
+						reducing = "INI 0: Segnungen opfern. (1 Segnung je Malusstufe)";
+						helping = "Quelle des Fluchs vernichten.";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_fluch.html";
+						break;
+					case "condition9":
+						name = "Furcht";
+						influence = "Malusstufen";
+						effect = "Malus -5 gegen den Verursacher der Furcht";
+						reducing = "INI 0: Geistesstärke";
+						helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig)";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_furcht.html";
+						break;
+					case "condition10":
+						name = "Haaresfluch";
+						influence = "Malusstufen";
+						effect = "INI 0: 1 Blutwürfel Schmerzschaden";
+						reducing = "INI 0: 2 AP Haare abschneiden. Probe auf Messer und Dolche. Erfolge reduzieren 1:1 Malusstufen.";
+						helping = "Siehe Abbau. Kann auch von einem nahe stehenden Jäger durchgeführt werden.";
+						url = "http://hexxen1733-regelwiki.de/index.php/haaresfluch.html";
+						break;
+					case "condition11":
+						name = "Krankheit";
+						influence = "Malusstufen";
+						effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\"";
+						reducing = "Nur in Regenerationsphase. Probe auf Erste Hilfe.";
+						helping = "Siehe Abbau";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_krankheit.html";
+						break;
+					case "condition12":
+						name = "Leichenstarre";
+						influence = "Äußere Schadensstufen";
+						effect = "Nach jeder Aktion/Reaktion Probe auf Unempfindlichkeit. Bei Misserfolg verlust aller AP für die Runde.";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "2 AP: Erste Hilfe";
+						url = "http://hexxen1733-regelwiki.de/index.php/leichenstarre.html";
+						break;
+					case "condition13":
+						name = "Pilzinfektion";
+						influence = "innere Schadensstufen";
+						effect = "INI 0: Nach Abbau fallen Schadensstufen auf 0. Jäger spuckt X Funguslaren aus. X = aktuelle Schadensstufen";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen";
+						url = "http://hexxen1733-regelwiki.de/index.php/pilzinfektion.html";
+						break;
+					case "condition14":
+						name = "Schlechtes Gewissen";
+						influence = "Malusstufen";
+						effect = "Vor Angriff auf den Verursacher muss der Jäger 1 Idee, Coup oder Segnung opfern.";
+						reducing = "INI 0: Geistesstärke";
+						helping = "2 AP: Redekunst. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
+						url = "http://hexxen1733-regelwiki.de/index.php/schlechtes-gewissen.html";
+						break;
+					case "condition15":
+						name = "Schläfrigkeit";
+						influence = "Malusstufen";
+						effect = "Bei 5 Malusstufen schläft der Jäger ein. Angriffe gegen ihn erhalten +5.";
+						reducing = "INI 0: Geistesstärke";
+						helping = "2 AP: Aufwecken ohne Probe. Malusstufen sinken auf 4. Gleiches gilt wenn er Schaden erleidet.";
+						url = "http://hexxen1733-regelwiki.de/index.php/schlaefrigkeit.html";
+						break;
+					case "condition16":
+						name = "Schwere Krankheit";
+						influence = "-";
+						effect = "Alle Zustände mit Malusstufen gelten als \"dauerhaft\". Basis LeP reduzieren sich jeden Tag um 1. Sinken LeP unter 0 stirbt der Jäger";
+						reducing = "-";
+						helping = "Regenerationsphase: Muss durch Arzt/anderen Jäger behandelt werden. Probe auf Wissensgebiete durch Arzt. Danach Probe Unempfindlichkeit durch Jäger (Bonus durch Erfolge der Wissensgebiete-Probe). Erfolg reduziert Malus um 1. (maximal 1 pro Probe)";
+						url = "http://hexxen1733-regelwiki.de/index.php/schwere-krankheit.html";
+						break;
+					case "condition17":
+						name = "Spinnenfluch";
+						influence = "Malusstufen";
+						effect = "Muss pro Runde mind. einen Angriff gegen imaginäre Spinnen durchführen.(1AP) Pro Erfolg reduziert sich die Malusstufe um 1 und der Jäger erhält 1 Schmerzschaden.";
+						reducing = "-";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/spinnenfluch.html";
+						break;
+					case "condition18":
+						name = "Statue";
+						influence = "Lähmungsstufen";
+						effect = "Hat der Jäger alle AP verloren kann er den zustand nicht mehr aus eigener Kraft reduzieren";
+						reducing = "INI 0: Muskelspiel";
+						helping = "2 AP: Muskelspiel";
+						url = "http://hexxen1733-regelwiki.de/index.php/statue.html";
+						break;
+					case "condition19":
+						name = "Stummheit";
+						influence = "Malusstufen";
+						effect = "Kräfte und Effekte die auf Sprache basieren, können nicht genutzt werden.";
+						reducing = "INI 0: Redekunst";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_stummheit.html";
+						break;			
+					case "condition20":
+						name = "Sucht";
+						influence = "-";
+						effect = "-";
+						reducing = "-";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/sucht.html";
+						break;					
+					case "condition21":
+						name = "Tanzwut";
+						influence = "Lähmungsstufen";
+						effect = "Keine Aktionen, außer Ausweichen und Abbauen, möglich.";
+						reducing = "INI 0 oder als Reaktion (1AP): Muskelspiel. Erzeugt 1 Blutwürfel Schmerzschaden";
+						helping = "2 AP: Muskelspiel";
+						url = "http://hexxen1733-regelwiki.de/index.php/tanzwut.html";
+						break;
+					case "condition22":
+						name = "Taubheit";
+						influence = "Malusstufen";
+						effect = "Effekte und Kräfte die auf Sprache beruhen wirken nicht auf den Jäger";
+						reducing = "INI 0: Aufmerksamkeit";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taubheit.html";
+						break;
+					case "condition23":
+						name = "Taumeln";
+						influence = "Lähmungsstufen";
+						effect = "-";
+						reducing = "INI 0: Akrobatik";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_taumeln.html";
+						break;
+					case "condition24":
+						name = "Teerglut";
+						influence = "äußere Schadensstufen";
+						effect = "Nur 1 Schaden pro Stufe in INI 0";
+						reducing = "INI 0: Fingerfertigkeit mit Malus 2";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/teerglut.html";
+						break;
+					case "condition25":
+						name = "Tollwut";
+						influence = "innere Schadensstufen";
+						effect = "Bonus auf Nahkampf, Malus auf Fernkampf in Höhe der Schadensstufen. Bei 5 Stufen sofort 5 Schmerzschaden und Reduktion der Stufen auf 0.";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "2 AP: Erste Hilfe";
+						url = "http://hexxen1733-regelwiki.de/index.php/tollwut.html";
+						break;
+					case "condition26":
+						name = "Trauma";
+						influence = "Malusstufen";
+						effect = "INI 0: 1 Blutwürfel Geistschaden";
+						reducing = "INI 0: Geistesstärke";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_trauma.html";
+						break;
+					case "condition27":
+						name = "Unheilflich";
+						influence = "Malusstufen";
+						effect = "Angreifen erhalten einen Bonus in Höhe der Malusstufen.";
+						reducing = "Töten einen Wesens den Unheil reduziert Malusstufen um 1";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/unheilfluch.html";
+						break;
+					case "condition28":
+						name = "Verbrennung";
+						influence = "äußere Schadensstufen";
+						effect = "-";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "2 AP: Unempfindlichkeit. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig).";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verbrennung.html";
+						break;
+					case "condition29":
+						name = "Vergiftung";
+						influence = "innere Schadensstufen";
+						effect = "-";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "2 AP: Erste Hilfe. Erfolge reduzieren 1:1 Malusstufen (auch bei mächtig). Verbraucht EH-Kästchen.";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_vergiftung.html";
+						break;
+					case "condition30":
+						name = "Verschmutzung";
+						influence = "Lähmungsstufen";
+						effect = "Jäger generiert Puffer LeP in Höhe der Lähmungsstufen die er erhält";
+						reducing = "INI 0: Muskelspiel";
+						helping = "2 AP: Fingerfertigkeit";
+						url = "http://hexxen1733-regelwiki.de/index.php/verschmutzung.html";
+						break;
+					case "condition31":
+						name = "Verzauberung";
+						influence = "Lähmungsstufen";
+						effect = "-";
+						reducing = "INI 0: Geistesstärke";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/reg_zus_verzauberung.html";
+						break;
+					case "condition32":
+						name = "Weh";
+						influence = "Malusstufen";
+						effect = "Bei erreichen der 5. Malusstufe Verlust von Blutwürfel AP. Überzählige AP erzeugen je Symbol auf einem Blutwürfel 3 Schmerzschaden.";
+						reducing = "INI 0: Unempfindlichkeit";
+						helping = "2 AP: Erste Hilfe";
+						url = "http://hexxen1733-regelwiki.de/index.php/weh.html";
+						break;
+					case "condition33":
+						name = "Zorn";
+						influence = "Malusstufen";
+						effect = "Komplex. Siehe Regelwiki";
+						reducing = "INI 0: Geistesstärke mit Malus in Höhe Zornstufe";
+						helping = "-";
+						url = "http://hexxen1733-regelwiki.de/index.php/zorn.html";
+						break;					
+					default:
+						condition = 0;				
+				}
+				
+				if (condition != 0) {
+					var newrowid = generateRowID();
+					var newrowattrs = {};
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_name"] = name;
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_isActive"] = "1";
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_influence"] = influence;
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_effect"] = effect;
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_reducing"] = reducing;
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_helping"] = helping;				
+					newrowattrs["repeating_conditions_" + newrowid + "_condition_url"] = url;				
+					newrowattrs["addCondition"] = 0;				
+					
+					setAttrs(newrowattrs);
+				}			
+			});
+		}
+		
+		/* Versionierungsskripte */
+		function checkUpdate() {
+			getAttrs(["oldVersion","currentVersion"], function (values) {
+				let oldVersion = values.oldVersion||0;
+				let currentVersion = values.currentVersion||0;
+				
+				console.log ("Bisherige Version:" + oldVersion);
+				console.log ("Aktuelle Version:" + currentVersion);
+				if (oldVersion === currentVersion) {
+					console.log("Keine Anpassungen notwendig.");
+				} else {
+					console.log("Versionsupdate festgestellt. Folgende Änderungen werden durchgeführt.");
+					console.log("v1.1 bis v1.3: Keine Anpassungen notwendig.");
+					console.log("v2.0 bis v2.0.4: Keine Anpassungen notwendig.");
+					console.log("v2.1 bis v2.1: Keine Anpassungen notwendig.");
+				}
+				
+				setAttrs({
+					"oldVersion"	: currentVersion
 				});
 			});
 		}
