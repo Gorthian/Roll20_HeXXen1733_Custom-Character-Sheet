@@ -309,7 +309,7 @@
 												<div class="tr alternate">						
 													<div class="td"><b>[Sin]</b><br/>Sinnesschärfe</div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Sin"/></div>
-													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_SinJanus"/></div>
+													<div class="td">+/-<input class="" placeholder="0" type="number" name="attr_SinModifier"/></div>
 												</div>
 												<div class="tr alternate">			
 													<div class="td"><b>[Wis]</b><br/>Wissen</div>
@@ -563,7 +563,7 @@
 										<div class="td is-title">Schiffsnavigation</div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_NavigationFW"/></div>
-										<div class="td"><span class="info-border" name="attr_NavigationtMod"></span></div>				
+										<div class="td"><span class="info-border" name="attr_NavigationMod"></span></div>				
 										<div class="td"><button type="roll" value="/me würfelt auf Schiffsnavigation\n/r (@{NavigationMod})t[@{tblHexxen}]@{rollSeparator}@{rollJanus}" name="Roll_Navigation"></button></div>
 									</div>
 								</div>								
@@ -1854,6 +1854,23 @@
             });
         });
     });
+	
+	/* Event-Listener -- Start */
+	
+		/* Beim Laden des Sheets */
+		on("sheet:opened", function() {
+			recalcSenses();
+			recalcUnderstanding();
+		});
+		
+		/* Attributsänderungen */
+		on("change:Sin", function () {
+			recalcSenses();
+		});
+		on("change:Wis", function () {
+			recalcUnderstanding();
+		});
+	/* Event-Listener -- Ende */	
 
 	/* Standardwerte für Würfeltabellen und Attribute setzen */
 	on("sheet:opened", function() {
@@ -1878,7 +1895,7 @@
 	});
 	
 	/* Probenwurf festlegen */
-	on("change:rollAction change:Sin change:SinJanus change:Wis change:WisJanus change:Wil change:WilJanus change:Kkr change:KkrJanus change:Ath change:AthJanus change:Ges change:GesJanus", function() {
+	on("change:rollAction change:Sin change:SinModifier change:Wis change:WisJanus change:Wil change:WilJanus change:Kkr change:KkrJanus change:Ath change:AthJanus change:Ges change:GesJanus", function() {
 		setRollAction();
 		calculateJanusPool();
 	});
@@ -1942,32 +1959,6 @@
 			});
 		});
 	});	
-	
-	/* Initiative berechnen */
-	on("sheet:opened change:Sin change:Ges change:ReflexesFW change:InitiativePlus", function() {
-		getAttrs(["Sin","Ges","ReflexesFW","InitiativePlus"], function (values) {
-			let Sin = parseInt(values.Sin)||0;
-			let Ges = parseInt(values.Ges)||0;
-			let ReflexesFW = parseInt(values.ReflexesFW)||0;
-			let InitiativePlus = parseInt(values.InitiativePlus)||0;
-			setAttrs({
-				"InitiativeCalc"	: Sin + Ges + ReflexesFW,
-				"InitiativeMod_max"	: Sin + Ges + ReflexesFW + InitiativePlus
-			});
-		});
-	});
-	
-	/* Ideen berechnen */
-	on("sheet:opened change:Wis change:IdeasPlus", function() {
-		getAttrs(["Wis","IdeasPlus"], function (values) {
-			let Wis = parseInt(values.Wis)||0;
-			let IdeasPlus = parseInt(values.IdeasPlus)||0;
-			setAttrs({
-				"IdeasCalc"		: Wis,
-				"IdeasMod_max"	: Wis + IdeasPlus
-			});
-		});
-	});
 	
 	/* Coups berechnen */
 	on("sheet:opened change:Ath change:CoupsPlus", function() {
@@ -2049,40 +2040,7 @@
 			});
 		});
 	});
-	
-	/* Aufmerksamkeit berechnen */
-	on("sheet:opened change:Sin change:AttentionFW", function() {
-		getAttrs(["Sin","AttentionFW"], function (values) {
-			let Base = parseInt(values.Sin)||0;
-			let FW = parseInt(values.AttentionFW)||0;
-			setAttrs({
-				"AttentionMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Erkennen berechnen */
-	on("sheet:opened change:Sin change:PerceptionFW", function() {
-		getAttrs(["Sin","PerceptionFW"], function (values) {
-			let Base = parseInt(values.Sin)||0;
-			let FW = parseInt(values.PerceptionFW)||0;
-			setAttrs({
-				"PerceptionMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Erste Hilfe berechnen */
-	on("sheet:opened change:Wis change:FirstAidFW", function() {
-		getAttrs(["Wis","FirstAidFW"], function (values) {
-			let Base = parseInt(values.Wis)||0;
-			let FW = parseInt(values.FirstAidFW)||0;
-			setAttrs({
-				"FirstAidMod"	: Base + FW
-			});
-		});
-	});
-	
+
 	/* Fingerfertigkeit berechnen */
 	on("sheet:opened change:Ges change:DexterityFW", function() {
 		getAttrs(["Ges","DexterityFW"], function (values) {
@@ -2125,18 +2083,7 @@
 				"StealthMod"	: Base + FW
 			});
 		});
-	});
-	
-	/* Land und Leute berechnen */
-	on("sheet:opened change:Wis change:CountryPeopleFW", function() {
-		getAttrs(["Wis","CountryPeopleFW"], function (values) {
-			let Base = parseInt(values.Wis)||0;
-			let FW = parseInt(values.CountryPeopleFW)||0;
-			setAttrs({
-				"CountryPeopleMod"	: Base + FW
-			});
-		});
-	});
+	});	
 	
 	/* Redekunst berechnen */
 	on("sheet:opened change:Wil change:RhetoricFW", function() {
@@ -2158,19 +2105,8 @@
 				"StruggleMod"	: Base + FW
 			});
 		});
-	});
+	});	
 	
-	/* Reflexe berechnen */
-	on("sheet:opened change:Sin change:ReflexesFW", function() {
-		getAttrs(["Sin","ReflexesFW"], function (values) {
-			let Base = parseInt(values.Sin)||0;
-			let FW = parseInt(values.ReflexesFW)||0;
-			setAttrs({
-				"ReflexesMod"	: Base + FW
-			});
-		});
-	});
-
 	/* Reiten berechnen */
 	on("sheet:opened change:Ath change:RidingFW", function() {
 		getAttrs(["Ath","RidingFW"], function (values) {
@@ -2191,40 +2127,7 @@
 				"ToughnessMod"	: Base + FW
 			});
 		});
-	});	
-	
-	/* Wissensgebiete berechnen */
-	on("sheet:opened change:Wis change:KnowledgeFW", function() {
-		getAttrs(["Wis","KnowledgeFW"], function (values) {
-			let Base = parseInt(values.Wis)||0;
-			let FW = parseInt(values.KnowledgeFW)||0;
-			setAttrs({
-				"KnowledgeMod"	: Base + FW
-			});
-		});
-	});	
-	
-	/* Hexerei berechnen */
-	on("sheet:opened change:Wis change:WitchcraftFW", function() {
-		getAttrs(["Wis","WitchcraftFW"], function (values) {
-			let Base = parseInt(values.Wis)||0;
-			let FW = parseInt(values.WitchcraftFW)||0;
-			setAttrs({
-				"WitchcraftMod"	: Base + FW
-			});
-		});
-	});
-	
-	/* Schiffsnavigation berechnen */
-	on("sheet:opened change:Wis change:NavigationFW", function() {
-		getAttrs(["Wis","NavigationFW"], function (values) {
-			let Base = parseInt(values.Wis)||0;
-			let FW = parseInt(values.NavigationFW)||0;
-			setAttrs({
-				"NavigationMod"	: Base + FW
-			});
-		});
-	});
+	});		
 	
 	/* Aktionspunkte */
 	on("sheet:opened change:ArmorLevel change:influenceParalysisLevel", function() {
@@ -2344,10 +2247,7 @@
 			"BattlePolearmMountFW",
 			"BattleLanceFW",
 			"BattleLanceMountedFW",
-			"BattleSlingshotFW",
-			"BattlePistolFW",
-			"BattleCrossbowFW",
-			"BattleMusketFW",
+			"BattleSlingshotFW",			
 			"BattleDodgeFW",
 			"BattleShieldFW"
 		], function (values) {
@@ -2367,9 +2267,6 @@
 			let BattleLanceFW = parseInt(values.BattleLanceFW)||0;
 			let BattleLanceMountedFW = parseInt(values.BattleLanceMountedFW)||0;
 			let BattleSlingshotFW = parseInt(values.BattleSlingshotFW)||0;
-			let BattlePistolFW = parseInt(values.BattlePistolFW)||0;
-			let BattleCrossbowFW = parseInt(values.BattleCrossbowFW)||0;
-			let BattleMusketFW = parseInt(values.BattleMusketFW)||0;
 			let BattleDodgeFW = parseInt(values.BattleDodgeFW)||0;
 			let BattleShieldFW = parseInt(values.BattleShieldFW)||0;
 
@@ -2386,9 +2283,6 @@
 				"BattleLanceMod"		: Kkr + BattleLanceFW,			
 				"BattleLanceMountedMod"	: Kkr + BattleLanceMountedFW,			
 				"BattleSlingshotMod"	: Ges + BattleSlingshotFW,
-				"BattlePistolMod"		: Sin + BattlePistolFW,
-				"BattleCrossbowMod"		: Sin + BattleCrossbowFW,
-				"BattleMusketMod"		: Sin + BattleMusketFW,
 				"BattleDodgeMod"		: Ath + BattleDodgeFW,
 				"BattleShieldMod"		: Kkr + BattleShieldFW					
 			});
@@ -2752,10 +2646,10 @@
 	}
 	
 	function setRollAction() {
-		getAttrs(["rollAction","Sin","SinJanus","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
+		getAttrs(["rollAction","Sin","SinModifier","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
 			let rollAction = values.rollAction;
 			let sinValue = values.Sin||0;
-			let sinJanus = values.SinJanus||0;
+			let SinModifier = values.SinModifier||0;
 			let wisValue = values.Wis||0;			
 			let wisJanus = values.WisJanus||0;			
 			let wilValue = values.Wil||0;
@@ -2775,7 +2669,7 @@
 				case "1":
 					rollActionText = "würfelt auf Sinnesschärfe";
 					rollActionValue = sinValue;
-					rollActionJanus = sinJanus;					
+					rollActionJanus = SinModifier;					
 					break;
 				case "2":
 					rollActionText = "würfelt auf Wissen";
@@ -2811,5 +2705,85 @@
 				"rollActionValue": rollActionValue,
 				"rollActionJanus": rollActionJanus
 			});
-		});	}
+		});	
+	}
+	
+	/* Globale Variablen */
+	var oAttributes = {
+		"senses": "Sin",
+		"understanding": "Wis",
+		"dexterity": "Ges"
+	};
+	
+	/* Funktionen -- Start */
+	function recalcSenses() {
+		console.log("recalcSenses");
+		
+		setInitiative();
+		setSkill("Attention",oAttributes.senses);
+		setSkill("Perception",oAttributes.senses);
+		setSkill("Reflexes",oAttributes.senses);
+		setSkill("BattlePistol",oAttributes.senses);
+		setSkill("BattleCrossbow",oAttributes.senses);
+		setSkill("BattleMusket",oAttributes.senses);
+	}
+	
+	function recalcUnderstanding() {
+		console.log("recalcUnderstanding");
+		
+		setIdeas();
+		setSkill("FirstAid",oAttributes.understanding);
+		setSkill("CountryPeople",oAttributes.understanding);
+		setSkill("Knowledge",oAttributes.understanding);
+		setSkill("Witchcraft",oAttributes.understanding);
+		setSkill("Navigation",oAttributes.understanding);
+	}
+	
+	function setIdeas() {
+		console.log("setIdeas");
+		
+		getAttrs([oAttributes.understanding,"IdeasPlus"], function (values) {
+			let Wis = parseInt(values.Wis)||0;
+			let IdeasPlus = parseInt(values.IdeasPlus)||0;
+			setAttrs({
+				"IdeasCalc"		: Wis,
+				"IdeasMod_max"	: Wis + IdeasPlus
+			});
+		});
+	}
+	
+	function setInitiative() {
+		console.log("setInitiative");
+		
+		getAttrs([oAttributes.senses,oAttributes.dexterity,"ReflexesFW","InitiativePlus"], function (values) {
+			var senses = parseInt(values.Sin||0);
+			var dexterity = parseInt(values.Ges||0);
+			var reflexes = parseInt(values.ReflexesFW||0);
+			var initiativePlus = parseInt(values.InitiativePlus||0);
+			
+			var initiative = senses + dexterity + reflexes;
+			var initiativeMax = initiative + initiativePlus;
+			
+			setAttrs({
+				"InitiativeCalc": initiative,
+				"InitiativeMod_max": initiativeMax
+			});			
+		});
+	}
+	
+	function setSkill(skill,attr) {
+		console.log("calcSkill : " + skill + " + " + attr);
+		
+		getAttrs([skill+"FW",attr], function (values) {
+			var iSkill = parseInt(values[skill+"FW"]||0);			
+			var iAttr = parseInt(values[attr]||0);			
+
+			var iSum = iSkill + iAttr;
+			
+			setAttrs(
+				{[skill+"Mod"]: iSum
+			});
+		});
+	}	
+	/* Funktionen -- Ende */
 </script>
