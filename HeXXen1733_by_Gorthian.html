@@ -104,96 +104,114 @@
 	<!-- Proben modifizieren //-->
 	<div class="info-border">
 		<div class="table">
-			<div class="tr">
-				<div class="td is-title width-15">Probe auf:</div>
-				<div class="td width-33">
-					<select name="attr_rollAction">
-						<option value="">** Attribute **</option>
-						<option value="1">Sinnesschärfe</option>
-						<option value="2">Wissen</option>
-						<option value="3">Willenskraft</option>
-						<option value="4">Körperkraft</option>
-						<option value="5">Athletik</option>
-						<option value="6">Geschick</option>
-						<option value="">** Allg. Fertigkeiten **</option>
-						<option value="100">Akrobatik</option>
-						<option value="101">Aufmerksamkeit</option>
-						<option value="102">Erkennen</option>
-						<option value="103">Erste Hilfe</option>
-						<option value="104">Fingerfertigkeit</option>
-						<option value="105">Geistesstärke</option>
-						<option value="106">Handwerken</option>
-						<option value="107">Heimlichkeit</option>
-						<option value="108">Land und Leute</option>
-						<option value="109">Redekunst</option>
-						<option value="110">Muskelspiel</option>
-						<option value="111">Reflexe</option>
-						<option value="112">Reiten</option>
-						<option value="113">Unempfindlichkeit</option>
-						<option value="114">Wissensgebiete</option>
-						<option value="">** Spez. Fertigkeiten **</option>
-						<option value="200">Hexerei</option>
-						<option value="201">Schiffsnavigation</option>
-						<option value="">** Kampffertigkeiten **</option>
-						<option value="300">Faustschlag</option>
-						<option value="301">Messer & Dolche</option>
-						<option value="302">Fechtwaffen</option>
-						<option value="303">Schwerter</option>
-						<option value="304">Säbel</option>
-						<option value="305">Säbel (beritten)</option>
-						<option value="306">Schlagwaffen</option>
-						<option value="307">Stangenwaffen</option>
-						<option value="308">Stangenwaffen (gegen Reiter)</option>
-						<option value="309">Lanzen</option>
-						<option value="310">Lanzen (beritten)</option>
-						<option value="311">Schleuder</option>
-						<option value="312">Pistole</option>
-						<option value="313">Armbrust</option>
-						<option value="314">Muskete</option>
-						<option value="315">Ausweichen</option>
-						<option value="316">Schildbenutzung</option>
-					</select>
-				</div>
-				<div class="td">
-					Wert: <span name="attr_rollActionValue"></span>
-				</div>
-				<div class="td">
-					Janus: <span name="attr_rollActionJanus"></span>
-				</div>
-			</div>
-		</div>
-		<div class="table">
 			<div class="tr alternate">
-				<div class="td">
-					Malusstufen <span class="info-border" name="attr_influenceMalusLevel"></span>				
+				<div class="td width-10 centered">
+					<button class="dHexx dBig" type="roll" value="/me @{rollActionText}\n/r (@{rollActionValue})t[@{tblHexxen}]@{rollSeparator}@{rollJanus}" name="Roll"></button>
 				</div>
 				<div class="td">
-					weitere Mali <input type="number" placeholder="0" name="attr_MalusMod" />
+					<div class="table">
+						<div class="tr">					
+							<div class="td width-20">
+								<select name="attr_rollAction">
+									<option value="">** Attribute **</option>
+									<option value="1">Sinnesschärfe</option>
+									<option value="2">Wissen</option>
+									<option value="3">Willenskraft</option>
+									<option value="4">Körperkraft</option>
+									<option value="5">Athletik</option>
+									<option value="6">Geschick</option>
+									<option value="">** Allg. Fertigkeiten **</option>
+									<option value="100">Akrobatik</option>
+									<option value="101">Aufmerksamkeit</option>
+									<option value="102">Erkennen</option>
+									<option value="103">Erste Hilfe</option>
+									<option value="104">Fingerfertigkeit</option>
+									<option value="105">Geistesstärke</option>
+									<option value="106">Handwerken</option>
+									<option value="107">Heimlichkeit</option>
+									<option value="108">Land und Leute</option>
+									<option value="109">Redekunst</option>
+									<option value="110">Muskelspiel</option>
+									<option value="111">Reflexe</option>
+									<option value="112">Reiten</option>
+									<option value="113">Unempfindlichkeit</option>
+									<option value="114">Wissensgebiete</option>
+									<option value="">** Spez. Fertigkeiten **</option>
+									<option value="200">Hexerei</option>
+									<option value="201">Schiffsnavigation</option>
+									<option value="">** Kampffertigkeiten **</option>
+									<option value="300">Faustschlag</option>
+									<option value="301">Messer & Dolche</option>
+									<option value="302">Fechtwaffen</option>
+									<option value="303">Schwerter</option>
+									<option value="304">Säbel</option>
+									<option value="305">Säbel (beritten)</option>
+									<option value="306">Schlagwaffen</option>
+									<option value="307">Stangenwaffen</option>
+									<option value="308">Stangenwaffen (gegen Reiter)</option>
+									<option value="309">Lanzen</option>
+									<option value="310">Lanzen (beritten)</option>
+									<option value="311">Schleuder</option>
+									<option value="312">Pistole</option>
+									<option value="313">Armbrust</option>
+									<option value="314">Muskete</option>
+									<option value="315">Ausweichen</option>
+									<option value="316">Schildbenutzung</option>
+								</select>
+							</div>
+							<div class="td width-05">
+								<div class="show-tooltip"><img width="20" src="https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Hexx.png?raw=true" /></div><div class="tooltip">Anzahl HeXXenWürfel</div>
+							</div>
+							<div class="td width-05 is-title">
+								<span name="attr_rollActionValue"></span>
+							</div>
+							<div class="td width-05">
+								<div class="show-tooltip"><img width="20" src="https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Janus.png?raw=true" /></div><div class="tooltip">Boni/Mali auf diese/s Fertigkeit/Atribut</div>
+							</div>
+							<div class="td width-05 is-title">
+								<span name="attr_rollActionJanus"></span>
+							</div>
+							<div class="td width-05">
+								<div class="show-tooltip"><img width="20" src="https://s3.amazonaws.com/files.d20.io/images/37/u1YsnV0Y_mrN17bhLHbrog/icon.png?1575370651" /></div><div class="tooltip">Abzüge durch Malusstufen</div>
+							</div>
+							<div class="td width-05 is-title">
+								<span name="attr_influenceMalusLevel"></span>				
+							</div>
+						</div>
+					</div>
+					<div class="table">
+						<div class="tr">
+							<div class="td width-10">
+								Heimtückisch: 
+							</div>
+							<div class="td width-05">
+								<input type="checkbox" name="attr_BonusInsidious" value="2" />
+							</div>
+							<div class="td width-10">
+								Fokusiert: 
+							</div>
+							<div class="td width-05">
+								<input type="checkbox" name="attr_BonusFocused" value="3" />
+							</div>
+							<div class="td width-10">
+								Mali
+							</div>
+							<div class="td width-05">
+								<input type="number" placeholder="0" name="attr_MalusMod" />
+							</div>
+							<div class="td width-10">
+								Boni
+							</div>
+							<div class="td width-05">
+								<input type="number" placeholder="0" name="attr_BonusMod" />
+							</div>							
+						</div>
+					</div>		
 				</div>
-				<div class="td">
-					weitere Boni <input type="number" placeholder="0" name="attr_BonusMod" />
-				</div>
-				<div class="td">
-					Gesamt (<span class="info" name="attr_JanusText"></span>) : <span class="info-border" name="attr_JanusCalc"></span>
-				</div>
-			</div>			
-		</div>
-		<div class="table">
-			<div class="tr">
-				<div class="td">
-					Heimtückisch: 
-				</div>
-				<div class="td width-05">
-					<input type="checkbox" name="attr_BonusInsidious" value="2" />
-				</div>
-				<div class="td">
-					Fokusiert: 
-				</div>
-				<div class="td width-05">
-					<input type="checkbox" name="attr_BonusFocused" value="3" />
-				</div>
-				<div class="td">
-					<button type="roll" value="/me @{rollActionText}\n/r (@{rollActionValue})t[@{tblHexxen}]@{rollSeparator}@{rollJanus}" name="Roll_Attention"></button>
+				<div class="td width-10 centered is-title info-border">
+					Gesamt
+					<br/>(<span class="info" name="attr_JanusText"></span>)
+					<br/><span class="info-border" name="attr_JanusCalc"></span>
 				</div>
 			</div>
 		</div>
