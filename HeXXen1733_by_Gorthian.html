@@ -2028,7 +2028,7 @@
 		
 		/* onChange-Events für die Attributs-Modifier erstellen*/
 		for (const [key, value] of Object.entries(oAttributes)) {
-			on("change:"+value, function () {
+			on("change:"+value+"Modifier", function () {
 				recalcRollAction();
 			});
 		}
