@@ -352,17 +352,17 @@
 													<div class="td"><div class="show-tooltip"><img width="25" src="https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Janus.png?raw=true" /></div><div class="tooltip">Dauerhafte Boin/Mali des Attributs.<br/>z.B. durch Fertigkeiten, Ausrüstung, usw.</div></div>
 												</div>
 												<div class="tr alternate">						
-													<div class="td"><div class="show-tooltip is-title">[Sin]</div><div class="tooltip">Sinnesschärfe</div></div>
+													<div class="td"><button class="show-tooltip is-title" type="action" name="act_Sin">[Sin]</button><div class="tooltip">Sinnesschärfe</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Sin"/></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_SinModifier"/></div>
 												</div>
 												<div class="tr alternate">			
-													<div class="td"><div class="show-tooltip is-title">[Wis]</div><div class="tooltip">Wissen</div></div>
+													<div class="td"><button class="show-tooltip is-title" type="action" name="act_Wis">[Wis]</button><div class="tooltip">Wissen</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wis"/></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_WisModifier"/></div>
 												</div>
 												<div class="tr alternate">		
-													<div class="td"><div class="show-tooltip is-title">[Wil]</div><div class="tooltip">Willenskraft</div></div>
+													<div class="td"><button class="show-tooltip is-title" type="action" name="act_Wil">[Wil]</button><div class="tooltip">Willenskraft</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wil"/></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_WilModifier"/></div>
 												</div>
@@ -377,17 +377,17 @@
 													<div class="td"><div class="show-tooltip"><img width="25" src="https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/dices/Janus.png?raw=true" /></div><div class="tooltip">Dauerhafte Boin/Mali des Attributs.<br/>z.B. durch Fertigkeiten, Ausrüstung, usw.</div></div>
 												</div>
 												<div class="tr alternate">
-													<div class="td"><div class="show-tooltip is-title">[Kkr]</div><div class="tooltip">Körperkraft</div></div>
+													<div class="td"><button class="show-tooltip is-title" type="action" name="act_Kkr">[Kkr]</button><div class="tooltip">Körperkraft</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Kkr"/></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_KkrModifier"/></div>
 												</div>
 												<div class="tr alternate">			
-													<div class="td"><div class="show-tooltip is-title">[Ath]</div><div class="tooltip">Athletik</div></div>
+													<div class="td"><button class="show-tooltip is-title" type="action" name="act_Ath">[Ath]</Button><div class="tooltip">Athletik</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ath"/></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_AthModifier"/></div>
 												</div>
 												<div class="tr alternate">			
-													<div class="td"><div class="show-tooltip is-title">[Ges]</div><div class="tooltip">Geschick</div></div>
+													<div class="td"><button class="show-tooltip is-title" type="action" name="act_Ges">[Ges]</button><div class="tooltip">Geschick</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ges"/></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_GesModifier"/></div>
 												</div>
@@ -486,105 +486,105 @@
 										<div class="td is-title">+/-</div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Akrobatik</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Acrobatic">Akrobatik</button></div>
 										<div class="td">[Ath] <span class="info" name="attr_Ath"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_AcrobaticFW"/></div>
 										<div class="td"><span class="info-border" name="attr_AcrobaticMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_AcrobaticModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Aufmerksamkeit</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Attention">Aufmerksamkeit</button></div>
 										<div class="td">[Sin] <span class="info" name="attr_Sin"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_AttentionFW"/></div>
 										<div class="td"><span class="info-border" name="attr_AttentionMod"></span></div>				
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_AttentionModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Erkennen</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Perception">Erkennen</button></div>
 										<div class="td">[Sin] <span class="info" name="attr_Sin"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_PerceptionFW"/></div>
 										<div class="td"><span class="info-border" name="attr_PerceptionMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_PerceptionModifier"/></div>										
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Erste Hilfe</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_FirstAid">Erste Hilfe</button></div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_FirstAidFW"/></div>
 										<div class="td"><span class="info-border" name="attr_FirstAidMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_FirstAidModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Fingerfertigkeit</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Dexterity">Fingerfertigkeit</button></div>
 										<div class="td">[Ges] <span class="info" name="attr_Ges"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_DexterityFW"/></div>
 										<div class="td"><span class="info-border" name="attr_DexterityMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_DexterityModifier"/></div>	
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Geistesstärke</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_MentalPower">Geistesstärke</button></div>
 										<div class="td">[Wil] <span class="info" name="attr_Wil"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_MentalPowerFW"/></div>
 										<div class="td"><span class="info-border" name="attr_MentalPowerMod"></span></div>				
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_MentalPowerModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Handwerken</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Crafting">Handwerken</button></div>
 										<div class="td">[Ges] <span class="info" name="attr_Ges"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_CraftingFW"/></div>
 										<div class="td"><span class="info-border" name="attr_CraftingMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_CraftingModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Heimlichkeit</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Stealth">Heimlichkeit</button></div>
 										<div class="td">[Ath] <span class="info" name="attr_Ath"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_StealthFW"/></div>
 										<div class="td"><span class="info-border" name="attr_StealthMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_StealthModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Land und Leute</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_CountryPeople">Land und Leute</button></div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_CountryPeopleFW"/></div>
 										<div class="td"><span class="info-border" name="attr_CountryPeopleMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_CountryPeopleModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Redekunst</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_CountryPeople">Redekunst</button></div>
 										<div class="td">[Wil] <span class="info" name="attr_Wil"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_RhetoricFW"/></div>
 										<div class="td"><span class="info-border" name="attr_RhetoricMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_RhetoricModifier"/></div>										
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Muskelspiel</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Struggle">Muskelspiel</button></div>
 										<div class="td">[Kkr] <span class="info" name="attr_Kkr"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_StruggleFW"/></div>
 										<div class="td"><span class="info-border" name="attr_StruggleMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_StruggleModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Reflexe</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Reflexes">Reflexe</button></div>
 										<div class="td">[Sin] <span class="info" name="attr_Sin"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_ReflexesFW"/></div>
 										<div class="td"><span class="info-border" name="attr_ReflexesMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_ReflexesModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Reiten</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Riding">Reiten</button></div>
 										<div class="td">[Ath] <span class="info" name="attr_Ath"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_RidingFW"/></div>
 										<div class="td"><span class="info-border" name="attr_RidingMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_RidingModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Unempfindlichkeit</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Toughness">Unempfindlichkeit</button></div>
 										<div class="td">[Kkr] <span class="info" name="attr_Kkr"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_ToughnessFW"/></div>
 										<div class="td"><span class="info-border" name="attr_ToughnessMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_ToughnessModifier"/></div>
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Wissensgebiete</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Knowledge">Wissensgebiete</button></div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_KnowledgeFW"/></div>
 										<div class="td"><span class="info-border" name="attr_KnowledgeMod"></span></div>
@@ -602,14 +602,14 @@
 										<div class="td is-title">+/-</div>										
 									</div>									
 									<div class="tr alternate">
-										<div class="td is-title">Hexerei</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Witchcraft">Hexerei</button></div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_WitchcraftFW"/></div>
 										<div class="td"><span class="info-border" name="attr_WitchcraftMod"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_WitchcraftModifier"/></div>										
 									</div>
 									<div class="tr alternate">
-										<div class="td is-title">Schiffsnavigation</div>
+										<div class="td is-title"><button class="is-title" type="action" name="act_Navigation">Schiffsnavigation</button></div>
 										<div class="td">[Wis] <span class="info" name="attr_Wis"></span></div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_NavigationFW"/></div>
 										<div class="td"><span class="info-border" name="attr_NavigationMod"></span></div>
@@ -1135,7 +1135,7 @@
 							<div class="td is-title">Anmerkung</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Fausthieb</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleFist">Fausthieb</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasFist" CHECKED DISABLED /></div>
 							<div class="td"><input type="number" value="0" name="attr_BattleFistBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleFistAP" READONLY /></div>
@@ -1146,7 +1146,7 @@
 							<div class="td">Parade -3, außer Fausthiebe</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Dolche & Messer</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleKnive">Dolche & Messer</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasKnive" /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleKniveBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleKniveAP" READONLY /></div>
@@ -1157,7 +1157,7 @@
 							<div class="td">Giftverwendung / Parade -2, außer  Fausthiebe und Dolche & Messer</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Fechtwaffen</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_FencingFist">Fechtwaffen</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasFencing" /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleFencingBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleFencingAP" READONLY /></div>
@@ -1168,7 +1168,7 @@
 							<div class="td">Parade -1 pro gebundenem Gegner  über dem Ersten</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Schwerter</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleSword">Schwerter</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSword" /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleSwordBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSwordAP" READONLY /></div>
@@ -1179,7 +1179,7 @@
 							<div class="td">Voll parierfähig</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Säbel</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleSabre">Säbel</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSabre" /></div>
 							<div class="td"><input type="number" value="4" name="attr_BattleSabreBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSabreAP" READONLY /></div>
@@ -1190,7 +1190,7 @@
 							<div class="td">Parade -1</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">...beritten</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleSabreMounted">...beritten</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSabreMounted" /></div>
 							<div class="td"><input type="number" value="5" name="attr_BattleSabreMountedBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSabreMountedAP" READONLY /></div>
@@ -1201,7 +1201,7 @@
 							<div class="td">Parade -1</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Schlagwaffen</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleBlunt">Schlagwaffen</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasBlunt" /></div>
 							<div class="td"><input type="number" value="5" name="attr_BattleBluntBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleBluntAP" READONLY /></div>
@@ -1212,7 +1212,7 @@
 							<div class="td">Parade -2</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Stangenwaffen</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattlePolearm">Stangenwaffen</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasPolearm" /></div>
 							<div class="td"><input type="number" value="6" name="attr_BattlePolearmBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattlePolearmAP" READONLY /></div>
@@ -1223,7 +1223,7 @@
 							<div class="td">Parade kostet 2 AP</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">...gegen Reiter</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattlePolearmMount">...gegen Reiter</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasPolearmMount" /></div>
 							<div class="td"><input type="number" value="8" name="attr_BattlePolearmMountBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattlePolearmMountAP" READONLY /></div>
@@ -1234,7 +1234,7 @@
 							<div class="td">Parade kostet 2 AP</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Lanzen</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleLance">Lanzen</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasLance" /></div>
 							<div class="td"><input type="number" value="6" name="attr_BattleLanceBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleLanceAP" READONLY /></div>
@@ -1245,7 +1245,7 @@
 							<div class="td">Parade kostet 2 AP</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">...beritten</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleLanceMounted">...beritten</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasLanceMounted" /></div>
 							<div class="td"><input type="number" value="7" name="attr_BattleLanceMountedBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleLanceMountedAP" READONLY /></div>
@@ -1256,7 +1256,7 @@
 							<div class="td">Parade kostet 2 AP</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Schleuder</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleSlingshot">Schleuder</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasSlingshot" /></div>
 							<div class="td"><input type="number" value="1" name="attr_BattleSlingshotBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattleSlingshotAP" READONLY /></div>
@@ -1267,7 +1267,7 @@
 							<div class="td">Geschossgeeignet, Werfer muss freistehen</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Pistole</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattlePistol">Pistole</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasPistol" /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattlePistolBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="2" name="attr_BattlePistolAP" READONLY /></div>
@@ -1278,7 +1278,7 @@
 							<div class="td">Immer freie Schussmöglichkeit</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Armbrust</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleCrossbow">Armbrust</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasCrossbow" /></div>
 							<div class="td"><input type="number" value="5" name="attr_BattleCrossbowBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleCrossbowAP" READONLY /></div>
@@ -1289,7 +1289,7 @@
 							<div class="td">Schütze muss freistehen</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Muskete</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleMusket">Muskete</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasMusket" /></div>
 							<div class="td"><input type="number" value="8" name="attr_BattleMusketBaseDmg" READONLY /></div>
 							<div class="td"><input type="number" value="3" name="attr_BattleMusketAP" READONLY /></div>
@@ -1300,7 +1300,7 @@
 							<div class="td">Schütze und Ziel müssen freistehen</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Ausweichen</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleDodge">Ausweichen</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasDodge" CHECKED DISABLED /></div>
 							<div class="td">-</div>
 							<div class="td"><input type="number" value="1" name="attr_BattleDodgeAP" READONLY /></div>
@@ -1311,7 +1311,7 @@
 							<div class="td">Pro geb. Gegner -1, Distanzangriffe -1</div>
 						</div>
 						<div class="tr alternate">
-							<div class="td is-title">Schildbenutzung</div>
+							<div class="td is-title"><button class="is-title" type="action" name="act_BattleShield">Schildbenutzung</button></div>
 							<div class="td"><input type="checkbox" value="1" name="attr_BattleHasShield" /></div>
 							<div class="td">-</div>
 							<div class="td"><input type="number" value="1" name="attr_BattleShieldAP" READONLY /></div>
@@ -2032,6 +2032,13 @@
 				recalcRollAction();
 			});
 		}
+		
+		/* onClick-Events für die Attributs-Buttons erstellen*/
+		for (const [key, value] of Object.entries(oAttributes)) {
+			on("clicked:"+value, function () {
+				changeRollAction(oRollAction[key]);
+			});
+		}
 
 		/* onChange-Events für die Fertigkeiten erstellen*/
 		for (const [key, value] of Object.entries(oSkills)) {
@@ -2044,6 +2051,13 @@
 		for (const [key, value] of Object.entries(oSkills)) {
 			on("change:"+key+"Modifier", function () {
 				recalcRollAction();
+			});
+		}
+		
+		/* onClick-Events für die Fertigkeits-Buttons erstellen*/
+		for (const [key, value] of Object.entries(oSkills)) {
+			on("clicked:"+key, function () {
+				changeRollAction(oRollAction[key]);
 			});
 		}
 		
@@ -2196,15 +2210,7 @@
 						if (value == sAttribute) {
 							setSkill(key,oAttributes[value])
 						}
-					}
-					
-					/* Falls bei der Probe das aktuelle Attribut ausgewählt ist, Probe neu berechnen */
-					getAttrs(["rollAction"], function(values){
-						if (values["RollAction"] == oRollAction[sAttribute])
-						{
-							setRollAction();
-						}
-					});
+					}				
 			};
 		}
 		
@@ -2506,6 +2512,16 @@
 					"ActionPointsMod_max"	: 6 - ArmorLevel - influenceParalysisLevel
 				});
 			});
+		}
+		
+		function changeRollAction(iRollAction) {
+			console.log("changeRollAction: "+iRollAction);
+			
+			setAttrs({
+				"rollAction": iRollAction
+			});
+			
+			recalcRollAction();
 		}
 		
 		function recalcRollAction() {
