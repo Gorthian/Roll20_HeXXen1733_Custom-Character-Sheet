@@ -359,12 +359,12 @@
 												<div class="tr alternate">			
 													<div class="td"><div class="show-tooltip is-title">[Wis]</div><div class="tooltip">Wissen</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wis"/></div>
-													<div class="td"><input class="" placeholder="0" type="number" name="attr_WisJanus"/></div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_WisModifier"/></div>
 												</div>
 												<div class="tr alternate">		
 													<div class="td"><div class="show-tooltip is-title">[Wil]</div><div class="tooltip">Willenskraft</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Wil"/></div>
-													<div class="td"><input class="" placeholder="0" type="number" name="attr_WilJanus"/></div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_WilModifier"/></div>
 												</div>
 											</div>											
 										</div>
@@ -379,17 +379,17 @@
 												<div class="tr alternate">
 													<div class="td"><div class="show-tooltip is-title">[Kkr]</div><div class="tooltip">Körperkraft</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Kkr"/></div>
-													<div class="td"><input class="" placeholder="0" type="number" name="attr_KkrJanus"/></div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_KkrModifier"/></div>
 												</div>
 												<div class="tr alternate">			
 													<div class="td"><div class="show-tooltip is-title">[Ath]</div><div class="tooltip">Athletik</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ath"/></div>
-													<div class="td"><input class="" placeholder="0" type="number" name="attr_AthJanus"/></div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_AthModifier"/></div>
 												</div>
 												<div class="tr alternate">			
 													<div class="td"><div class="show-tooltip is-title">[Ges]</div><div class="tooltip">Geschick</div></div>
 													<div class="td"><input class="" placeholder="0" type="number" name="attr_Ges"/></div>
-													<div class="td"><input class="" placeholder="0" type="number" name="attr_GesJanus"/></div>
+													<div class="td"><input class="" placeholder="0" type="number" name="attr_GesModifier"/></div>
 												</div>
 											</div>
 										</div>
@@ -2025,11 +2025,25 @@
 				recalcAttribute(key);
 			});
 		}
+		
+		/* onChange-Events für die Attributs-Modifier erstellen*/
+		for (const [key, value] of Object.entries(oAttributes)) {
+			on("change:"+value, function () {
+				recalcRollAction();
+			});
+		}
 
 		/* onChange-Events für die Fertigkeiten erstellen*/
 		for (const [key, value] of Object.entries(oSkills)) {
 			on("change:"+key+"FW", function () {
 				recalcSkill(key,oAttributes[value]);
+			});
+		}
+		
+		/* onChange-Events für die Fertigkeiten-Modifier erstellen*/
+		for (const [key, value] of Object.entries(oSkills)) {
+			on("change:"+key+"Modifier", function () {
+				recalcRollAction();
 			});
 		}
 		
@@ -2373,8 +2387,9 @@
 				if (JanusCalc < -5) JanusCalc = -5;
 				
 				setAttrs({
-					"JanusCalc"	: JanusCalc,
-					"JanusText" : JanusText
+					"rollActionJanus"	: iAttrModifier + iSkillModifier,
+					"JanusCalc"			: JanusCalc,
+					"JanusText" 		: JanusText
 				});
 			});
 		}
@@ -2494,7 +2509,7 @@
 		}
 		
 		function recalcRollAction() {
-			console.log("recalcRoleAction");			
+			console.log("recalcRollAction");			
 			
 			getAttrs(["rollAction"], function (values) {
 				iRollAction = parseInt(values["rollAction"])||0;
@@ -2513,9 +2528,11 @@
 			if (iCategory > 0 && iCategory < 100) {
 				/* Auf ein Attribut würfeln */
 				sAction = oAttributes[sRollAction];
+				sModifier = oAttributes[sRollAction]+"Modifier";
 			} else {
 				/* Auf eine Fertigkeit würfeln */
 				sAction = sRollAction+"Mod";
+				sModifier = sRollAction+"Modifier";
 			}
 
 			sRollActionText = "würfelt auf ";
@@ -2644,9 +2661,9 @@
 					break;
 			}
 			
-			getAttrs([sAction,sAction+"Modifier"], function (values) {
+			getAttrs([sAction,sModifier], function (values) {
 				iAction = parseInt(values[sAction])||0;
-				iModifier = parseInt(values[sAction+"Modifier"])||0;				
+				iModifier = parseInt(values[sModifier])||0;				
 			
 				setAttrs({
 					"rollActionValue": iAction,
