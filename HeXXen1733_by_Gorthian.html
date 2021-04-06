@@ -170,7 +170,7 @@
 					<input type="checkbox" name="attr_BonusFocused" value="3" />
 				</div>
 				<div class="td">
-					<button type="roll" value="/me @{rollActionText}\n/r (@{rollSkillValue})t[@{tblHexxen}]@{rollSeparator}@{rollJanus}" name="Roll_Attention"></button>
+					<button type="roll" value="/me @{rollActionText}\n/r (@{rollActionValue})t[@{tblHexxen}]@{rollSeparator}@{rollJanus}" name="Roll_Attention"></button>
 				</div>
 			</div>
 		</div>
@@ -1970,7 +1970,7 @@
 			}
 			
 			toggleJanusCalc();
-			calculateJanusPool();
+			recalcJanusPool();
 			recalcBlessingRage();
 			recalcBlessing();
 			recalcRage();
@@ -1998,7 +1998,7 @@
 		
 		/* Januspool berechnen */
 		on("change:influenceMalusLevel change:MalusMod change:BonusInsidious change:BonusFocused change:BonusMod", function() {
-			calculateJanusPool();
+			recalcJanusPool();
 		});
 		
 		/* Rage & Segnungen berechnen */
@@ -2021,7 +2021,7 @@
 		
 		/* Aktuelle Probe konfigurieren */
 		on("change:rollAction", function() {
-			setRollAction();
+			recalcRollAction();
 		});
 		
 		/* Zustände verwalten */
@@ -2278,18 +2278,42 @@
 		}
 		
 		/* Januspool berechnen */
-		function calculateJanusPool() {
-			getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc","rollActionJanus"], function (values) {
-				let influenceMalusLevel = parseInt(values.influenceMalusLevel)||0;
-				let MalusMod = parseInt(values.MalusMod)||0;
-				let BonusInsidious = parseInt(values.BonusInsidious)||0;
-				let BonusFocused = parseInt(values.BonusFocused)||0;
-				let BonusMod = parseInt(values.BonusMod)||0;
-				let rollActionJanus = parseInt(values.rollActionJanus)||0;
-				let SumAutoCalc = values.SumAutoCalc;
+		function recalcJanusPool() {
+			console.log("recalcJanusPool");
+			
+			getAttrs(["rollAction"],function (values) {
+				iRollAction = parseInt(values["rollAction"]);
+				
+				for (const [key, value] of Object.entries(oRollAction)) {
+					if (value == iRollAction) {
+						if (iRollAction > 0 && iRollAction < 100) {
+							/* Auf ein Attribut würfeln */
+							sModifier = oAttributes[key]+"Modifier";
+						} else {
+							/* Auf eine Fertigkeit würfeln */
+							sModifier = key+"ModModifier";
+						}
+					}
+				}
+				
+				calculateJanusPool(sModifier);
+			});
+		}
+		
+		function calculateJanusPool(sModifier) {
+			console.log("calculateJanusPool");
+			
+			getAttrs(["influenceMalusLevel","MalusMod","BonusInsidious","BonusFocused","BonusMod","SumAutoCalc",sModifier], function (values) {
+				let influenceMalusLevel = parseInt(values["influenceMalusLevel"])||0;
+				let MalusMod = parseInt(values["MalusMod"])||0;
+				let BonusInsidious = parseInt(values["BonusInsidious"])||0;
+				let BonusFocused = parseInt(values["BonusFocused"])||0;
+				let BonusMod = parseInt(values["BonusMod"])||0;
+				let rollActionJanus = parseInt(values[sModifier])||0;
+				let SumAutoCalc = values["SumAutoCalc"];
 				let JanusCalc = 0;
 				let JanusText = "";
-				console.log("calculateJanusPool");
+				console.log("---"+rollActionJanus);
 				
 				JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod + rollActionJanus;
 				
@@ -2425,68 +2449,67 @@
 			});
 		}
 		
-		function setRollAction() {
-			console.log("setRoleAction");
+		function recalcRollAction() {
+			console.log("recalcRoleAction");			
 			
-			getAttrs(["rollAction","Sin","SinModifier","Wis","WisJanus","Wil","WilJanus","Kkr","KkrJanus","Ath","AthJanus","Ges","GesJanus"], function (values) {
-				let rollAction = values.rollAction;
-				let sinValue = values.Sin||0;
-				let SinModifier = values.SinModifier||0;
-				let wisValue = values.Wis||0;			
-				let wisJanus = values.WisJanus||0;			
-				let wilValue = values.Wil||0;
-				let wilJanus = values.WilJanus||0;
-				let kkrValue = values.Kkr||0;
-				let kkrJanus = values.KkrJanus||0;
-				let athValue = values.Ath||0;
-				let athJanus = values.AthJanus||0;
-				let gesValue = values.Ges||0;
-				let gesJanus = values.GesJanus||0;			
-				let rollActionText = "";
-				let rollActionValue = 0;			
-				let rollActionJanus = 0;			
+			getAttrs(["rollAction"], function (values) {
+				iRollAction = parseInt(values["rollAction"])||0;
 				
-				switch (rollAction) {
-					case "1":
-						rollActionText = "würfelt auf Sinnesschärfe";
-						rollActionValue = sinValue;
-						rollActionJanus = SinModifier;					
-						break;
-					case "2":
-						rollActionText = "würfelt auf Wissen";
-						rollActionValue = wisValue;
-						rollActionJanus = wisJanus;					
-						break;
-					case "3":
-						rollActionText = "würfelt auf Willenskraft";
-						rollActionValue = wilValue;
-						rollActionJanus = wilJanus;					
-						break;
-					case "4":
-						rollActionText = "würfelt auf Körperkraft";
-						rollActionValue = kkrValue;
-						rollActionJanus = kkrJanus;					
-						break;
-					case "5":
-						rollActionText = "würfelt auf Athletik";
-						rollActionValue = athValue;
-						rollActionJanus = athJanus;					
-						break;
-					case "6":
-						rollActionText = "würfelt auf Geschick";
-						rollActionValue = gesValue;
-						rollActionJanus = gesJanus;					
-						break;
-					default:
-						break;
-				}			
-							
-				setAttrs({			
-					"rollActionText": rollActionText,
-					"rollActionValue": rollActionValue,
-					"rollActionJanus": rollActionJanus
+				for (const [key, value] of Object.entries(oRollAction)) {
+					if (value == iRollAction) {
+						setRollAction(key, value);
+					}
+				}
+			});			
+		}
+		
+		function setRollAction(sRollAction,iCategory) {
+			console.log("setRollAction: "+sRollAction);
+			
+			if (iCategory > 0 && iCategory < 100) {
+				/* Auf ein Attribut würfeln */
+				sAction = oAttributes[sRollAction];
+			} else {
+				/* Auf eine Fertigkeit würfeln */
+				sAction = sRollAction+"Mod";
+			}
+
+			sRollActionText = "würfelt auf ";
+			switch (iCategory) {
+				case "1":
+					sRollActionText = sRollActionText+"Sinnesschärfe";
+					break;
+				case "2":
+					sRollActionText = sRollActionText+"Sinnesschärfe";
+					break;
+				case "3":
+					sRollActionText = sRollActionText+"Sinnesschärfe";
+					break;
+				case "4":
+					sRollActionText = sRollActionText+"Sinnesschärfe";
+					break;
+				case "5":
+					sRollActionText = sRollActionText+"Sinnesschärfe";
+					break;
+				case "6":
+					sRollActionText = sRollActionText+"Sinnesschärfe";
+					break;
+				default:
+					break;
+			}
+			
+			getAttrs([sAction,sAction+"Modifier"], function (values) {
+				iAction = parseInt(values[sAction])||0;
+				iModifier = parseInt(values[sAction+"Modifier"])||0;				
+			
+				setAttrs({
+					"rollActionValue": iAction,
+					"rollActionJanus": iModifier,
+					"rollActionText": sRollActionText
 				});
-			});	
+			});
+			
+			recalcJanusPool();
 		}
 		
 		function addCondition () {
