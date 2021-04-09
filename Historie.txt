@@ -1,0 +1,12 @@
+2021-04-09 
+	Allgemein
+	* Historie.txt eingeführt
+	* Proben werden jetzt zentral über die obere Leiste ausgeführt
+	* Bei Fertigkeiten und Attributen können dauerhafte Modifikatoren hinterlegt werden
+	* Die manuelle Eingabe der Eingabe von Januswürfeln bei Proben kann deaktiviert werden
+	* Hexxen- und Januswürfel können bei Proben direkt verrechnet werden
+	* Generelle Überarbeitung der Sheetworker
+	
+	Mare Monstrum
+	* Fertigkeit Navigation wird unterstützt
+	* Altersgebrechen können aktiviert werden

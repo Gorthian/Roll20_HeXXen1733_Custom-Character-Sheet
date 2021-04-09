@@ -7,6 +7,6 @@ Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
 
 Bugs & Issues		https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/issues
 
-Lob & Tadel   https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/discussions/categories/praise-blame
+Lob & Tadel			https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/discussions/categories/praise-blame
 
 Historie			https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki/Historie
