@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
 	Version				3.0b
-	Letzte Änderung		2021-04-05
+	Letzte Änderung		2021-04-09
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -1391,8 +1391,8 @@
 				
 				<!-- Mare Monstrum - Fibel des Jägerhandwerks //-->
 				<div class="module-MM-FdJ">
-					<input type="checkbox" class="toggle-module-MM-FdJ-Alter hide" name="attr_module-MM-FdJ-Alter" value="1"/>
-					<div class="module-MM-FdJ-Alter-ON">
+					<input type="checkbox" class="toggle-module-MM-FdJ-Mod1 hide" name="attr_module-MM-FdJ-Mod1" value="1"/>
+					<div class="module-MM-FdJ-Mod1-ON">
 						<h2>Altersgebrechen</h2>
 						<b>! Es findet keine automatische Auswertung der Gebrechen statt !</b>
 						<div class="table">							
@@ -1493,6 +1493,54 @@
 								</div>
 								<div class="td">
 									Keine nächtliche Regeneration
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="checkbox" class="toggle-module-MM-FdJ-Mod2 hide" name="attr_module-MM-FdJ-Mod2" value="1"/>
+					<div class="module-MM-FdJ-Mod2-ON">
+						<h2>Herkunft</h2>
+						<div class="table">
+							<div class="tr">
+								<div class="td is-title width-15">
+									Herkunft 1
+								</div>
+								<div class="td">
+									<select name="attr_origin1">
+										<option value="0">-- Auswählen --</option>
+										<option value="1">Wanderndes Volk</option>
+										<option value="2">Tagelöhnerfamilie</option>
+										<option value="3">Bauernfamilie</option>
+										<option value="4">Handwerkerfamilie</option>
+										<option value="5">Soldatenfamilie</option>
+										<option value="6">Künstlerfamilie</option>
+										<option value="7">Gelehrtenfamilie</option>
+										<option value="8">Ministerialfamilie</option>
+										<option value="9">Kirchliches Umfeld</option>
+										<option value="10">Patriziergeschlecht</option>
+										<option value="11">Landadelsgeschlecht</option>
+										<option value="12">Adelsgeschlecht</option>
+									</select>
+								</div>
+								<div class="td is-title width-15">
+									Herkunft 2
+								</div>
+								<div class="td">
+									<select name="attr_origin2">
+										<option value="0">-- Auswählen --</option>
+										<option value="1">Wanderndes Volk</option>
+										<option value="2">Tagelöhnerfamilie</option>
+										<option value="3">Bauernfamilie</option>
+										<option value="4">Handwerkerfamilie</option>
+										<option value="5">Soldatenfamilie</option>
+										<option value="6">Künstlerfamilie</option>
+										<option value="7">Gelehrtenfamilie</option>
+										<option value="8">Ministerialfamilie</option>
+										<option value="9">Kirchliches Umfeld</option>
+										<option value="10">Patriziergeschlecht</option>
+										<option value="11">Landadelsgeschlecht</option>
+										<option value="12">Adelsgeschlecht</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -1818,7 +1866,15 @@
 												Altersgebrechen
 											</div>
 											<div class="td">
-												<input type="checkbox" class="toggle-module-MM-FdJ-Alter" name="attr_module-MM-FdJ-Alter" value="1"/>
+												<input type="checkbox" class="toggle-module-MM-FdJ-Mod1" name="attr_module-MM-FdJ-Mod1" value="1"/>
+											</div>
+										</div>
+										<div class="tr">
+											<div class="td is-title width-50">
+												Herkunft
+											</div>
+											<div class="td">
+												<input type="checkbox" class="toggle-module-MM-FdJ-Mod2" name="attr_module-MM-FdJ-Mod2" value="1"/>
 											</div>
 										</div>
 									</div>

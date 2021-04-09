@@ -10,3 +10,4 @@
 	Mare Monstrum
 	* Fertigkeit Navigation wird unterstützt
 	* Altersgebrechen können aktiviert werden
+	* Herkünfte können gewählt werden
