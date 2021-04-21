@@ -2,6 +2,7 @@
 	Bugfixes
 	* Berechnung der Januswürfel korrigiert (Issue #34)
 	* Bei neuen Charakteren automatisch den Einstellungstab öffnen (Issue #35)
+	* Neue Zustände automatisch aktivieren (Issue #36)
 	
 2021-04-09 
 	Allgemein
