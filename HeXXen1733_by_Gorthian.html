@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
-	Version				2.1.3
-	Letzte Änderung		2021-03-30
+	Version				2.1.4
+	Letzte Änderung		2021-04-21
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -1714,8 +1714,12 @@
 			let JanusCalc = 0;
 			let JanusText = "";
 			
-			/* warum hier hinter dem "=" nochmal JanusCalc was ja hier vorher immer null ist? */
-			JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod;
+			let JanusCalcBonus = Bonusesidious + BonusFocused + BonusMod;
+			let JanusCalcMalus = influenceMalusLevel + MalusMod;
+			
+			if (JanusCalcBonus > 5) JanusCalcBonus = 5;
+			if (JanusCalcMalus > 5) JanusCalcMalus = 5;
+			JanusCalc = JanusCalcBonus - JanusCalcMalus;
 			
 			if (JanusCalc < 0 ) {
 				JanusText = "Malus"; /* wenn Text hier geändert wird auch in vorheriger Funktion anpassen! */
@@ -1724,9 +1728,7 @@
 				}
 			} else {
 				JanusText = "Bonus"
-			}
-			if (JanusCalc > 5) JanusCalc = 5;
-			if (JanusCalc < -5) JanusCalc = -5;
+			}			
 			
 			setAttrs({
 				"JanusCalc"	: JanusCalc,
