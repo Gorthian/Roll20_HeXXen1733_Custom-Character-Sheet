@@ -4,6 +4,9 @@
 	* Bei neuen Charakteren automatisch den Einstellungstab öffnen (Issue #35)
 	* Neue Zustände automatisch aktivieren (Issue #36)
 	
+	Neue Features
+	* API-Skripte DefaultValues.js zum Festlegen der Standardeinstellungen bei neuen Charakteren (Issue #40)
+	
 2021-04-09 
 	Allgemein
 	* Historie.txt eingeführt
