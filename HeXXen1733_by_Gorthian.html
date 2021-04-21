@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
 	Version				3.0b
-	Letzte Änderung		2021-04-09
+	Letzte Änderung		2021-04-21
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -2435,7 +2435,24 @@
 				let JanusCalc = 0;
 				let JanusText = "";
 				
-				JanusCalc = JanusCalc - influenceMalusLevel - MalusMod + BonusInsidious + BonusFocused + BonusMod + iAttrModifier + iSkillModifier;
+				/* Standardboni verrechnen */
+				let JanusCalcBonus = BonusInsidious + BonusFocused + BonusMod;
+				let JanusCalcMalus = influenceMalusLevel + MalusMod;
+				console.log("Standard-Boni: " + JanusCalcBonus);
+				console.log("Standard-Mali: " + JanusCalcMalus);
+				
+				/* Modifikatoren für Fertigkeiten und Attribute verrechnen */
+				if (iAttrModifier > 0) JanusCalcBonus = JanusCalcBonus + iAttrModifier;
+				if (iAttrModifier < 0) JanusCalcMalus = JanusCalcMalus + (-1*iAttrModifier);
+				if (iSkillModifier > 0) JanusCalcBonus = JanusCalcBonus + iSkillModifier;
+				if (iSkillModifier < 0) JanusCalcMalus = JanusCalcMalus + (-1*iSkillModifier);
+				console.log("Gesamt-Boni: " + JanusCalcBonus);
+				console.log("Gesamt-Mali: " + JanusCalcMalus);
+				
+				/* Maximum von 5 für Boni und Mali prüfen */
+				if (JanusCalcBonus > 5) JanusCalcBonus = 5;
+				if (JanusCalcMalus > 5) JanusCalcMalus = 5;
+				JanusCalc = JanusCalcBonus - JanusCalcMalus;				
 				
 				if (JanusCalc < 0 ) {
 					JanusText = "Malus"; /* wenn Text hier geändert wird auch in vorheriger Funktion anpassen! */
@@ -2444,9 +2461,7 @@
 					}
 				} else {
 					JanusText = "Bonus"
-				}
-				if (JanusCalc > 5) JanusCalc = 5;
-				if (JanusCalc < -5) JanusCalc = -5;
+				}				
 				
 				setAttrs({
 					"rollActionJanus"	: iAttrModifier + iSkillModifier,
