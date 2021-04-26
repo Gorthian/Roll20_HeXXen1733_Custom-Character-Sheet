@@ -33,6 +33,7 @@
 /* MM - Fibel des Jägerhandwerks */		var sModule_MM_FdJ = "1"; 			/* 1- Aktiv / 0 - Inaktiv */
 /* MM - Altersgebrechen */				var sModule_MM_FdJ_Mod1 = "1"; 		/* 1- Aktiv / 0 - Inaktiv */
 /* MM - Herkunft */						var sModule_MM_FdJ_Mod2 = "1"; 		/* 1- Aktiv / 0 - Inaktiv */
+/* MM - Fraktionen */					var sModule_MM_FdJ_Mod3 = "1"; 		/* 1- Aktiv / 0 - Inaktiv */
 
 function getAttrByName (sCharId, sAttrName) {
 	let objAttr = findObjs({type: 'attribute', characterid: sCharId, name: sAttrName})[0];

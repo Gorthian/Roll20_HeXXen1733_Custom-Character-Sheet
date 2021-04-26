@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
 	Version				3.0b
-	Letzte Änderung		2021-04-21
+	Letzte Änderung		2021-04-26
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -1545,6 +1545,47 @@
 							</div>
 						</div>
 					</div>
+					<input type="checkbox" class="toggle-module-MM-FdJ-Mod3 hide" name="attr_module-MM-FdJ-Mod3" value="1"/>
+					<div class="module-MM-FdJ-Mod3-ON">
+						<h2>Fraktionen</h2>
+						<div class="table">
+							<div class="tr height-01">
+								<div class="td width-20 is-title">Fraktion</div>
+								<div class="td is-title">Unterhalt</div>
+								<div class="td is-title">Kreise</div>
+								<div class="td is-title">Ausschluss</div>
+								<div class="td is-title">Jägerpfad</div>
+								<div class="td is-title">Pflicht-FZA</div>
+							</div>
+							<fieldset class="repeating_factions">
+								<div class="tr alternate">
+									<div class="td">
+										<select name="attr_faction">
+											<option value="0">-- Auswählen --</option>
+											<option value="1">Kriminelle Kreise</option>
+											<option value="2">Landvolk</option>
+											<option value="3">Handwerkszunft</option>
+											<option value="4">Militär</option>
+											<option value="5">Kulturelle Kreise (Kunstschaffender)</option>
+											<option value="6">Kulturelle Kreise (Mäzen)</option>
+											<option value="7">Akademische Kreise</option>
+											<option value="8">Kirche und Kloster</option>
+											<option value="9">Bürgertum</option>
+											<option value="10">Adel</option>
+											<option value="11">Wächterbund</option>
+											<option value="12">Faust-Gesellschaft</option>
+											<option value="13">Berge- und Hebe-Union</option>
+											<option value="14">Inquisition</option>
+										</select>
+									</div>
+									<div class="td"><span name="attr_faction_upkeep"></div>
+									<div class="td"><span name="attr_faction_exclusion"></div>
+									<div class="td"><span name="attr_faction_path"></div>
+									<div class="td"><span name="attr_faction_activity"></div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
 				</div>
 
 				<!-- Allgemein NSC //-->
@@ -1877,6 +1918,14 @@
 												<input type="checkbox" class="toggle-module-MM-FdJ-Mod2" name="attr_module-MM-FdJ-Mod2" value="1"/>
 											</div>
 										</div>
+										<div class="tr">
+											<div class="td is-title width-50">
+												Fraktionen
+											</div>
+											<div class="td">
+												<input type="checkbox" class="toggle-module-MM-FdJ-Mod3" name="attr_module-MM-FdJ-Mod3" value="1"/>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -2148,6 +2197,11 @@
 		/* Aktuelle Probe konfigurieren */
 		on("change:rollAction", function() {
 			recalcRollAction();
+		});
+		
+		/* Fraktionen */
+		on("change:repeating_factions:faction", function(eventInfo) {
+			changeFaction();
 		});
 		
 		/* Zustände verwalten */
@@ -3056,6 +3110,11 @@
 					setAttrs(newrowattrs);
 				}			
 			});
+		}
+		
+		/* Fraktionen */
+		function changeFaction() {
+			console.log("changeFaction");			
 		}
 		
 		/* Versionierungsskripte */
