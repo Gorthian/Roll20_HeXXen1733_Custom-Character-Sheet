@@ -1549,17 +1549,19 @@
 					<div class="module-MM-FdJ-Mod3-ON">
 						<h2>Fraktionen</h2>
 						<div class="table">
-							<div class="tr height-01">
-								<div class="td width-20 is-title">Fraktion</div>
-								<div class="td is-title">Unterhalt</div>
-								<div class="td is-title">Kreise</div>
-								<div class="td is-title">Ausschluss</div>
-								<div class="td is-title">Jägerpfad</div>
-								<div class="td is-title">Pflicht-FZA</div>
+							<div class="tr">
+								<div class="td width-25 is-title">Fraktion</div>
+								<div class="td width-10 is-title">Unterhalt</div>
+								<div class="td width-10 is-title">Kreise</div>
+								<div class="td width-10 is-title">Ausschluss</div>
+								<div class="td width-10 is-title">Jägerpfad</div>
+								<div class="td width-10 is-title">Pflicht-FZA</div>
 							</div>
-							<fieldset class="repeating_factions">
-								<div class="tr alternate">
-									<div class="td">
+						</div>
+						<fieldset class="repeating_factions">
+							<div class="table">
+								<div class="tr">
+									<div class="td width-25">
 										<select name="attr_faction">
 											<option value="0">-- Auswählen --</option>
 											<option value="1">Kriminelle Kreise</option>
@@ -1578,13 +1580,15 @@
 											<option value="14">Inquisition</option>
 										</select>
 									</div>
-									<div class="td"><span name="attr_faction_upkeep"></div>
-									<div class="td"><span name="attr_faction_exclusion"></div>
-									<div class="td"><span name="attr_faction_path"></div>
-									<div class="td"><span name="attr_faction_activity"></div>
+									<div class="td width-10"><span name="attr_faction_upkeep"></div>
+									<div class="td width-10"><span name="attr_faction_people"></div>
+									<div class="td width-10"><span name="attr_faction_exclusion"></div>
+									<div class="td width-10"><span name="attr_faction_path"></div>
+									<div class="td width-10"><span name="attr_faction_activity"></div>
 								</div>
-							</fieldset>
-						</div>
+							</div>
+							<hr/>
+						</fieldset>						
 					</div>
 				</div>
 
@@ -2200,7 +2204,7 @@
 		});
 		
 		/* Fraktionen */
-		on("change:repeating_factions:faction", function(eventInfo) {
+		on("change:repeating_factions:faction", function() {
 			changeFaction();
 		});
 		
@@ -3114,7 +3118,32 @@
 		
 		/* Fraktionen */
 		function changeFaction() {
-			console.log("changeFaction");			
+			console.log("changeFaction");
+			
+			const factiondetails = {
+				0: {repeating_factions_faction_upkeep: "", repeating_factions_faction_people: "", repeating_factions_faction_exclusion: "", repeating_factions_faction_path: "", repeating_factions_faction_activity: ""},
+				1: {repeating_factions_faction_upkeep: "+20", repeating_factions_faction_people: "Diebe, Hehler, Streuner, Räuber", repeating_factions_faction_exclusion: "Geächtet", repeating_factions_faction_path: "Pfad des Reisenden", repeating_factions_faction_activity: "Waffengift"},
+				2: {repeating_factions_faction_upkeep: "+10", repeating_factions_faction_people: "Bauern, Dorfbewohner, Landarbeiter", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Arbeiters", repeating_factions_faction_activity: "Landarbeit"},
+				3: {repeating_factions_faction_upkeep: "+25", repeating_factions_faction_people: "Handwerker, Bauarbeiter, Gesellen", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Handwerkers", repeating_factions_faction_activity: "Zunftarbeit"},
+				4: {repeating_factions_faction_upkeep: "+10", repeating_factions_faction_people: "Stadtwachen, Soldaten, Söldner, rangniedere Offiziere", repeating_factions_faction_exclusion: "Fahnenflüchtig", repeating_factions_faction_path: "Pfad des Kriegers", repeating_factions_faction_activity: "Manöver"},
+				5: {repeating_factions_faction_upkeep: "+15", repeating_factions_faction_people: "Künstler aller Art, Mäzene", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Künstlers", repeating_factions_faction_activity: "Kunst schaffen"},
+				6: {repeating_factions_faction_upkeep: "+70", repeating_factions_faction_people: "Künstler aller Art, Mäzene", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Kaufmanns", repeating_factions_faction_activity: "Kunst fördern"},
+				7: {repeating_factions_faction_upkeep: "+30", repeating_factions_faction_people: "Gelehrte, Schreiber, Forscher, Lehrer", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Gelehrten", repeating_factions_faction_activity: "Forschung"},
+				8: {repeating_factions_faction_upkeep: "+10", repeating_factions_faction_people: "Kirchenleute, Ordensmitglieder, Missionare", repeating_factions_faction_exclusion: "Geächtet", repeating_factions_faction_path: "Pfad des Klerikers", repeating_factions_faction_activity: "Gottesdienst"},
+				9: {repeating_factions_faction_upkeep: "+80", repeating_factions_faction_people: "Kaufleute, Geldverleiher, Unternehmer", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Kaufmanns", repeating_factions_faction_activity: "Investition"},
+				10: {repeating_factions_faction_upkeep: "+90", repeating_factions_faction_people: "Hofbedienstete, Adelige, Bürokraten", repeating_factions_faction_exclusion: "Geächtet", repeating_factions_faction_path: "Pfad der Führung", repeating_factions_faction_activity: "Cour"},
+				11: {repeating_factions_faction_upkeep: "+30", repeating_factions_faction_people: "Gelehrte, Okkultismusforscher, Zauberkundige", repeating_factions_faction_exclusion: "Geächtet", repeating_factions_faction_path: "Pfad der Mystikers", repeating_factions_faction_activity: "Archivierung"},
+				12: {repeating_factions_faction_upkeep: "+35", repeating_factions_faction_people: "Kundschafter, Techniker, Sorbonniker", repeating_factions_faction_exclusion: "Geächtet", repeating_factions_faction_path: "Pfad des Handwerkers", repeating_factions_faction_activity: "Seelenlichtforschung"},
+				13: {repeating_factions_faction_upkeep: "+40", repeating_factions_faction_people: "Späher, Glücksritter, Hafenpersonal", repeating_factions_faction_exclusion: "Verpönt", repeating_factions_faction_path: "Pfad des Reisenden", repeating_factions_faction_activity: "Expeditionen"},
+				14: {repeating_factions_faction_upkeep: "+15", repeating_factions_faction_people: "Kirchenmitglieder, Stadträte, Adelige", repeating_factions_faction_exclusion: "Geächtet", repeating_factions_faction_path: "Pfad des Klerikers", repeating_factions_faction_activity: "Ermittlungen"}
+			};			
+			
+			getAttrs(["repeating_factions_faction"], function (values) {
+				console.log("Attribute auslesen");
+				let faction = values.repeating_factions_faction;
+				let output = factiondetails[faction] || factiondetails[0];			
+				setAttrs(output);
+			});
 		}
 		
 		/* Versionierungsskripte */
