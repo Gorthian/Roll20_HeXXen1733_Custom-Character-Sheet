@@ -1,7 +1,7 @@
 <!--
 	EDITED by 			Gorthian
-	Version				3.0b
-	Letzte Änderung		2021-04-26
+	Version				3.0
+	Letzte Änderung		2021-06-05
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -12,7 +12,7 @@
 <div class="wrapper content HeXXen1733">
 	<!-- Versteckte Attribute //-->
 	<input type="hidden" name="attr_oldVersion" value="" />
-	<input type="hidden" name="attr_currentVersion" value="3.0b" />
+	<input type="hidden" name="attr_currentVersion" value="3.0" />
 	
 	<input type="hidden" name="attr_rollJanus" />
 	<input type="hidden" name="attr_rollSeparator" />
@@ -229,7 +229,6 @@
 							<div class="td width-50">
 								<h2>Allgemeine Informationen</h2>
 								<div class="table">									
-									<div class="tr height-01"><div class="td is-title width-20">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr alternate">
 										<div class="td is-title width-20">Name</div>
 										<div class="td"><input class="" placeholder="Name" type="text" name="attr_Name"/></div>
@@ -250,11 +249,9 @@
 										<div class="td is-title width-20">Verderbnis</div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_Corruption"/></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Rollen & Professionen</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td is-title width-20">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr alternate">
 										<div class="td is-title width-20">Rolle Nr1</div>
 										<div class="td"><input class="" placeholder="Rolle" type="text" name="attr_Role1"/></div>
@@ -280,11 +277,9 @@
 										<div class="td is-title width-20">Prof. Nr2</div>
 										<div class="td"><input class="" placeholder="Profession" type="text" name="attr_Profession2"/></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Zusätzliche Charakterbeschreibung</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td is-title width-20">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr alternate">
 										<div class="td is-title width-20">Alter</div>
 										<div class="td"><input class="" placeholder="0" type="number" name="attr_Age"/></div>
@@ -309,11 +304,9 @@
 										<div class="td is-title width-20">Typisches Zitat</div>
 										<div class="td"><textarea class="textarea textarea-medium" placeholder="Zitat" name="attr_Quote"></textarea></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Herkunft und Familie</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td is-title width-20">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr alternate">
 										<div class="td is-title width-20">Heimatort</div>
 										<div class="td"><input class="" placeholder="Heimatort" type="text" name="attr_Hometown"/></div>
@@ -334,14 +327,12 @@
 										<div class="td is-title width-20">Wichtige Einflüsse</div>
 										<div class="td"><textarea class="textarea textarea-medium" placeholder="Wichtige Einflüsse" name="attr_Influence"></textarea></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 							</div>
 							<div class="td width-01">&nbsp;</div>
 							<div class="td width-50">
 								<h2>Attribute</h2>
 								<div class="table">
-									<div class="tr height-01">&nbsp;</div>
 									<div class="tr">
 										<div class="td">
 											<h2>Geistige Attribute</h2>
@@ -394,11 +385,9 @@
 											</div>
 										</div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Ressourcen</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td witdh-33">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr alternate">
 										<div class="td is-title">Basis [Lep]:</div>
 										<div class="td"><div class="show-tooltip"><span class="info-border" name="attr_HealthCalc"></span></div><div class="tooltip">Berechneter Wert aus KKR + WIL + Unempfindlichkeit + 7</div></div>
@@ -434,11 +423,18 @@
 											<div class="tooltip">Modifikator der Ideen aus anderen Quellen.<br/> (Kleidungssets, Motivationen, Fertigkeiten, usw.)</div>
 										</div>
 										<div class="td">Max:&nbsp;<span class="info-border" name="attr_CoupsMod_max"></span></div>
-									</div>																		
+									</div>
+									<div class="tr alternate">
+										<div class="td is-title">Puffer LeP</div>
+										<div class="td">
+											<input placeholder="0" value="0" type="number" name="attr_HealthBufferStart"/>
+										</div>
+										<div class="td">Bei</div>
+										<div class="td">Kampfbeginn</div>
+									</div>
 								</div>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-25"></div><div class="td"></div><div class="td width-25"></div></div>
-									<div class="tr alternate">
+									<div class="tr">
 										<div class="td width-33 is-title">Ambitionen (<span class="info" name="attr_Ambition"></span>)</div>
 										<div class="td">
 											<div class="dots">
@@ -453,8 +449,10 @@
 										</div>
 										<div class="td"></div>
 									</div>
-									<div class="tr alternate">
-										<div class="td is-title">Rage (<span class="info" name="attr_Rage"></span>)</div>
+								</div>
+								<div class="table">
+									<div class="tr dark">
+										<div class="td is-title width-20">Rage (<span class="info" name="attr_Rage"></span>)</div>
 										<div class="td">											
 											<div class="dots">
 												<input type="hidden" name="attr_BlessingRageLevel" class="dot" value="0" />
@@ -471,15 +469,13 @@
 												<button type="action" name="act_BlessingRageLevel_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
 											</div>											
 										</div>
-										<div class="td is-title" style="text-align:right;">(<span class="info" name="attr_Blessing"></span>) Segnungen</div>
+										<div class="td is-title width-33" style="text-align:right;">(<span class="info" name="attr_Blessing"></span>) Segnungen</div>
 									</div>
-									<div class="tr height-01"></div>
 								</div>
 								<h2>Allgemeine Fertigkeiten</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-33">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr">
-										<div class="td is-title">Name</div>
+										<div class="td is-title width-33">Name</div>
 										<div class="td is-title">Basis</div>
 										<div class="td is-title">FW</div>
 										<div class="td is-title">Summe</div>
@@ -593,9 +589,8 @@
 								</div>
 								<h2>Besondere Fertigkeiten</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-33">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr">
-										<div class="td is-title">Name</div>
+										<div class="td is-title width-33">Name</div>
 										<div class="td is-title">Basis</div>
 										<div class="td is-title">FW</div>
 										<div class="td is-title">Summe</div>
@@ -628,11 +623,10 @@
 							<div class="td">
 								<h2>Anhaltende Einflüsse</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-33"></div><div class="td"></div><div class="td width-33"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>
 									<div class="tr">
-										<div class="td is-title">Art</div>
+										<div class="td is-title width-33">Art</div>
 										<div class="td is-title centered"></div>
-										<div class="td is-title">Stufen</div>
+										<div class="td is-title width-33">Stufen</div>
 										<div class="td is-title centered">M</div>
 										<div class="td is-title centered">F</div>
 										<div class="td is-title centered">D</div>
@@ -709,11 +703,9 @@
 										<div class="td centered"><input type="checkbox" name="attr_influenceParalysisIsChallenging" value="1" /></div>
 										<div class="td centered"><input type="checkbox" name="attr_influenceParalysisIsPermanent" value="1" /></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Minus-[LeP]</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td"></div><div class="td width-50"></div></div>
 									<div class="tr">
 										<div class="td">
 											&nbsp;<span class="info-border" name="attr_HealthNegativeLevel"></span>
@@ -735,11 +727,9 @@
 											</div>
 										</div>										
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Heilfaktor</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td"></div><div class="td width-33"></div></div>
 									<div class="tr alternate">
 										<div class="td is-title">
 											Erste Hilfe
@@ -774,7 +764,6 @@
 							<div class="td">
 								<h2>Schutz und Gesundheit</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-20"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>
 									<div class="tr alternate">
 										<div class="td"></div>
 										<div class="td is-title">Leicht (PW1)</div>
@@ -787,11 +776,9 @@
 										<div class="td centered"><input type="radio" value="2" name="attr_ArmorLevel"/></div>
 										<div class="td centered"><input type="radio" value="3" name="attr_ArmorLevel"/></div>
 									</div>	
-									<div class="tr height-01">&nbsp;</div>									
 								</div>
 								<h2>Ressourcen</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-20"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>
 									<div class="tr alternate">
 										<div class="td is-title">Aktionspunkte</div>
 										<div class="td">&nbsp;</div>
@@ -818,9 +805,8 @@
 									</div>
 								</div>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-25"></div><div class="td"></div><div class="td width-25"></div></div>
 									<div class="tr alternate">
-										<div class="td width-33 is-title">Ambitionen (<span class="info" name="attr_Ambition"></span>)</div>
+										<div class="td is-title width-33">Ambitionen (<span class="info" name="attr_Ambition"></span>)</div>
 										<div class="td">
 											<div class="dots">
 												<input type="hidden" name="attr_Ambition" class="dot" value="0" />
@@ -832,10 +818,11 @@
 												<button type="action" name="act_Ambition_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
 											</div>
 										</div>
-										<div class="td"></div>
 									</div>
-									<div class="tr alternate">
-										<div class="td is-title">Rage (<span class="info" name="attr_Rage"></span>)</div>
+								</div>
+								<div class="table">
+									<div class="tr">
+										<div class="td is-title width-20">Rage (<span class="info" name="attr_Rage"></span>)</div>
 										<div class="td">											
 											<div class="dots">
 												<input type="hidden" name="attr_BlessingRageLevel" class="dot" value="0" />
@@ -852,13 +839,11 @@
 												<button type="action" name="act_BlessingRageLevel_5" class="dot positive gt-0 gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>												
 											</div>											
 										</div>
-										<div class="td is-title" style="text-align:right;">(<span class="info" name="attr_Blessing"></span>) Segnungen</div>
+										<div class="td is-title width-33" style="text-align:right;">(<span class="info" name="attr_Blessing"></span>) Segnungen</div>
 									</div>
-									<div class="tr height-01"></div>
 								</div>
 							</div>
 						</div>
-						<div class="tr height-01">&nbsp;</div>
 					</div>										
 					<h2>Typische Zustände</h2>
 					<div class="table">						
@@ -904,68 +889,67 @@
 							<div class="td">&nbsp;</div>
 						</div>
 					</div>
-					<hr/>
 					<fieldset class="repeating_conditions">
-					<div class="table">						
-						<div class="tr">
-							<div class="td width-10"><span class="info" name="attr_condition_name"></div>
-							<div class="td width-05"><input type="checkbox" name="attr_condition_isActive" value="1"></div>
-							<div class="td"><span class="info" name="attr_condition_influence"></div>
+						<div class="table">						
+							<div class="tr">
+								<div class="td width-10"><span class="info" name="attr_condition_name"></div>
+								<div class="td width-05"><input type="checkbox" name="attr_condition_isActive" value="1"></div>
+								<div class="td"><span class="info" name="attr_condition_influence"></div>
+							</div>
 						</div>
-					</div>
-					<div class="table">						
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Nebeneffekt</div><div class="td"><span name="attr_condition_effect"></div>
+						<div class="table">						
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Nebeneffekt</div><div class="td"><span name="attr_condition_effect"></div>
+							</div>
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Abbau</div><div class="td"><span name="attr_condition_reducing"></div>
+							</div>
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Helfen</div><div class="td"><span name="attr_condition_helping"></div>
+							</div>
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Details</div>
+								<div class="td"><span name="attr_condition_url"></div>
+							</div>
+							<div class="tr height-01 dark"><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
 						</div>
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Abbau</div><div class="td"><span name="attr_condition_reducing"></div>
-						</div>
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Helfen</div><div class="td"><span name="attr_condition_helping"></div>
-						</div>
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Details</div>
-							<div class="td"><span name="attr_condition_url"></div>
-						</div>						
-					</div>
-					<hr/>
 					</fieldset>
 					<h2>Eigene Zustände</h2>									
 					<fieldset class="repeating_customconditions">
-					<div class="table">						
-						<div class="tr">
-							<div class="td width-20"><input type="text" placeholder="Name" name="attr_condition_name"></div>
-							<div class="td width-05"><input type="checkbox" name="attr_condition_isActive" value="1"></div>
-							<div class="td">
-								<select name="attr_condition_influence">
-									<option value="0" selected="selected">zugehörige Einflussstufen</option>
-									<option value="1">innere Schadensstufen</option>
-									<option value="2">äußere Schadensstufen</option>
-									<option value="3">Lähmungsstufen</option>
-									<option value="4">Malusstufen</option>
-								</select>
+						<div class="table">						
+							<div class="tr">
+								<div class="td width-20"><input type="text" placeholder="Name" name="attr_condition_name"></div>
+								<div class="td width-05"><input type="checkbox" name="attr_condition_isActive" value="1"></div>
+								<div class="td">
+									<select name="attr_condition_influence">
+										<option value="0" selected="selected">zugehörige Einflussstufen</option>
+										<option value="1">innere Schadensstufen</option>
+										<option value="2">äußere Schadensstufen</option>
+										<option value="3">Lähmungsstufen</option>
+										<option value="4">Malusstufen</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="table">						
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Nebeneffekt</div><div class="td"><input type="text" name="attr_condition_effect"></div>
+						<div class="table">						
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Nebeneffekt</div><div class="td"><input type="text" name="attr_condition_effect"></div>
+							</div>
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Abbau</div><div class="td"><input type="text" name="attr_condition_reducing"></div>
+							</div>
+							<div class="tr">
+								<div class="td width-10">&nbsp;</div>
+								<div class="td is-title width-15">Helfen</div><div class="td"><input type="text" name="attr_condition_helping"></div>
+							</div>						
 						</div>
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Abbau</div><div class="td"><input type="text" name="attr_condition_reducing"></div>
-						</div>
-						<div class="tr">
-							<div class="td width-10">&nbsp;</div>
-							<div class="td is-title width-15">Helfen</div><div class="td"><input type="text" name="attr_condition_helping"></div>
-						</div>						
-					</div>
-					<hr/>
+						<div class="tr height-01 dark"><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
 					</fieldset>					
 				</div>
 
@@ -973,117 +957,116 @@
 				<div class='skills'>
 					<h2>Allgemeine Fertigkeiten / Espritkräfte</h2>
 					<div class="table">
-						<div class="tr height-01"><div class="td">&nbsp;</div></div>						
 						<fieldset class="repeating_skills">
-						<div class="tr alternate">
-							<div class="td">
-								<div class="table">						
-									<div class="tr">
-										<div class="td is-title width-10">
-											Fertigkeit: 
-										</div>
-										<div class="td">
-											<input class="" placeholder="Fertigkeit" type="text" name="attr_SkillSet_Skill">
-										</div>
-										<div class="td width-10">
-											Aus Rolle: 
-										</div>
-										<div class="td">
-											<input type="text" name="attr_SkillSet_Role">
-										</div>
-										<div class="td width-10">&nbsp;</div>
-									</div>
-								</div>
-								<div class="table">						
-									<div class="tr">
-										<div class="td width-10">
-											Allgemein: 
-										</div>
-										<div class="td width-10">
-											<input type="checkbox" name="attr_SkillSet_General">
-										</div>
-										<div class="td width-10">
-											Esprit:
-										</div>
-										<div class="td width-10">
-											<input type="checkbox" name="attr_SkillSet_Esprit">
-										</div>
-										<div class="td">
-											&nbsp;
-										</div>
-										<div class="td width-10">
-											&nbsp;
+							<div class="tr alternate">
+								<div class="td">
+									<div class="table">						
+										<div class="tr">
+											<div class="td is-title width-10">
+												Fertigkeit: 
+											</div>
+											<div class="td">
+												<input class="" placeholder="Fertigkeit" type="text" name="attr_SkillSet_Skill">
+											</div>
+											<div class="td width-10">
+												Aus Rolle: 
+											</div>
+											<div class="td">
+												<input type="text" name="attr_SkillSet_Role">
+											</div>
+											<div class="td width-10">&nbsp;</div>
 										</div>
 									</div>
-									<div class="tr height-01"></div>
-								</div>
-								<div class="table">	
-									<div class="tr">
-										<div class="td is-title">
-											Beschreibung
-											<textarea class="textarea textarea-medium" placeholder="Beschreibung" name="attr_SkillSet_Description"></textarea>
+									<div class="table">						
+										<div class="tr">
+											<div class="td width-10">
+												Allgemein: 
+											</div>
+											<div class="td width-10">
+												<input type="checkbox" name="attr_SkillSet_General">
+											</div>
+											<div class="td width-10">
+												Esprit:
+											</div>
+											<div class="td width-10">
+												<input type="checkbox" name="attr_SkillSet_Esprit">
+											</div>
+											<div class="td">
+												&nbsp;
+											</div>
+											<div class="td width-10">
+												&nbsp;
+											</div>
+										</div>
+										<div class="tr height-01"></div>
+									</div>
+									<div class="table">	
+										<div class="tr">
+											<div class="td is-title">
+												Beschreibung
+												<textarea class="textarea textarea-medium" placeholder="Beschreibung" name="attr_SkillSet_Description"></textarea>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<hr/>
+							<div class="tr height-01 dark"><div class="td">&nbsp;</div></div>
 						</fieldset>
 					</div>
 					<h2>Ausbaukräfte</h2>
 					<fieldset class="repeating_expansionskills">
-					<div class="table">						
-						<div class="tr height-01"><div class="td width-20"></div><div class="td"></div></div>
-						<div class="tr">
-							<div class="td is-title">Ausbaukraft</div>
-							<div class="td"><input class="" placeholder="Ausbaukraft" type="text" name="attr_ExpansionSet_Skill"></div>
-						</div>					
-						<div class="tr">
-							<div class="td is_title">Aus Rolle</div>
-							<div class="td"><input class="" placeholder="Rolle" type="text" name="attr_ExpansionSet_Role"></div>
-						</div>					
-						<div class="tr">
-							<div class="td">Stammeffekt</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level0"></div>
+						<div class="table">						
+							<div class="tr height-01"><div class="td width-20"></div><div class="td"></div></div>
+							<div class="tr">
+								<div class="td is-title">Ausbaukraft</div>
+								<div class="td"><input class="" placeholder="Ausbaukraft" type="text" name="attr_ExpansionSet_Skill"></div>
+							</div>					
+							<div class="tr">
+								<div class="td is_title">Aus Rolle</div>
+								<div class="td"><input class="" placeholder="Rolle" type="text" name="attr_ExpansionSet_Role"></div>
+							</div>					
+							<div class="tr">
+								<div class="td">Stammeffekt</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level0"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Gesselleneffekt 1</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level1_1"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Gesselleneffekt 2</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level1_2"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Gesselleneffekt 3</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level1_3"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Exerteneffekt 1</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level2_1"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Experteneffekt 2</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level2_2"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Experteneffekt 3</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level2_3"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Meistereffekt 1</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level3_1"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Meistereffekt 2</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level3_2"></div>
+							</div>
+							<div class="tr">
+								<div class="td">Meistereffekt 3</div>
+								<div class="td"><input type="text" name="attr_ExpansionSet_Level3_3"></div>
+							</div>
+							<div class="tr height-01 dark"><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
 						</div>
-						<div class="tr">
-							<div class="td">Gesselleneffekt 1</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level1_1"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Gesselleneffekt 2</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level1_2"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Gesselleneffekt 3</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level1_3"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Exerteneffekt 1</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level2_1"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Experteneffekt 2</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level2_2"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Experteneffekt 3</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level2_3"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Meistereffekt 1</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level3_1"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Meistereffekt 2</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level3_2"></div>
-						</div>
-						<div class="tr">
-							<div class="td">Meistereffekt 3</div>
-							<div class="td"><input type="text" name="attr_ExpansionSet_Level3_3"></div>
-						</div>
-					</div>
-					<hr/>
 					</fieldset>
 					<h2>Volkskräfte</h2>
 					<div class="table">
@@ -1096,14 +1079,14 @@
 							</div>
 						</div>
 						<fieldset class="repeating_folkskills">
-						<div class="tr alternate">
-							<div class="td width-20 is-title">
-								<input type="text" placeholder="Name" name="attr_FolkSet_Name">
+							<div class="tr alternate">
+								<div class="td width-20 is-title">
+									<input type="text" placeholder="Name" name="attr_FolkSet_Name">
+								</div>
+								<div class="td">
+									<textarea class="textarea textarea-small" placeholder="Beschreibung" name="attr_FolkSet_Description"></textarea>
+								</div>
 							</div>
-							<div class="td">
-								<textarea class="textarea textarea-small" placeholder="Beschreibung" name="attr_FolkSet_Description"></textarea>
-							</div>
-						</div>
 						</fieldset>
 					</div>
 				</div>
@@ -1111,20 +1094,9 @@
 				<!-- Kampf //-->
 				<div class='battle'>
 					<h2>Kampffertigkeiten</h2>
-					<div class="table">
-						<div class="tr height-01">
-							<div class="td width-15"></div>
-							<div class="td"></div>
-							<div class="td"></div>
-							<div class="td"></div>
-							<div class="td"></div>
-							<div class="td"></div>
-							<div class="td"></div>
-							<div class="td"></div>
-							<div class="td width-33"></div>							
-						</div>
+					<div class="table">						
 						<div class="tr">
-							<div class="td is-title">Waffenart</div>
+							<div class="td is-title width-15">Waffenart</div>
 							<div class="td is-title">Im Besitz</div>
 							<div class="td is-title">Sch</div>
 							<div class="td is-title">AP</div>
@@ -1132,7 +1104,7 @@
 							<div class="td is-title">Basis</div>
 							<div class="td is-title">Summe</div>
 							<div class="td is-title">+/-</div>
-							<div class="td is-title">Anmerkung</div>
+							<div class="td is-title width-33">Anmerkung</div>
 						</div>
 						<div class="tr alternate">
 							<div class="td is-title"><button class="is-title" type="action" name="act_BattleFist">Fausthieb</button></div>
@@ -1330,16 +1302,14 @@
 						<div class="tr">
 							<div class="td">
 								<h2>Ausrüstung und Notizen</h2>
-								<div class="table"><div class="tr height-01">&nbsp;</div></div>
 								<textarea class="textarea" placeholder="Ausrüstung und Notizen" name="attr_Inventory"></textarea>
 								<h2>Besondere Ressourcen</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-33"></div><div class="td"></div></div>
-									<div class="tr">
+									<div class="tr alternate">
 										<div class="td is-title">Konstruktionspunkte (Konstrukteur)</div>
 										<div class="td"><input type="number" name="attr_ConstructionPoints" /></div>
 									</div>
-									<div class="tr">
+									<div class="tr alternate">
 										<div class="td is-title">Ingredenzien (Henker)</div>
 										<div class="td"><input type="Text" name="attr_Ingredients" /></div>
 									</div>
@@ -1349,37 +1319,34 @@
 							<div class="td">
 								<h2>Finanzen</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-20"></div><div class="td"></div></div>
-									<div class="tr">
+									<div class="tr alternate">
 										<div class="td is-title">Unterhalt</div>
 										<div class="td"><input type="text" placeholder="Unterhalt" name="attr_Upkeep" /></div>
 									</div>
-									<div class="tr">
+									<div class="tr alternate">
 										<div class="td is-title">Aktuelles Vermögen</div>
 										<div class="td"><input type="text" placeholder="Vermögen" name="attr_Fortune" /></div>
 									</div>
-									<div class="tr">
+									<div class="tr alternate">
 										<div class="td is-title">Beutegut</div>
 										<div class="td"><input type="text" placeholder="Beutegut" name="attr_Booty" /></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 								<h2>Kleidungssets</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-20"></div><div class="td"></div></div>
 									<div class="tr">
-										<div class="td is-title">Set №1</div>
+										<div class="td is-title width-20">Set №1</div>
 										<div class="td"><input type="text" placeholder="Kleidungsset" name="attr_Outfit1" /></div>
 									</div>
 									<div class="tr">
 										<div class="td is-title">Bonus</div>
 										<div class="td"><textarea class="textarea textarea-medium" placeholder="Bonus" name="attr_Outfit1_Bonus"></textarea></div>
 									</div>
-									<div class="tr">
+									<div class="tr dark">
 										<div class="td is-title">Set №2</div>
 										<div class="td"><input type="text" placeholder="Kleidungsset" name="attr_Outfit2" /></div>
 									</div>
-									<div class="tr">
+									<div class="tr dark">
 										<div class="td is-title">Bonus</div>
 										<div class="td"><textarea class="textarea textarea-medium" placeholder="Bonus" name="attr_Outfit2_Bonus"></textarea></div>
 									</div>
@@ -1549,13 +1516,13 @@
 					<div class="module-MM-FdJ-Mod3-ON">
 						<h2>Fraktionen</h2>
 						<div class="table">
-							<div class="tr">
+							<div class="tr dark">
 								<div class="td width-50 is-title">Fraktion</div>
 								<div class="td width-50 is-title">Kreise</div>
 							</div>
 						</div>
 						<div class="table">
-							<div class="tr">
+							<div class="tr dark">
 								<div class="td width-25 is-title">Unterhalt</div>								
 								<div class="td width-25 is-title">Ausschluss</div>
 								<div class="td width-25 is-title">Jägerpfad</div>
@@ -1594,8 +1561,8 @@
 									<div class="td width-25"><span name="attr_faction_path"></div>
 									<div class="td width-25"><span name="attr_faction_activity"></div>
 								</div>
-							</div>
-							<hr/>
+								<div class="tr height-01 dark"><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>
+							</div>							
 						</fieldset>						
 					</div>
 				</div>
@@ -1607,7 +1574,6 @@
 							<div class="td width-50">
 								<h2>Allgemeine Informationen</h2>
 								<div class="table">									
-									<div class="tr height-01"><div class="td is-title width-20">&nbsp;</div><div class="td">&nbsp;</div></div>
 									<div class="tr alternate">
 										<div class="td is-title width-20">Name</div>
 										<div class="td"><input class="" placeholder="Name" type="text" name="attr_Name"/></div>
@@ -1647,13 +1613,11 @@
 											<input class="" placeholder="" type="text" name="attr_HexGrowth"/>
 										</div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 							</div>
 							<div class="td width-50">
 								<h2>Attribute</h2>
 								<div class="table">
-									<div class="tr height-01">&nbsp;</div>
 									<div class="tr">
 										<div class="td">
 											<h2>Geistige Attribute</h2>
@@ -1692,7 +1656,6 @@
 											</div>
 										</div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 							</div>
 						</div>
@@ -1739,7 +1702,6 @@
 							<div class="td">
 							<h2>Anhaltende Einflüsse</h2>
 								<div class="table">
-									<div class="tr height-01"><div class="td width-33"></div><div class="td"></div><div class="td width-33"></div><div class="td"></div><div class="td"></div><div class="td"></div></div>
 									<div class="tr">
 										<div class="td is-title">Art</div>
 										<div class="td is-title centered"></div>
@@ -1802,7 +1764,6 @@
 										<div class="td centered"><input type="checkbox" name="attr_influenceMalusIsChallenging" value="1" /></div>
 										<div class="td centered"><input type="checkbox" name="attr_influenceMalusIsPermanent" value="1" /></div>
 									</div>
-									<div class="tr height-01">&nbsp;</div>
 								</div>
 							</div>
 						</div>
@@ -1821,7 +1782,6 @@
 								</span>
 							</div>
 						</div>						
-						<div class="tr height-01">&nbsp;</div>
 						<div class="tr">
 							<div class="td">
 								<h2>Hilfe</h2>
@@ -1844,7 +1804,6 @@
 								</span>
 							</div>
 						</div>
-						<div class="tr height-01">&nbsp;</div>
 						<div class="tr">
 							<div class="td">
 								<h2>Einstellungen</h2>							
@@ -1897,7 +1856,6 @@
 							</div>
 						</div>
 						<input type="checkbox" class="toggle-menue hide" name="attr_isNSC" value="1"/>
-						<div class="tr height-01 sc-view">&nbsp;</div>
 						<div class="tr sc-view">
 							<div class="td">
 								<input type="checkbox" class="toggle-module-MM-FdJ hide" name="attr_module-MM-FdJ" value="1"/>
@@ -1964,8 +1922,8 @@
 				<h4>LeP <button name="act_resetHealthMod" type="action" class="reset"></button></h4>								
 				<input class="" placeholder="0" value="0" type="number" name="attr_HealthMod" />
 				<div class="sc-view">
-					<h4>Puffer</h4>
-					<input class="" placeholder="0" value="0" type="number" name="attr_HealthBuffer" />
+					<h4>Puffer <button name="act_resetHealthBufferMod" type="action" class="reset"></button></h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_HealthBufferMod" />
 				</div>
 				<div class="nsc-view">
 					<h4>Hex</h4>
@@ -2317,6 +2275,7 @@
 		on('clicked:resetIdeasMod', function() {resetAttribute("IdeasMod")});
 		on('clicked:resetInitiativeMod', function() {resetAttribute("InitiativeMod")});
 		on('clicked:resetActionPointsMod', function() {resetAttribute("ActionPointsMod")});
+		on('clicked:resetHealthBufferMod', function() {resetAttribute("HealthBufferMod")});
 		
 	/* Event-Listener -- Ende */						
 		
@@ -2327,6 +2286,7 @@
 			let sAttributeMax = sAttribute+"_max"
 			
 			if (sAttribute == "ArmorLevelMod") {sAttributeMax = "ArmorLevel"} /* Der maximale Panzerwert wird nach einem abweichenden Schema gespeichert */
+			if (sAttribute == "HealthBufferMod") {sAttributeMax = "HealthBufferStart"} /* Der Puffer Startwert wird nach einem abweichenden Schema gespeichert */
 			
 			getAttrs([sAttributeMax], function (values) {
 				let aAttributes = {};

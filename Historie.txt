@@ -1,3 +1,10 @@
+2021-06-05
+	Allgemein
+	* Optik angepasst, so dass der Bogen auch in der Standardbreite von 900px komplett dargestellt wird.
+
+	Neue Features
+	* Ausgewählte Ressourcen in der rechten Spalte können per Klick wieder auf das Maximum gesetzt werden
+
 2021-04-26
 	Mare Monstrum
 	* Fraktionen können gewählt werden

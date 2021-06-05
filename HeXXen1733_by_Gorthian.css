@@ -1,7 +1,7 @@
 /*
 	EDITED by 			Gorthian
-	Version				2.1.3
-	Letzte Änderung		2021-04-26
+	Version				3.0
+	Letzte Änderung		2021-06-05
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -124,8 +124,12 @@ span {
 	width				: 100%;
 }
 
-.sheet-alternate:nth-of-type(odd) {
+.sheet-dark, .sheet-alternate:nth-of-type(odd) {
 	background-color	: #dbdbdb !important;
+}
+
+.sheet-light {
+	background-color	: #EEEEEE !important;
 }
 
 .sheet-td {
