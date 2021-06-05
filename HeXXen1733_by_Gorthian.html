@@ -1961,7 +1961,7 @@
 			<div class="td width-01"></div>
 			<div class="td width-10 centered alternate">
 				<input type="checkbox" class="toggle-menue hide" name="attr_IsNSC" value="1"/>
-				<h4>LeP</h4>
+				<h4>LeP <button name="act_resetHealthMod" type="action" class="reset"></button></h4>								
 				<input class="" placeholder="0" value="0" type="number" name="attr_HealthMod" />
 				<div class="sc-view">
 					<h4>Puffer</h4>
@@ -1971,12 +1971,12 @@
 					<h4>Hex</h4>
 					<input class="" placeholder="0" value="0" type="number" name="attr_HexMod" />
 				</div>
-				<h4>PW</h4>
-				<input class="" placeholder="0" value="0" type="number" name="attr_ArmorLevel" />
+				<h4>PW <button name="act_resetArmorLevelMod" type="action" class="reset"></button></h4>
+				<input class="" placeholder="0" value="0" type="number" name="attr_ArmorLevelMod" />
 				<div class="sc-view">
-					<h4>Coups</h4>
+					<h4>Coups <button name="act_resetCoupsMod" type="action" class="reset"></button></h4>
 					<input class="" placeholder="0" value="0" type="number" name="attr_CoupsMod" />
-					<h4>Ideen</h4>
+					<h4>Ideen <button name="act_resetIdeasMod" type="action" class="reset"></button></h4>
 					<input class="" placeholder="0" value="0" type="number" name="attr_IdeasMod" />
 					<h4>Ambit.</h4>
 					<input class="" placeholder="0" value="0" type="number" name="attr_Ambition" />
@@ -1985,10 +1985,10 @@
 					<h4>Rage</h4>
 					<input class="" placeholder="0" value="0" type="number" name="attr_Rage" />
 				</div>
-				<h4>Ini</h4>
+				<h4>Ini <button name="act_resetInitiativeMod" type="action" class="reset"></button></h4>
 				<input class="" placeholder="0" value="0" type="number" name="attr_InitiativeMod" />
 				<div class="sc-view">
-					<h4>AP</h4>
+					<h4>AP <button name="act_resetActionPointsMod" type="action" class="reset"></button></h4>
 					<input class="" placeholder="0" value="0" type="number" name="attr_ActionPointsMod" />
 				</div>
 				<h4>Würfeln</h4>
@@ -2310,9 +2310,34 @@
 				});			
 			});		
 		});
+		
+		on('clicked:resetHealthMod', function() {resetAttribute("HealthMod")});
+		on('clicked:resetArmorLevelMod', function() {resetAttribute("ArmorLevelMod")});
+		on('clicked:resetCoupsMod', function() {resetAttribute("CoupsMod")});
+		on('clicked:resetIdeasMod', function() {resetAttribute("IdeasMod")});
+		on('clicked:resetInitiativeMod', function() {resetAttribute("InitiativeMod")});
+		on('clicked:resetActionPointsMod', function() {resetAttribute("ActionPointsMod")});
+		
 	/* Event-Listener -- Ende */						
 		
 	/* Funktionen -- Start */
+		/* Den aktuellen Wert auf Maximum zurück setzen */
+		function resetAttribute(sAttribute) {
+			console.log("resetAttribut: "+sAttribute);
+			let sAttributeMax = sAttribute+"_max"
+			
+			if (sAttribute == "ArmorLevelMod") {sAttributeMax = "ArmorLevel"} /* Der maximale Panzerwert wird nach einem abweichenden Schema gespeichert */
+			
+			getAttrs([sAttributeMax], function (values) {
+				let aAttributes = {};
+				let iAttributeMax = values[sAttributeMax]||0;	
+				aAttributes[sAttribute] = iAttributeMax;
+				console.log("resetAttribut => "+iAttributeMax);
+				setAttrs(aAttributes);				
+			});	
+			
+		}
+		
 		/* Neuberechnungen bei geänderten Attributswerten */
 		function recalcAttribute(sAttribute) {
 			console.log("recalcAttribute: "+sAttribute);

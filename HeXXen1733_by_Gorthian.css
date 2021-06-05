@@ -224,6 +224,26 @@ button {
 	color				:	#0c993d;
 }
 
+button[type="action"].sheet-reset:before{
+  content: ' ';
+}
+
+button[type="action"].sheet-reset:hover{
+  background-position: 0;
+}
+
+button[type="action"].sheet-reset{
+  position: relative;
+  background-image: url(https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/blob/main/images/refresh.jpg?raw=true);
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+  border-style: none;
+  background-color: transparent;
+  top:-5px;
+}
+
 button[type="roll"].sheet-dBlood:before{
   content: ' ';
 }
@@ -350,6 +370,10 @@ div.sheet-tooltip {
 	position			: absolute;
 	border				: 1px solid black;
 	background-color	: #FFFFFF;
+}
+
+.sheet-show-tooltip {
+	display	: inline;
 }
 
 .sheet-show-tooltip:hover ~ div.sheet-tooltip {
