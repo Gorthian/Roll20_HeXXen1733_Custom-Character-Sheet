@@ -1,4 +1,7 @@
 2021-07-19
+	Allgemein
+	* Optik der Probenzeile verbessert
+	
 	Bugfixes
 	* Fechtwaffen auf dem Reiter Kampf, kann jetzt als Probe gewählt werden
 	* Darstellung PufferLeP korrigiert
