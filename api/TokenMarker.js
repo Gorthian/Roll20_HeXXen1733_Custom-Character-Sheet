@@ -1,7 +1,7 @@
 /* 
 	EDITED by 			Gorthian
-	Version				2.0.1
-	Letzte Änderung		2021-02-08
+	Version				3.0
+	Letzte Änderung		2021-06-06
 	
 	GitHub				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet
 	Wiki				https://github.com/Gorthian/HeXXen1733_Custom_Character_Sheet/wiki
@@ -41,7 +41,7 @@ on("change:attribute", function(obj) {
     var value = parseInt(obj.get("current"));
     var tokens = findObjs({type:'graphic', represents: obj.get("_characterid")});
 
-    if (attr == "HealthBuffer") {
+    if (attr == "HealthBufferMod") {
         setMarker(tokens,healthBuffer,parseInt(value))
     }
     
