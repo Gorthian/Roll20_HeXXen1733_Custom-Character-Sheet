@@ -1922,8 +1922,8 @@
 				<h4>LeP <button name="act_resetHealthMod" type="action" class="reset"></button></h4>								
 				<input class="" placeholder="0" value="0" type="number" name="attr_HealthMod" />
 				<div class="sc-view">
-					<h4>Puffer <button name="act_resetHealthBufferMod" type="action" class="reset"></button></h4>
-					<input class="" placeholder="0" value="0" type="number" name="attr_HealthBufferMod" />
+					<h4>Puffer <button name="act_resetHealthBuffer" type="action" class="reset"></button></h4>
+					<input class="" placeholder="0" value="0" type="number" name="attr_HealthBuffer" />
 				</div>
 				<div class="nsc-view">
 					<h4>Hex</h4>
@@ -2275,7 +2275,7 @@
 		on('clicked:resetIdeasMod', function() {resetAttribute("IdeasMod")});
 		on('clicked:resetInitiativeMod', function() {resetAttribute("InitiativeMod")});
 		on('clicked:resetActionPointsMod', function() {resetAttribute("ActionPointsMod")});
-		on('clicked:resetHealthBufferMod', function() {resetAttribute("HealthBufferMod")});
+		on('clicked:resetHealthBuffer', function() {resetAttribute("HealthBuffer")});
 		
 	/* Event-Listener -- Ende */						
 		
@@ -2286,7 +2286,7 @@
 			let sAttributeMax = sAttribute+"_max"
 			
 			if (sAttribute == "ArmorLevelMod") {sAttributeMax = "ArmorLevel"} /* Der maximale Panzerwert wird nach einem abweichenden Schema gespeichert */
-			if (sAttribute == "HealthBufferMod") {sAttributeMax = "HealthBufferStart"} /* Der Puffer Startwert wird nach einem abweichenden Schema gespeichert */
+			if (sAttribute == "HealthBuffer") {sAttributeMax = "HealthBufferStart"} /* Der Puffer Startwert wird nach einem abweichenden Schema gespeichert */
 			
 			getAttrs([sAttributeMax], function (values) {
 				let aAttributes = {};

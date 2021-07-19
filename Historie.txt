@@ -1,6 +1,7 @@
 2021-07-19
 	Bugfixes
 	* Fechtwaffen auf dem Reiter Kampf, kann jetzt als Probe gewählt werden
+	* Darstellung PufferLeP korrigiert
 
 2021-06-05
 	Allgemein
