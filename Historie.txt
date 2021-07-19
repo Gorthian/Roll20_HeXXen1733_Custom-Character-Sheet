@@ -1,0 +1,37 @@
+2021-07-19
+	Bugfixes
+	* Fechtwaffen auf dem Reiter Kampf, kann jetzt als Probe gewählt werden
+
+2021-06-05
+	Allgemein
+	* Optik angepasst, so dass der Bogen auch in der Standardbreite von 900px komplett dargestellt wird.
+
+	Neue Features
+	* Ausgewählte Ressourcen in der rechten Spalte können per Klick wieder auf das Maximum gesetzt werden
+
+2021-04-26
+	Mare Monstrum
+	* Fraktionen können gewählt werden
+
+2021-04-21
+	Bugfixes
+	* Berechnung der Januswürfel korrigiert (Issue #34)
+	* Bei neuen Charakteren automatisch den Einstellungstab öffnen (Issue #35)
+	* Neue Zustände automatisch aktivieren (Issue #36)
+	
+	Neue Features
+	* API-Skripte DefaultValues.js zum Festlegen der Standardeinstellungen bei neuen Charakteren (Issue #40)
+	
+2021-04-09 
+	Allgemein
+	* Historie.txt eingeführt
+	* Proben werden jetzt zentral über die obere Leiste ausgeführt
+	* Bei Fertigkeiten und Attributen können dauerhafte Modifikatoren hinterlegt werden
+	* Die manuelle Eingabe der Eingabe von Januswürfeln bei Proben kann deaktiviert werden
+	* Hexxen- und Januswürfel können bei Proben direkt verrechnet werden
+	* Generelle Überarbeitung der Sheetworker
+	
+	Mare Monstrum
+	* Fertigkeit Navigation wird unterstützt
+	* Altersgebrechen können aktiviert werden
+	* Herkünfte können gewählt werden
